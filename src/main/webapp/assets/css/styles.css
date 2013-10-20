@@ -85,63 +85,63 @@ BODY {
 	width: 24px;
 }
 
-/* form { */
-/* 	overflow: auto; */
-/* } */
+form {
+	overflow: auto;
+}
 
-/* .form-container { */
-/* 	width: 250px; */
-/* 	margin-left: 250px; */
-/* 	margin-bottom: 40px; */
-/* 	margin-top: 70px; */
-/* } */
+.form-container {
+	width: 250px;
+	margin-left: 250px;
+	margin-bottom: 40px;
+	margin-top: 70px;
+}
 
-/* form .form-field { */
-/* 	overflow: auto; */
-/* 	margin-bottom: 5px; */
-/* } */
+form .form-field {
+	overflow: auto;
+	margin-bottom: 5px;
+}
 
-/* form .form-field { */
-/* 	display: block; */
-/* 	margin-bottom: 5px; */
-/* 	color: #333; */
-/* 	cursor: pointer; */
-/* } */
+form .form-field {
+	display: block;
+	margin-bottom: 5px;
+	color: #333;
+	cursor: pointer;
+}
 
-/* label { */
-/* 	display: block; */
-/* 	margin-bottom: 5px; */
-/* 	color: #333; */
-/* 	cursor: pointer; */
-/* } */
+label {
+	display: block;
+	margin-bottom: 5px;
+	color: #333;
+	cursor: pointer;
+}
 
-/* form input, form textarea { */
-/* 	display: inline-block; */
-/* 	width: 210px; */
-/* 	padding: 4px; */
-/* 	margin: 0; */
-/* 	outline: 0; */
-/* 	background-color: #fff; */
-/* 	border: 1px solid #ccc; */
-/* 	border-radius: 3px; */
-/* } */
+form input, form textarea {
+	display: inline-block;
+	width: 210px;
+	padding: 4px;
+	margin: 0;
+	outline: 0;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
 
-/* form button { */
-/* 	font-size: 13px; */
-/* 	font-weight: bold; */
-/* 	width: 120px; */
-/* 	margin-top: 15px; */
-/* 	margin-left: 100px; */
-/* } */
+form button {
+	font-size: 13px;
+	font-weight: bold;
+	width: 120px;
+	margin-top: 15px;
+	margin-left: 100px;
+}
 
-/* .search-bar { */
-/* 	margin-left: 140px; */
-/* 	margin-top: 8px; */
-/* } */
+.search-bar {
+	margin-left: 140px;
+	margin-top: 8px;
+}
 
-/* form#search-bar  { */
-/* 	float: left; */
-/* } */
+form#search-bar  {
+	float: left;
+}
 
 input#search-btn {
 	background-image: url("/TPE-PAW/assets/images/search.png");
