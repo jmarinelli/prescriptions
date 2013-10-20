@@ -14,7 +14,7 @@
 			<%@ include file="partials/panel-afiliado.jsp" %>
 		</div>
 		
-		<input type="submit" value="Enviar" class="big-btn" />
+		<input type="submit" value="Cargar Receta" class="big-btn" />
 		</form:form>
 	</body>
 </html>

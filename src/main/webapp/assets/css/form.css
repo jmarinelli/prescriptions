@@ -58,6 +58,7 @@ form input {
 
 .readonly {
 	background-color: rgb(148, 148, 148);
+	color: white;
 }
 
 .big-btn {
@@ -67,7 +68,7 @@ form input {
 	margin-top: 30px;
 	font-size: 15px;
 	font-weight: bold;
-	letter-spacing: 2px;
+	letter-spacing: 1px;
 }
 
 /* -------------------------- CARATULA -------------------------- */
