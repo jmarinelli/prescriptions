@@ -2,7 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <html>
-	<%@ include file="../utils/header.jsp" %>
+	<%@ include file="partials/head.jsp" %>
 	<body>
 		<form:form method="POST" action="/prescriptions/add" class="form-container" id="register" commandName="prescriptionForm">
 		<form:hidden path="prescription" />
