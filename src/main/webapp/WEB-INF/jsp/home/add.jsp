@@ -11,10 +11,10 @@
 		<div class="caratula-afiliado">
 			<%@ include file="partials/panel-caratula.jsp" %>
 			<%@ include file="partials/panel-receta.jsp" %>
-<%-- 			<%@ include file="partials/panel-afiliado.jsp" %> --%>
+			<%@ include file="partials/panel-afiliado.jsp" %>
 		</div>
 		
-		<input type="submit" value="Enviar" onclick="alert('paraaa loco, tomatelas');"/>
+		<input type="submit" value="Enviar" />
 		</form:form>
 	</body>
 </html>

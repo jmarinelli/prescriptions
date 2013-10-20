@@ -1,69 +1,59 @@
 <div class="panel">
-	<h3>Caratula</h3>
+	<h3>Afiliado</h3>
 	<div class="panel-field">
-		<span>Nombre</span>
-		<form:input path="serCarat" type="number" />
+		<span>Numero Afiliado</span>
+		<form:input path="numAfi" type="number" />
 		<div class="error">
-			<form:errors path="serCarat" />
+			<form:errors path="numAfi" />
 		</div>
 	</div>
 	<div class="panel-field">
-		<span>Contrase&ntilde;a</span>
-		<form:input path="codCarat" type="text" />
+		<span>Numero de Parentesco</span>
+		<form:input path="parentesco" type="number" />
 		<div class="error">
-			<form:errors path="codCarat" />
+			<form:errors path="parentesco" />
 		</div>
 	</div>
 	<div class="panel-field">
-		<span>Expediente</span>
-		<form:input path="expediente" type="number" />
+		<span>Sexo</span>
+		<form:input path="sexo" type="text" />
 		<div class="error">
-			<form:errors path="expediente" />
+			<form:errors path="sexo" />
 		</div>
 	</div>
 	<div class="panel-field">
-		<span>Delegacion</span>
-		<form:input path="delegacion" type="number" />
+		<span>Tratamiento prolongado</span>
+		<form:input path="tratProlongado" type="text" />
 		<div class="error">
-			<form:errors path="delegacion" />
+			<form:errors path="tratProlongado" />
 		</div>
 	</div>
 	<div class="panel-field">
-		<span>Codigo O.S.</span>
-		<form:input path="codObSoc" type="number" />
+		<span>Tipo Documento</span>
+		<form:input path="tipoDocumento" type="text" />
 		<div class="error">
-			<form:errors path="codObSoc" />
+			<form:errors path="tipoDocumento" />
 		</div>
 	</div>
 	<div class="panel-field">
-		<span>Codigo plan</span>
-		<form:input path="codPlan" type="number" />
+		<span>Numero Docuento</span>
+		<form:input path="numDocumento" type="number" />
 		<div class="error">
-			<form:errors path="codPlan" />
+			<form:errors path="numDocumento" />
 		</div>
 	</div>
 	<div class="panel-field">
-		<span>Periodo</span>
-		<form:input path="periodo" type="text" />
+		<span>Fecha nacimiento</span>
+		<form:input path="fecNacimiento" type="text" />
 		<div class="error">
-			<form:errors path="periodo" />
+			<form:errors path="fecNacimiento" />
 		</div>
 	</div>
 	<div class="panel-field">
-		<span>Codigo Farmacia</span>
-		<form:input path="codFarma" type="number" />
+		<span>Telefono</span>
+		<form:input path="telefono" type="text" />
 		<div class="error">
-			<form:errors path="codFarma" />
+			<form:errors path="telefono" />
 		</div>
-	</div>
-	<div class="panel-field">
-		<span>Caja</span>
-		<form:input path="caja" type="number" />
-		<div class="error">
-			<form:errors path="caja" />
-		</div>
-	</div>
-	<div class="panel-field">
-		<span>Aca va total receta</span>
-	</div>
+	</div>	
 </div>
