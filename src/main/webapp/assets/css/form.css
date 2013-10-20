@@ -1,11 +1,129 @@
 .panel {
 	float: left;
 	border-style: solid;
-	margin-right: 5px;
+	margin-right: 1px;
 	padding: 0 10px 15px;
 	height: 350px;
 }
 
 .panel .sub-panel {
 	float: left;
+}
+
+.prescription-page-ctn {
+	margin-top: 30px;
+	margin-left: 10px;
+}
+
+form {
+	overflow: auto;
+}
+
+.login-form-container {
+	margin-left: 250px;
+	margin-bottom: 40px;
+	margin-top: 70px;
+}
+
+form .form-field {
+	overflow: auto;
+	margin-bottom: 5px;
+}
+
+form .form-field {
+	display: block;
+	margin-bottom: 5px;
+	color: #333;
+	cursor: pointer;
+}
+
+label {
+	display: block;
+	margin-bottom: 5px;
+	color: #333;
+	cursor: pointer;
+}
+
+form span, input, .panel-field {
+	float: left;
+}
+
+form input {
+	width: 80px;
+}
+
+.panel-field {
+	margin-bottom: 3px;
+}
+
+.readonly {
+	background-color: rgb(148, 148, 148);
+}
+
+.big-btn {
+	height: 40px;
+	width: 300px;
+	margin-left: 500px;
+	margin-top: 5px;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+
+/* -------------------------- CARATULA -------------------------- */
+
+#caratula {
+	width: 360px;
+}
+
+#caratula > .panel-field > span{
+	width: 140px;
+	color: #333;
+}
+
+#caratula > .tabbed {
+	margin-left: 140px;
+}
+
+
+/* -------------------------- RECETA -------------------------- */
+
+#receta > .sub-panel {
+	width: 275px;
+}
+
+#receta > .sub-panel > .panel-field > span {
+	width: 185px;
+	color: #333;
+}
+
+/* -------------------------- AFILIADO -------------------------- */
+
+#afiliado {
+	width: 300px;
+}
+
+#afiliado > .panel-field > span {
+	width: 200px;
+	color: #333;
+}
+
+
+
+form input, form textarea {
+	display: inline-block;
+	padding: 4px;
+	margin: 0;
+	outline: 0;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+form button {
+	font-size: 13px;
+	font-weight: bold;
+	width: 120px;
+	margin-top: 15px;
+	margin-left: 100px;
 }

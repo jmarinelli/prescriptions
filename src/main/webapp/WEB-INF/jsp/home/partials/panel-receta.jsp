@@ -1,4 +1,4 @@
-<div class="panel">
+<div class="panel" id="receta">
 	<h3>Receta</h3>
 	<div class="sub-panel">
 		<div class="panel-field">
@@ -103,14 +103,14 @@
 		</div>
 		<div class="panel-field">
 			<span>Serie Vale</span>
-			<form:input path="serVale" type="text" value="" readonly="true" />
+			<form:input path="serVale" type="text" value="" readonly="true" class="readonly"/>
 			<div class="error">
 				<form:errors path="serVale" />
 			</div>
 		</div>
 		<div class="panel-field">
 			<span>Codigo Vale</span>
-			<form:input path="codVale" type="number" readonly="true" />
+			<form:input path="codVale" type="number" readonly="true" class="readonly"/>
 			<div class="error">
 				<form:errors path="codVale" />
 			</div>

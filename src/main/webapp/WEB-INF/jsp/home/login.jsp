@@ -3,7 +3,7 @@
 <html>
 <%@ include file="partials/head.jsp" %>
 	<body>
-		<div class="form-container">
+		<div class="login-form-container">
 		
 			<form method="post" action="/prescriptions/login">
 				<div>

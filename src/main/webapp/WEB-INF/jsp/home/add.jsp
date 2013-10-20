@@ -3,8 +3,8 @@
 
 <html>
 	<%@ include file="partials/head.jsp" %>
-	<body>
-		<form:form method="POST" action="/prescriptions/add" class="form-container" id="register" commandName="prescriptionForm">
+	<body class="prescription-page-ctn">
+		<form:form method="POST" action="/prescriptions/add" id="register" commandName="prescriptionForm">
 		<form:hidden path="prescription" />
 		<form:errors path="*" />
 		
@@ -14,7 +14,7 @@
 			<%@ include file="partials/panel-afiliado.jsp" %>
 		</div>
 		
-		<input type="submit" value="Enviar" />
+		<input type="submit" value="Enviar" class="big-btn" />
 		</form:form>
 	</body>
 </html>
