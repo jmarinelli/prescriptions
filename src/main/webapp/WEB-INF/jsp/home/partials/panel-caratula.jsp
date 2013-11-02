@@ -9,7 +9,7 @@
 	</div>
 	<div class="panel-field">
 		<span>Codigo Caratula</span>
-		<form:input path="codCarat" type="number" value=""/>
+		<form:input path="codCarat" type="text" value=""/>
 		<div class="error">
 			<form:errors path="codCarat" />
 		</div>

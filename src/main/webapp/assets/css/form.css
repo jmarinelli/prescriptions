@@ -11,7 +11,7 @@
 }
 
 .prescription-page-ctn {
-	margin-top: 100px;
+	margin-top: 70px;
 	margin-left: 10px;
 }
 
@@ -71,6 +71,14 @@ form input {
 	letter-spacing: 1px;
 }
 
+.panel-field > span {
+	padding-top: 5px;
+}
+
+.panel-field > .checkbox {
+	margin-top: 5px;
+}
+
 /* -------------------------- CARATULA -------------------------- */
 
 #caratula {
@@ -90,11 +98,11 @@ form input {
 /* -------------------------- RECETA -------------------------- */
 
 #receta > .sub-panel {
-	width: 275px;
+	width: 235px;
 }
 
 #receta > .sub-panel > .panel-field > span {
-	width: 185px;
+	width: 140px;
 	color: #333;
 }
 
@@ -113,7 +121,7 @@ form input {
 
 form input, form textarea {
 	display: inline-block;
-	padding: 4px;
+	padding: 2px;
 	margin: 0;
 	outline: 0;
 	background-color: #fff;

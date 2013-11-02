@@ -48,5 +48,4 @@
   		<filter-name>authFilter</filter-name>
   		<url-pattern>/prescriptions/*</url-pattern>
   	</filter-mapping>
-
 </web-app>

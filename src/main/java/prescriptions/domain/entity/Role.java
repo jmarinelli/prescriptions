@@ -1,14 +1,21 @@
 package prescriptions.domain.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Role extends PersistentEntity {
 
 	private String username;
 	private String password;
+	
+	@OneToMany(mappedBy="creator", cascade = CascadeType.ALL)
+	private Set<Prescription> prescriptions;
 
-	Role() {
+	public Role() {
 
 	}
 	
@@ -31,5 +38,13 @@ public class Role extends PersistentEntity {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Set<Prescription> getPrescriptions() {
+		return prescriptions;
+	}
+
+	public void setPrescriptions(Set<Prescription> prescriptions) {
+		this.prescriptions = prescriptions;
 	}
 }

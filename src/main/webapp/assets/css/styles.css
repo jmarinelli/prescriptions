@@ -6,6 +6,7 @@ BODY {
 	content: "";
 	position: absolute;
 	width: 100%;
+	font-size: 12px;
 }
 
 
@@ -81,4 +82,17 @@ input.error {
 .ok {
 	color: green;
 	margin-bottom: 10px; 
+}
+
+.big-menu-btn {
+	position: relative;
+	height: 100px;
+	width: 300px;
+	top:50%;
+}
+
+.ctn {
+	height: 100%;
+	width: 100%;
+	text-align: center;
 }

@@ -89,14 +89,14 @@
 		</div>
 		<div class="panel-field">
 			<span>Posee Ticket</span>
-			<form:input path="poseeTicket" type="checkbox" />
+			<form:input path="poseeTicket" type="number" class="checkbox"/>
 			<div class="error">
 				<form:errors path="poseeTicket" />
 			</div>
 		</div>
 		<div class="panel-field">
 			<span>Posee Marca Comercial</span>
-			<form:input path="poseeMarcaComercial" type="checkbox" />
+			<form:input path="poseeMarcaComercial" type="number" class="checkbox"/>
 			<div class="error">
 				<form:errors path="poseeMarcaComercial" />
 			</div>

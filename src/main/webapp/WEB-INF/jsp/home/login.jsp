@@ -1,7 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
-<%@ include file="partials/head.jsp" %>
+	<head>
+		<%@ include file="partials/commons-head.jsp" %>
+	</head>
 	<body>
 		<div class="login-form-container">
 		

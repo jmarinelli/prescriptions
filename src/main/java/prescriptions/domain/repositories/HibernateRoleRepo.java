@@ -1,5 +1,7 @@
 package prescriptions.domain.repositories;
 
+import java.io.Serializable;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,6 +19,10 @@ public class HibernateRoleRepo extends AbstractHibernateRepo implements RoleRepo
 	public Role getByUsername(String username) {
 		String query = "from Role u where u.username = ?";
 		return super.findOne(query, username);
+	}
+
+	public Role get(Serializable id) {
+		return super.get(Role.class, id);
 	}
 
 }

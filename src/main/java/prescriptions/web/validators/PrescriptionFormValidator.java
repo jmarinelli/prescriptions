@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import prescriptions.domain.entity.Prescription;
 import prescriptions.web.validation.PrescriptionForm;
 
 @Component
@@ -15,25 +14,29 @@ public class PrescriptionFormValidator implements Validator{
 	}
 
 	public void validate(Object target, Errors errors) {
-		Prescription object = (Prescription) target;
-		if (object.getOrden() > 999)
-			errors.rejectValue("Orden", "inv_value");
+		PrescriptionForm object = (PrescriptionForm) target;
+		if (object.getOrden() == null || object.getOrden() > 999)
+			errors.rejectValue("orden", "inv_value");
 		if (!validateDate(object.getFecPrescr()))
-			errors.rejectValue("Fecha Prescripcion", "inv_form");
+			errors.rejectValue("fecPrescr", "inv_form");
 		if (!validateDate(object.getFecDisp()))
-			errors.rejectValue("Fecha Dispensacion", "inv_form");
-		if (object.getLetMatricula() != "N" && object.getLetMatricula() != "P" && object.getLetMatricula() != "X")
-			errors.rejectValue("Letra Matricula", "inv_value");
+			errors.rejectValue("fecDisp", "inv_form");
+		if (!object.getLetMatricula().equals("N") && !object.getLetMatricula().equals("P") && !object.getLetMatricula().equals("X"))
+			errors.rejectValue("letMatricula", "inv_value");
 		if (!validatePeriod(object.getPeriodo()))
-			errors.rejectValue("Periodo", "inv_form");
+			errors.rejectValue("periodo", "inv_form");
+//		for (String s : object.getNulledFields())
+//			errors.rejectValue(s, "not_null");
 	}
 	
 	private boolean validatePeriod(String period) {
-		if (period.length() > 8)
+		if (period == null)
 			return false;
-		int month = Integer.valueOf(period.substring(4,5));
+		if (period.length() != 8)
+			return false;
+		int month = Integer.valueOf(period.substring(4,6));
 		char periodType = period.charAt(6);
-		int periodNumber = Integer.valueOf(period.charAt(7));
+		int periodNumber = Integer.valueOf(period.substring(7));
 		if (periodType == 'M' && periodNumber != 1)
 			return false;
 		if (periodType == 'Q' && !(periodNumber == 1 || periodNumber == 2))
@@ -46,7 +49,9 @@ public class PrescriptionFormValidator implements Validator{
 	}
 	
 	private boolean validateDate(Integer date) {
-		if (date > 9999999 || date < 1000000)
+		if (date == null)
+			return false;
+		if (date > 99999999 || date < 10000000)
 			return false;
 		int mm = (date / 100) % 100;
 		int dd = date % 100;

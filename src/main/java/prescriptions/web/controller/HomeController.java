@@ -5,32 +5,44 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import prescriptions.domain.CorruptedDataException;
+import prescriptions.domain.entity.Alfabeta;
 import prescriptions.domain.entity.Prescription;
+import prescriptions.domain.entity.Price;
 import prescriptions.domain.entity.Role;
+import prescriptions.domain.repositories.AlfabetaRepo;
 import prescriptions.domain.repositories.PrescriptionRepo;
+import prescriptions.domain.repositories.PriceRepo;
 import prescriptions.domain.repositories.RoleRepo;
 import prescriptions.web.validation.PrescriptionForm;
 import prescriptions.web.validators.PrescriptionFormValidator;
 
 @Controller
+@SessionAttributes("userId")
 @RequestMapping("/")
 public class HomeController {
 
 	private RoleRepo roleRepo;
 	private PrescriptionRepo prescriptionRepo;
+	private PriceRepo priceRepo;
+	private AlfabetaRepo alfabetaRepo;
 	
 	private PrescriptionFormValidator prescriptionFormValidator;
 	
 	@Autowired
-	public HomeController(RoleRepo roleRepo, PrescriptionRepo prescriptionRepo, PrescriptionFormValidator prescriptionFormValidator) {
+	public HomeController(RoleRepo roleRepo, PrescriptionRepo prescriptionRepo, AlfabetaRepo alfabetaRepo, 
+						PriceRepo priceRepo, PrescriptionFormValidator prescriptionFormValidator) {
 		this.roleRepo = roleRepo;
 		this.prescriptionRepo = prescriptionRepo;
+		this.alfabetaRepo = alfabetaRepo;
+		this.priceRepo = priceRepo;
 		this.prescriptionFormValidator = prescriptionFormValidator;
 	}
 	
@@ -51,34 +63,44 @@ public class HomeController {
 		return mav;
 	}
 	
-//	@RequestMapping(value = "show", method = RequestMethod.GET)
-//	public ModelAndView show() {
-//		ModelAndView mav = new ModelAndView("home/show");
-//		List<Test> tests = testRepo.getAll();
-//		
-//		
-//		mav.addObject("tests", tests);
-//		
-//		
-//		return mav;
-//	}
+	@RequestMapping(value = "edit", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam("prescriptionId") Integer prescriptionId, HttpSession httpSession) {
+		ModelAndView mav = new ModelAndView("home/add");
+		Prescription prescription = prescriptionRepo.get(prescriptionId);
+		if (prescription.getCreator().getId() == (Integer)httpSession.getAttribute("userId")) {
+			PrescriptionForm form = new PrescriptionForm();
+			form.setPrescription(prescription);
+			mav.addObject("prescriptionForm", form);
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value = "test", method = RequestMethod.GET)
+	public void test() {
+		Price price = priceRepo.getByRegistro(5);
+		Alfabeta alfabeta = alfabetaRepo.getByTroquel("9900009");
+	}
 	
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public String add(PrescriptionForm prescriptionForm, Errors errors) {
+	public ModelAndView add(PrescriptionForm prescriptionForm, Errors errors, @ModelAttribute("userId") Integer userId) {
 
+		Role user = roleRepo.get(userId);
 		this.prescriptionFormValidator.validate(prescriptionForm, errors);
-		if (errors.hasErrors())
-			return null;
-		
+		if (errors.hasErrors()) {
+			ModelAndView mav = new ModelAndView("home/add");
+			mav.addObject("errors", errors);
+			return mav;
+		}
 		try {
 			Prescription prescription = prescriptionForm.build();
+			prescription.setCreator(user);
 			prescriptionRepo.save(prescription);
 		} catch (CorruptedDataException e) {
 			errors.rejectValue("username", "corrupt");
 			return null;
 		}
 
-		return "redirect:/prescriptions/add";
+		return new ModelAndView();
 	}
 	
 	@RequestMapping(value = "login", method = RequestMethod.POST)
@@ -86,7 +108,7 @@ public class HomeController {
 		Role user = roleRepo.getByUsername(username);
 		if (user != null && user.getPassword().equals(password))
 			session.setAttribute("userId", user.getId());
-		return "redirect:/prescriptions/show";	
+		return "redirect:/prescriptions/add";	
 	}
 
 }

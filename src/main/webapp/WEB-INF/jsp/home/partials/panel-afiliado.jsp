@@ -16,44 +16,49 @@
 	</div>
 	<div class="panel-field">
 		<span>Sexo</span>
-		<form:input path="sexo" type="text" class="readonly"/>
+		<form:input path="sexo" type="text" class="readonly" readonly="true" />
 		<div class="error">
 			<form:errors path="sexo" />
 		</div>
 	</div>
 	<div class="panel-field">
 		<span>Tratamiento prolongado</span>
-		<form:input path="tratProlongado" type="text" class="readonly"/>
+		<form:input path="tratProlongado" type="text" class="readonly"
+			readonly="true" />
 		<div class="error">
 			<form:errors path="tratProlongado" />
 		</div>
 	</div>
 	<div class="panel-field">
 		<span>Tipo Documento</span>
-		<form:input path="tipoDocumento" type="text" class="readonly"/>
+		<form:input path="tipoDocumento" type="text" class="readonly"
+			readonly="true" />
 		<div class="error">
 			<form:errors path="tipoDocumento" />
 		</div>
 	</div>
 	<div class="panel-field">
 		<span>Numero Docuento</span>
-		<form:input path="numDocumento" type="number" class="readonly"/>
+		<form:input path="numDocumento" type="number" class="readonly"
+			readonly="true" />
 		<div class="error">
 			<form:errors path="numDocumento" />
 		</div>
 	</div>
 	<div class="panel-field">
 		<span>Fecha nacimiento</span>
-		<form:input path="fecNacimiento" type="text" class="readonly"/>
+		<form:input path="fecNacimiento" type="text" class="readonly"
+			readonly="true" />
 		<div class="error">
 			<form:errors path="fecNacimiento" />
 		</div>
 	</div>
 	<div class="panel-field">
 		<span>Telefono</span>
-		<form:input path="telefono" type="text" class="readonly"/>
+		<form:input path="telefono" type="text" class="readonly"
+			readonly="true" />
 		<div class="error">
 			<form:errors path="telefono" />
 		</div>
-	</div>	
+	</div>
 </div>

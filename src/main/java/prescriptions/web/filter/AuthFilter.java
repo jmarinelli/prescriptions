@@ -25,10 +25,13 @@ public class AuthFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		Integer userId = (Integer) request.getSession().getAttribute("userId");
 
-		if (userId == null && !request.getPathInfo().equals("/login"))
+		if (userId == null && !request.getPathInfo().equals("/login")) {
 			response.sendRedirect("/prescriptions/login");
-		else
+		}
+		else {
+			request.setAttribute("userId", userId);
 			filterChain.doFilter(request, response);
+		}
 	}
 
 }
