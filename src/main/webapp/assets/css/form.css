@@ -117,6 +117,51 @@ form input {
 	color: #333;
 }
 
+/* -------------------------- troquelN1 -------------------------- */
+
+#troquelN1 {
+	width: 360px;
+}
+
+#troquelN1 > .panel-field > span{
+	width: 140px;
+	color: #333;
+}
+
+#troquelN1 > .tabbed {
+	margin-left: 140px;
+}
+
+/* -------------------------- troquelN1 -------------------------- */
+
+#troquelN2 {
+	width: 360px;
+}
+
+#troquelN2 > .panel-field > span{
+	width: 140px;
+	color: #333;
+}
+
+#troquelN2 > .tabbed {
+	margin-left: 140px;
+}
+
+/* -------------------------- troquelN1 -------------------------- */
+
+#troquelN3 {
+	width: 360px;
+}
+
+#troquelN3 > .panel-field > span{
+	width: 140px;
+	color: #333;
+}
+
+#troquelN3 > .tabbed {
+	margin-left: 140px;
+}
+
 
 
 form input, form textarea {

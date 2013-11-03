@@ -719,5 +719,45 @@ public class PrescriptionForm {
 			return prescription;
 		}
 	}
+	
+	public void update(Prescription prescription) {
+		prescription.setPago(pago);
+		prescription.setSerCarat(serCarat);
+		prescription.setCodCarat(codCarat);
+		prescription.setExpediente(expediente);
+		prescription.setCodObSoc(codObSoc);
+		prescription.setCodPlan(codPlan);
+		prescription.setPeriodo(periodo);
+		prescription.setCodFarma(codFarma);
+		prescription.setCaja(caja);
+		prescription.setSerReceta(serReceta);
+		prescription.setNumReceta(numReceta);
+		prescription.setOrden(orden);
+		prescription.setFecPrescr(fecPrescr);
+		prescription.setFecDisp(fecDisp);
+		prescription.setNumAfi(numAfi);
+		prescription.setParentesco(parentesco);
+		prescription.setCanPresc1(canPresc1);
+		prescription.setCanDisp1(canDisp1);
+		prescription.setCanReal1(canReal1);
+		prescription.setTroquel1(troquel1);
+		prescription.setLaboratorio1(laboratorio1);
+		prescription.setCanPresc2(canPresc2);
+		prescription.setCanDisp2(canDisp2);
+		prescription.setCanReal2(canReal2);
+		prescription.setTroquel2(troquel2);
+		prescription.setLaboratorio2(laboratorio2);
+		prescription.setCanPresc3(canPresc3);
+		prescription.setCanDisp3(canDisp3);
+		prescription.setCanReal3(canReal3);
+		prescription.setTroquel3(troquel3);
+		prescription.setLaboratorio3(laboratorio3);
+		prescription.setLetMatricula(letMatricula);
+		prescription.setNumMatricula(numMatricula);
+		prescription.setAjuste(ajuste);
+		prescription.setRechazos(rechazos);
+		prescription.setPoseeTicket(poseeTicket);
+		prescription.setPoseeMarcaComercial(poseeMarcaComercial);
+	}
 
 }
