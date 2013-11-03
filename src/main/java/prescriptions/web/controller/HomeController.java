@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,14 +64,12 @@ public class HomeController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "edit", method = RequestMethod.GET)
-	public ModelAndView edit(@RequestParam("prescriptionId") Integer prescriptionId, HttpSession httpSession) {
+	@RequestMapping(value = "edit/{prescriptionId}", method = RequestMethod.GET)
+	public ModelAndView edit(@PathVariable Integer prescriptionId, HttpSession httpSession) {
 		ModelAndView mav = new ModelAndView("home/add");
 		Prescription prescription = prescriptionRepo.get(prescriptionId);
 		if (prescription.getCreator().getId() == (Integer)httpSession.getAttribute("userId")) {
-			PrescriptionForm form = new PrescriptionForm();
-			form.setPrescription(prescription);
-			mav.addObject("prescriptionForm", form);
+			mav.addObject("prescriptionForm", new PrescriptionForm(prescription));
 		}
 		return mav;
 	}

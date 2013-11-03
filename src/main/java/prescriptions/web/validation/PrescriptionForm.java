@@ -85,74 +85,59 @@ public class PrescriptionForm {
 		
 	}
 	
-	public PrescriptionForm(Prescription prescription, Integer pago,
-			String serCarat, Integer codCarat, Integer expediente,
-			Integer codObSoc, Integer codPlan, String periodo,
-			Integer codFarma, Integer caja, String serReceta,
-			Integer numReceta, Integer orden, Integer fecPrescr,
-			Integer fecDisp, String letMatricula, Integer numMatricula,
-			Integer totRec, Integer totAfil, Integer totAc, Integer ajuste,
-			String rechazos, Integer poseeTicket, Integer poseeMarcaComercial,
-			Integer numAfi, Integer parentesco, String codBarra1,
-			Integer canPresc1, Integer canDisp1, Integer canReal1,
-			Integer pciorp1, Integer pcioReal1, Integer troquel1,
-			Integer laboratorio1, String codBarra2, Integer canPresc2,
-			Integer canDisp2, Integer canReal2, Integer pciorp2,
-			Integer pcioReal2, Integer troquel2, Integer laboratorio2,
-			String codBarra3, Integer canPresc3, Integer canDisp3,
-			Integer canReal3, Integer pciorp3, Integer pcioReal3,
-			Integer troquel3, Integer laboratorio3) {
+	public PrescriptionForm(Prescription p) {
 		super();
-		this.prescription = prescription;
-		this.pago = pago;
-		this.serCarat = serCarat;
-		this.codCarat = codCarat;
-		this.expediente = expediente;
-		this.codObSoc = codObSoc;
-		this.codPlan = codPlan;
-		this.periodo = periodo;
-		this.codFarma = codFarma;
-		this.caja = caja;
-		this.serReceta = serReceta;
-		this.numReceta = numReceta;
-		this.orden = orden;
-		this.fecPrescr = fecPrescr;
-		this.fecDisp = fecDisp;
-		this.letMatricula = letMatricula;
-		this.numMatricula = numMatricula;
-		this.totRec = totRec;
-		this.totAfil = totAfil;
-		this.totAc = totAc;
-		this.ajuste = ajuste;
-		this.rechazos = rechazos;
-		this.poseeTicket = poseeTicket;
-		this.poseeMarcaComercial = poseeMarcaComercial;
-		this.numAfi = numAfi;
-		this.parentesco = parentesco;
-		this.codBarra1 = codBarra1;
-		this.canPresc1 = canPresc1;
-		this.canDisp1 = canDisp1;
-		this.canReal1 = canReal1;
-		this.pciorp1 = pciorp1;
-		this.pcioReal1 = pcioReal1;
-		this.troquel1 = troquel1;
-		this.laboratorio1 = laboratorio1;
-		this.codBarra2 = codBarra2;
-		this.canPresc2 = canPresc2;
-		this.canDisp2 = canDisp2;
-		this.canReal2 = canReal2;
-		this.pciorp2 = pciorp2;
-		this.pcioReal2 = pcioReal2;
-		this.troquel2 = troquel2;
-		this.laboratorio2 = laboratorio2;
-		this.codBarra3 = codBarra3;
-		this.canPresc3 = canPresc3;
-		this.canDisp3 = canDisp3;
-		this.canReal3 = canReal3;
-		this.pciorp3 = pciorp3;
-		this.pcioReal3 = pcioReal3;
-		this.troquel3 = troquel3;
-		this.laboratorio3 = laboratorio3;
+		this.prescription = p;
+		this.pago = p.getPago();
+		this.serCarat = p.getSerCarat();
+		this.codCarat = p.getCodCarat();
+		this.expediente = p.getExpediente();
+		this.codObSoc = p.getCodObSoc();
+		this.codPlan = p.getCodPlan();
+		this.periodo = p.getPeriodo();
+		this.codFarma = p.getCodFarma();
+		this.caja = p.getCaja();
+		this.serReceta = p.getSerReceta();
+		this.numReceta = p.getNumReceta();
+		this.orden = p.getOrden();
+		this.fecPrescr = p.getFecPrescr();
+		this.fecDisp = p.getFecDisp();
+		this.letMatricula = p.getLetMatricula();
+		this.numMatricula = p.getNumMatricula();
+		this.totRec = p.getTotRec();
+		this.totAfil = p.getTotAfil();
+		this.totAc = p.getTotAc();
+		this.ajuste = p.getAjuste();
+		this.rechazos = p.getRechazos();
+		this.poseeTicket = p.getPoseeTicket();
+		this.poseeMarcaComercial = p.getPoseeMarcaComercial();
+		this.numAfi = p.getNumAfi();
+		this.parentesco = p.getParentesco();
+		this.codBarra1 = p.getCodBarra1();
+		this.canPresc1 = p.getCanPresc1();
+		this.canDisp1 = p.getCanDisp1();
+		this.canReal1 = p.getCanReal1();
+		this.pciorp1 = p.getPciorp1();
+		this.pcioReal1 = p.getPcioReal1();
+		this.troquel1 = p.getTroquel1();
+		this.laboratorio1 = p.getLaboratorio1();
+		this.codBarra2 = p.getCodBarra2();
+		this.canPresc2 = p.getCanPresc2();
+		this.canDisp2 = p.getCanDisp2();
+		this.canReal2 = p.getCanReal2();
+		this.pciorp2 = p.getPciorp2();
+		this.pcioReal2 = p.getPcioReal2();
+		this.troquel2 = p.getTroquel2();
+		this.laboratorio2 = p.getLaboratorio2();
+		this.codBarra3 = p.getCodBarra3();
+		this.canPresc3 = p.getCanPresc3();
+		this.canDisp3 = p.getCanDisp3();
+		this.canReal3 = p.getCanReal3();
+		this.pciorp3 = p.getPciorp3();
+		this.pcioReal3 = p.getPcioReal3();
+		this.troquel3 = p.getTroquel3();
+		this.laboratorio3 = p.getLaboratorio3();
+		
 	}
 
 
