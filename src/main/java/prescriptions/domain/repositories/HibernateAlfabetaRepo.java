@@ -14,8 +14,8 @@ public class HibernateAlfabetaRepo extends AbstractHibernateRepo implements Alfa
 		super(sessionFactory);
 	}
 
-	public Alfabeta getByTroquel(String troquel) {
-		return super.findOne("from Alfabeta where troquel = ?", troquel);
+	public Alfabeta getByBarras(String barras) {
+		return super.findOne("from Alfabeta where barras = ?", barras);
 	}
 
 }

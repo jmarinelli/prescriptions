@@ -4,18 +4,6 @@
 <html>
 	<head>
 		<%@ include file="partials/commons-head.jsp" %>
-		<script type="text/javascript">
-			(function() {
-				var cancel = function() {
-					document.querySelector("#codCarat").addEventListener("keydown", function(e) {
-						if (e.keyCode == 13) {
-							e.returnValue = false;
-						}
-					});	
-				};
-				$(document).ready(cancel);
-			})();
-		</script>
 	</head>
 	<body class="prescription-page-ctn">
 		<form:form method="POST" action="/prescriptions/add" id="register" commandName="prescriptionForm">

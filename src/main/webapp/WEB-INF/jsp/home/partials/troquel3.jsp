@@ -2,7 +2,7 @@
 	<h3>Tercero</h3>
 	<div class="panel-field">
 		<span>C&oacute;digo de barra</span>
-		<form:input path="codBarra3" type="text" />
+		<form:input path="codBarra3" type="text" onblur="loadInfo(this.value, 3);"/>
 		<div class="error">
 			<form:errors path="codBarra3" />
 		</div>

@@ -6,8 +6,8 @@
 	</head>
 	<body>
 		<div class="ctn">
-			<button class="big-menu-btn">Corregir</button>
-			<button class="big-menu-btn">Cargar</button>
+			<a href="list"><button class="big-menu-btn">Corregir</button></a>
+			<a href="add"><button class="big-menu-btn">Cargar</button></a>
 		</div>
 	</body>
 </html>

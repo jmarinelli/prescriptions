@@ -69,15 +69,22 @@ BODY {
 	display: none;
 }
 
-.error {
+.error > span {
+	position: absolute;
 	color: red;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	background-color: white;
+	border-radius: 3px;
+	padding: 2px;
 }
 
-input.error {
-	background-color: #FFC5C5;
-	border-color: red;
-	color: black;
-}
+/* input.error { */
+/* 	background-color: #FFC5C5; */
+/* 	border-color: red; */
+/* 	color: black; */
+/* } */
 
 .ok {
 	color: green;

@@ -18,15 +18,15 @@ public class PrescriptionFormValidator implements Validator{
 		if (object.getOrden() == null || object.getOrden() > 999)
 			errors.rejectValue("orden", "inv_value");
 		if (!validateDate(object.getFecPrescr()))
-			errors.rejectValue("fecPrescr", "inv_form");
+			errors.rejectValue("fecPrescr", "inv_form.fecha");
 		if (!validateDate(object.getFecDisp()))
-			errors.rejectValue("fecDisp", "inv_form");
+			errors.rejectValue("fecDisp", "inv_form.fecha");
 		if (!object.getLetMatricula().equals("N") && !object.getLetMatricula().equals("P") && !object.getLetMatricula().equals("X"))
 			errors.rejectValue("letMatricula", "inv_value");
 		if (!validatePeriod(object.getPeriodo()))
-			errors.rejectValue("periodo", "inv_form");
-//		for (String s : object.getNulledFields())
-//			errors.rejectValue(s, "not_null");
+			errors.rejectValue("periodo", "inv_form.periodo");
+		for (String s : object.getNulledFields())
+			errors.rejectValue(s, "not_null");
 	}
 	
 	private boolean validatePeriod(String period) {

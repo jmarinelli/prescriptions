@@ -4,6 +4,6 @@ import prescriptions.domain.entity.Alfabeta;
 
 public interface AlfabetaRepo {
 	
-	public Alfabeta getByTroquel(String troquel);
+	public Alfabeta getByBarras(String barras);
 
 }

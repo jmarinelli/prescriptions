@@ -5,10 +5,11 @@ import java.util.List;
 
 import prescriptions.domain.CorruptedDataException;
 import prescriptions.domain.entity.Prescription;
+import prescriptions.domain.repositories.PrescriptionRepo;
 
 public class PrescriptionForm {
 	
-	private Prescription prescription;
+	private Integer prescription;
 	
 	private Integer pago; // y esto?
 	
@@ -87,7 +88,7 @@ public class PrescriptionForm {
 	
 	public PrescriptionForm(Prescription p) {
 		super();
-		this.prescription = p;
+		this.prescription = p.getId();
 		this.pago = p.getPago();
 		this.serCarat = p.getSerCarat();
 		this.codCarat = p.getCodCarat();
@@ -168,32 +169,16 @@ public class PrescriptionForm {
 			nulled.add("serReceta");
 		if (this.numReceta == null)
 			nulled.add("numReceta");
-		if (this.orden == null)
-			nulled.add("orden");
-		if (this.fecPrescr == null)
-			nulled.add("fecPrescr");
-		if (this.fecDisp == null)
-			nulled.add("fecDisp");
 		if (this.numAfi == null)
 			nulled.add("numAfi");
 		if (this.parentesco == null)
 			nulled.add("parentesco");
-		if (this.canPresc1 == null)
-			nulled.add("canPrescN");
-		if (this.canDisp1 == null)
-			nulled.add("canDispN");
-		if (this.canReal1 == null)
-			nulled.add("canRealN");
-		if (this.troquel1 == null)
-			nulled.add("troquelN");
-		if (this.laboratorio1 == null)
-			nulled.add("laboratorioN");
-		if (this.pciorp1 == null)
-			nulled.add("pciorpN");
-		if (this.pcioReal1 == null)
-			nulled.add("pcioRealN");
 		if (this.codBarra1 == null)
-			nulled.add("codBarraN");
+			nulled.add("codBarra1");
+		if (this.pcioReal1 == null)
+			nulled.add("pcioReal1");
+		if (this.codBarra1 == null)
+			nulled.add("codBarra1");
 		if (this.totRec == null)
 			nulled.add("totRec");
 		if (this.totAfil == null)
@@ -215,11 +200,11 @@ public class PrescriptionForm {
 		return nulled;
 	}
 
-	public Prescription getPrescription() {
+	public Integer getPrescription() {
 		return prescription;
 	}
 
-	public void setPrescription(Prescription prescription) {
+	public void setPrescription(Integer prescription) {
 		this.prescription = prescription;
 	}
 
@@ -651,7 +636,7 @@ public class PrescriptionForm {
 		return sexo;
 	}
 
-	public Prescription build() throws CorruptedDataException {
+	public Prescription build(PrescriptionRepo prescriptionRepo) throws CorruptedDataException {
 		if (this.prescription == null)
 			return new Prescription(pago, serCarat, codCarat, expediente,
 					codObSoc, codPlan, periodo, codFarma, caja, serReceta,
@@ -663,45 +648,48 @@ public class PrescriptionForm {
 					canDisp2, canReal2, pciorp2, pcioReal2, troquel2,
 					laboratorio2, codBarra3, canPresc3, canDisp3, canReal3,
 					pciorp3, pcioReal3, troquel3, laboratorio3);
-		else {			
-			prescription.setPago(pago);
-			prescription.setSerCarat(serCarat);
-			prescription.setCodCarat(codCarat);
-			prescription.setExpediente(expediente);
-			prescription.setCodObSoc(codObSoc);
-			prescription.setCodPlan(codPlan);
-			prescription.setPeriodo(periodo);
-			prescription.setCodFarma(codFarma);
-			prescription.setCaja(caja);
-			prescription.setSerReceta(serReceta);
-			prescription.setNumReceta(numReceta);
-			prescription.setOrden(orden);
-			prescription.setFecPrescr(fecPrescr);
-			prescription.setFecDisp(fecDisp);
-			prescription.setNumAfi(numAfi);
-			prescription.setParentesco(parentesco);
-			prescription.setCanPresc1(canPresc1);
-			prescription.setCanDisp1(canDisp1);
-			prescription.setCanReal1(canReal1);
-			prescription.setTroquel1(troquel1);
-			prescription.setLaboratorio1(laboratorio1);
-			prescription.setCanPresc2(canPresc2);
-			prescription.setCanDisp2(canDisp2);
-			prescription.setCanReal2(canReal2);
-			prescription.setTroquel2(troquel2);
-			prescription.setLaboratorio2(laboratorio2);
-			prescription.setCanPresc3(canPresc3);
-			prescription.setCanDisp3(canDisp3);
-			prescription.setCanReal3(canReal3);
-			prescription.setTroquel3(troquel3);
-			prescription.setLaboratorio3(laboratorio3);
-			prescription.setLetMatricula(letMatricula);
-			prescription.setNumMatricula(numMatricula);
-			prescription.setAjuste(ajuste);
-			prescription.setRechazos(rechazos);
-			prescription.setPoseeTicket(poseeTicket);
-			prescription.setPoseeMarcaComercial(poseeMarcaComercial);
-			return prescription;
+		else {
+			Prescription p = prescriptionRepo.get(this.prescription);
+			update(p);
+			return p;
+//			prescription.setPago(pago);
+//			prescription.setSerCarat(serCarat);
+//			prescription.setCodCarat(codCarat);
+//			prescription.setExpediente(expediente);
+//			prescription.setCodObSoc(codObSoc);
+//			prescription.setCodPlan(codPlan);
+//			prescription.setPeriodo(periodo);
+//			prescription.setCodFarma(codFarma);
+//			prescription.setCaja(caja);
+//			prescription.setSerReceta(serReceta);
+//			prescription.setNumReceta(numReceta);
+//			prescription.setOrden(orden);
+//			prescription.setFecPrescr(fecPrescr);
+//			prescription.setFecDisp(fecDisp);
+//			prescription.setNumAfi(numAfi);
+//			prescription.setParentesco(parentesco);
+//			prescription.setCanPresc1(canPresc1);
+//			prescription.setCanDisp1(canDisp1);
+//			prescription.setCanReal1(canReal1);
+//			prescription.setTroquel1(troquel1);
+//			prescription.setLaboratorio1(laboratorio1);
+//			prescription.setCanPresc2(canPresc2);
+//			prescription.setCanDisp2(canDisp2);
+//			prescription.setCanReal2(canReal2);
+//			prescription.setTroquel2(troquel2);
+//			prescription.setLaboratorio2(laboratorio2);
+//			prescription.setCanPresc3(canPresc3);
+//			prescription.setCanDisp3(canDisp3);
+//			prescription.setCanReal3(canReal3);
+//			prescription.setTroquel3(troquel3);
+//			prescription.setLaboratorio3(laboratorio3);
+//			prescription.setLetMatricula(letMatricula);
+//			prescription.setNumMatricula(numMatricula);
+//			prescription.setAjuste(ajuste);
+//			prescription.setRechazos(rechazos);
+//			prescription.setPoseeTicket(poseeTicket);
+//			prescription.setPoseeMarcaComercial(poseeMarcaComercial);
+//			return prescription;
 		}
 	}
 	
