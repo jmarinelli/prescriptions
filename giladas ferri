@@ -1,0 +1,7 @@
+- si la receta tiene mas de 3 troqueles, que cuando cargue la receta sean como dos entradas, con el mismo numero.
+- ferri averigua cant dispensada.
+- total recetas, es el numero de receta cargada sobre el lote (X de Y)
+- alguna forma de que siendo admin puedo ver cuantas y cuales cargo cada data entry
+- ferri averigua ajuste y ajuste parcial, si se carga automaticamente o lo pone el tipo (es la dif entre precio real y precio de la farmacia)
+- ferri averigua cobertura real e informada (descuento que se le hace por la obra social)
+- cod alfabeta es el registro
