@@ -11,12 +11,13 @@ public class Role extends PersistentEntity {
 
 	private String username;
 	private String password;
+	private Integer roleId;
 	
 	@OneToMany(mappedBy="creator", cascade = CascadeType.ALL)
 	private Set<Prescription> prescriptions;
 
 	public Role() {
-
+		
 	}
 	
 	public Role(String username, String password) {
@@ -46,5 +47,17 @@ public class Role extends PersistentEntity {
 
 	public void setPrescriptions(Set<Prescription> prescriptions) {
 		this.prescriptions = prescriptions;
+	}
+
+	public Integer getRole() {
+		return roleId;
+	}
+	
+	public boolean isAdmin() {
+		return this.roleId.equals(1);
+	}
+	
+	public Integer getPresQty() {
+		return this.prescriptions.size();
 	}
 }

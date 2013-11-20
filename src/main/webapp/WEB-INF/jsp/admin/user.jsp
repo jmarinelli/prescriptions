@@ -17,7 +17,7 @@
 		</div>
 		<div>
 			<c:forEach var="prescription" items="${user.prescriptions}">
-				<div><a href="edit/${prescription.id}">Codigo caratula: ${prescription.cod_carat}, Orden: ${prescription.orden}</a></div>
+				<div><a href="edit/${prescription.id}">${prescription.serReceta}, ${prescription.numReceta}</a></div>
 			</c:forEach>
 		</div>
 	</body>

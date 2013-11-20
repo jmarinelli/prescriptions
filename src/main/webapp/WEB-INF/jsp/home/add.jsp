@@ -3,10 +3,11 @@
 
 <html>
 	<head>
-		<%@ include file="partials/commons-head.jsp" %>
+		<%@ include file="../partials/commons-head.jsp" %>
+		<c:if test="cargado"><script>(function(){ alert("Receta cargada"); })</script></c:if>
 	</head>
 	<body class="prescription-page-ctn">
-		<form:form method="POST" action="/prescriptions/add" id="register" commandName="prescriptionForm">
+		<form:form method="POST" action="add" id="register" commandName="prescriptionForm">
 		<form:hidden path="prescription" />
 		
 		<div class="caratula-afiliado">

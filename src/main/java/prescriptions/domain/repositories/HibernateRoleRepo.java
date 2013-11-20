@@ -1,6 +1,7 @@
 package prescriptions.domain.repositories;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class HibernateRoleRepo extends AbstractHibernateRepo implements RoleRepo
 
 	public Role get(Serializable id) {
 		return super.get(Role.class, id);
+	}
+
+	public List<Role> findAll() {
+		return super.find("from Role r where r.roleId = 0");
 	}
 
 }

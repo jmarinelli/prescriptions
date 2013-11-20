@@ -2,9 +2,9 @@
 	<h3>Afiliado</h3>
 	<div class="panel-field">
 		<span>Numero Afiliado</span>
-		<form:input path="numAfi" type="number" />
+		<form:input path="num_afi" type="number" />
 		<div class="error">
-			<form:errors path="numAfi" />
+			<form:errors path="num_afi" />
 		</div>
 	</div>
 	<div class="panel-field">
@@ -23,34 +23,34 @@
 	</div>
 	<div class="panel-field">
 		<span>Tratamiento prolongado</span>
-		<form:input path="tratProlongado" type="text" class="readonly"
+		<form:input path="trat_prolongado" type="text" class="readonly"
 			readonly="true" />
 		<div class="error">
-			<form:errors path="tratProlongado" />
+			<form:errors path="trat_prolongado" />
 		</div>
 	</div>
 	<div class="panel-field">
 		<span>Tipo Documento</span>
-		<form:input path="tipoDocumento" type="text" class="readonly"
+		<form:input path="tipo_documento" type="text" class="readonly"
 			readonly="true" />
 		<div class="error">
-			<form:errors path="tipoDocumento" />
+			<form:errors path="tipo_documento" />
 		</div>
 	</div>
 	<div class="panel-field">
 		<span>Numero Docuento</span>
-		<form:input path="numDocumento" type="number" class="readonly"
+		<form:input path="num_documento" type="number" class="readonly"
 			readonly="true" />
 		<div class="error">
-			<form:errors path="numDocumento" />
+			<form:errors path="num_documento" />
 		</div>
 	</div>
 	<div class="panel-field">
 		<span>Fecha nacimiento</span>
-		<form:input path="fecNacimiento" type="text" class="readonly"
+		<form:input path="fec_nacimiento" type="text" class="readonly"
 			readonly="true" />
 		<div class="error">
-			<form:errors path="fecNacimiento" />
+			<form:errors path="fec_nacimiento" />
 		</div>
 	</div>
 	<div class="panel-field">

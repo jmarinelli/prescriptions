@@ -1,1 +1,0 @@
-${date.dayOfMonth}/${date.monthOfYear}/${date.year} a la(s) ${date.hourOfDay}:${date.minuteOfHour}

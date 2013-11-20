@@ -2,58 +2,66 @@
 	<h3>Segundo</h3>
 	<div class="panel-field">
 		<span>C&oacute;digo de barra</span>
-		<form:input path="codBarra2" type="text" onblur="loadInfo(this.value, 2);"/>
+		<form:input path="cod_barra_2" type="text" onblur="loadInfo(this.value, 2);" />
+		<span id="alfabetaName2" class="alfabeta-name"></span>
 		<div class="error">
-			<form:errors path="codBarra2" />
+			<form:errors path="cod_barra_2" />
 		</div>
 	</div>
 	<div class="panel-field">
 		<span>Cant. Presc.</span>
-		<form:input path="canPresc2" type="number" />
+		<form:input path="can_presc_2" type="number" />
 		<div class="error">
-			<form:errors path="canPresc2" />
+			<form:errors path="can_presc_2" />
 		</div>
 	</div>
 	<div class="panel-field">
 		<span>Cant. Disp.</span>
-		<form:input path="canDisp2" type="number" />
+		<form:input path="can_disp_2" type="number" />
 		<div class="error">
-			<form:errors path="canDisp2" />
+			<form:errors path="can_disp_2" />
 		</div>
 	</div>
 	<div class="panel-field">
 		<span>Cant. Pagada.</span>
-		<form:input path="canReal2" type="number" />
+		<form:input path="can_real_2" type="number" />
 		<div class="error">
-			<form:errors path="canReal2" />
+			<form:errors path="can_real_2" />
 		</div>
 	</div>
 	<div class="panel-field">
 		<span>Precio Farm.</span>
-		<form:input path="pciorp2" type="number" />
+		<form:input path="pciorp_2" type="number" />
 		<div class="error">
-			<form:errors path="pciorp2" />
+			<form:errors path="pciorp_2" />
 		</div>
 	</div>
 	<div class="panel-field">
 		<span>Precio Real</span>
-		<form:input path="pcioReal2" type="number" class="readonly"/>
+		<form:input path="pcio_real_2" type="number" class="readonly"/>
 		<div class="error">
-			<form:errors path="pcioReal2" />
+			<form:errors path="pcio_real_2" />
 		</div>
 	</div>
 	<div class="panel-field">
 		<span>Nro. Troquel</span>
-		<form:input path="troquel2" type="number" />
+		<form:input path="troquel_2" type="number" />
 		<div class="error">
-			<form:errors path="troquel2" />
+			<form:errors path="troquel_2" />
 		</div>
 	</div>
 	<div class="panel-field">
 		<span>Cod. Laboratorio</span>
-		<form:input path="laboratorio2" type="number" />
+		<form:input path="laboratorio_2" type="number" />
 		<div class="error">
-			<form:errors path="laboratorio2" />
+			<form:errors path="laboratorio_2" />
+		</div>
+	</div>
+	<div class="panel-field">
+		<span>Cod. Alfabeta</span>
+		<form:input path="alfabeta_2" type="number" />
+		<div class="error">
+			<form:errors path="alfabeta_2" />
 		</div>
 	</div>
 </div>

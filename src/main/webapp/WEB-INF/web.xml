@@ -48,4 +48,22 @@
   		<filter-name>authFilter</filter-name>
   		<url-pattern>/prescriptions/*</url-pattern>
   	</filter-mapping>
+  	
+  	<filter>
+ 		<filter-name>adminFilter</filter-name> 
+  		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> 
+ 		<init-param>
+  			<param-name>targetBeanName</param-name> 
+  			<param-value>adminFilter</param-value>
+  		</init-param>
+  		<init-param>
+  			<param-name>contextAttribute</param-name> 
+  			<param-value>org.springframework.web.servlet.FrameworkServlet.CONTEXT.prescriptions</param-value> 
+  		</init-param>
+  	</filter>
+  	
+  	<filter-mapping>
+  		<filter-name>adminFilter</filter-name>
+  		<url-pattern>/prescriptions/admin/*</url-pattern>
+  	</filter-mapping>
 </web-app>

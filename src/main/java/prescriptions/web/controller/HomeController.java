@@ -19,10 +19,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import prescriptions.domain.CorruptedDataException;
 import prescriptions.domain.entity.Alfabeta;
+import prescriptions.domain.entity.Caratula;
 import prescriptions.domain.entity.Prescription;
 import prescriptions.domain.entity.Price;
 import prescriptions.domain.entity.Role;
 import prescriptions.domain.repositories.AlfabetaRepo;
+import prescriptions.domain.repositories.CaratulaRepo;
 import prescriptions.domain.repositories.PrescriptionRepo;
 import prescriptions.domain.repositories.PriceRepo;
 import prescriptions.domain.repositories.RoleRepo;
@@ -39,16 +41,18 @@ public class HomeController {
 	private PrescriptionRepo prescriptionRepo;
 	private PriceRepo priceRepo;
 	private AlfabetaRepo alfabetaRepo;
+	private CaratulaRepo caratulaRepo;
 	
 	private PrescriptionFormValidator prescriptionFormValidator;
 	
 	@Autowired
 	public HomeController(RoleRepo roleRepo, PrescriptionRepo prescriptionRepo, AlfabetaRepo alfabetaRepo, 
-						PriceRepo priceRepo, PrescriptionFormValidator prescriptionFormValidator) {
+						PriceRepo priceRepo, PrescriptionFormValidator prescriptionFormValidator, CaratulaRepo caratulaRepo) {
 		this.roleRepo = roleRepo;
 		this.prescriptionRepo = prescriptionRepo;
 		this.alfabetaRepo = alfabetaRepo;
 		this.priceRepo = priceRepo;
+		this.caratulaRepo = caratulaRepo;
 		this.prescriptionFormValidator = prescriptionFormValidator;
 	}
 	
@@ -81,7 +85,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "alfabeta", method = RequestMethod.GET)
 	@ResponseBody
-	public AlfabetaWrapper alfabeta(@RequestParam("barras") String barras, @RequestParam("fecha") String fecha) throws ParseException {
+	public AlfabetaWrapper alfabeta(@RequestParam("barras") String barras, @RequestParam("fecha") Integer fecha) throws ParseException {
 		Alfabeta alfabeta = alfabetaRepo.getByBarras(barras);
 		if (alfabeta != null) { 
 			List<Price> price = priceRepo.getByRegistro(alfabeta.getRegistro());
@@ -95,30 +99,32 @@ public class HomeController {
 		Integer userId = (Integer) session.getAttribute("userId");
 		Role person = roleRepo.get(userId);
 		ModelAndView mav = new ModelAndView("home/list");
-		mav.addObject("prescriptions", person.getPrescriptions());
+		mav.addObject("user", person);
 		return mav;
 	}
 	
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public ModelAndView add(PrescriptionForm prescriptionForm, Errors errors, @ModelAttribute("userId") Integer userId) {
-
+		ModelAndView mav = new ModelAndView("home/add");
 		Role user = roleRepo.get(userId);
 		this.prescriptionFormValidator.validate(prescriptionForm, errors);
 		if (errors.hasErrors()) {
-			ModelAndView mav = new ModelAndView("home/add");
 			mav.addObject("errors", errors);
 			return mav;
 		}
 		try {
 			Prescription prescription = prescriptionForm.build(this.prescriptionRepo);
-			prescription.setCreator(user);
+			prescription.setCreator(user);;
+			Caratula carat = this.getCaratula(prescription.getSer_carat(), prescription.getCod_carat());
+			carat.cargar();
 			prescriptionRepo.save(prescription);
 		} catch (CorruptedDataException e) {
 			errors.rejectValue("username", "corrupt");
 			return null;
 		}
+		mav.addObject("cargado", true);
 
-		return new ModelAndView();
+		return mav;
 	}
 	
 	@RequestMapping(value = "login", method = RequestMethod.POST)
@@ -127,6 +133,17 @@ public class HomeController {
 		if (user != null && user.getPassword().equals(password))
 			session.setAttribute("userId", user.getId());
 		return "redirect:/prescriptions/home";	
+	}
+	
+	@RequestMapping(value = "getCaratula", method = RequestMethod.GET)
+	@ResponseBody
+	public Caratula getCaratula(@RequestParam("ser_carat") String ser_carat, @RequestParam("cod_carat") Integer cod_carat) {
+		Caratula carat = caratulaRepo.get(ser_carat, cod_carat);
+		if (carat == null) {
+			carat = new Caratula(ser_carat, cod_carat);
+			caratulaRepo.save(carat);
+		}
+		return carat;
 	}
 
 }

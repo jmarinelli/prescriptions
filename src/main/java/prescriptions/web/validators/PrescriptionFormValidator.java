@@ -16,13 +16,13 @@ public class PrescriptionFormValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		PrescriptionForm object = (PrescriptionForm) target;
 		if (object.getOrden() == null || object.getOrden() > 999)
-			errors.rejectValue("orden", "inv_value");
-		if (!validateDate(object.getFecPrescr()))
-			errors.rejectValue("fecPrescr", "inv_form.fecha");
-		if (!validateDate(object.getFecDisp()))
-			errors.rejectValue("fecDisp", "inv_form.fecha");
-		if (!object.getLetMatricula().equals("N") && !object.getLetMatricula().equals("P") && !object.getLetMatricula().equals("X"))
-			errors.rejectValue("letMatricula", "inv_value");
+			errors.rejectValue("orden", "inv_value.orden");
+		if (!validateDate(object.getFec_disp()))
+			errors.rejectValue("fec_prescr", "inv_form.fecha");
+		if (!validateDate(object.getFec_disp()))
+			errors.rejectValue("fec_disp", "inv_form.fecha");
+		if (!object.getLet_matricula().equals("N") && !object.getLet_matricula().equals("P") && !object.getLet_matricula().equals("X"))
+			errors.rejectValue("let_matricula", "inv_value.let_matricula");
 		if (!validatePeriod(object.getPeriodo()))
 			errors.rejectValue("periodo", "inv_form.periodo");
 		for (String s : object.getNulledFields())

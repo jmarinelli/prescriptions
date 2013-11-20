@@ -2,16 +2,16 @@
 	<h3>Caratula</h3>
 	<div class="panel-field">
 		<span>Serie Caratula</span>
-		<form:input path="serCarat" type="text" value=""/>
+		<form:input path="ser_carat" type="text" value="" id="ser_carat"/>
 		<div class="error">
-			<form:errors path="serCarat" />
+			<form:errors path="ser_carat" />
 		</div>
 	</div>
 	<div class="panel-field">
 		<span>Codigo Caratula</span>
-		<form:input path="codCarat" type="text" value=""/>
+		<form:input path="cod_carat" type="text" value="" id="cod_carat" onblur="getCarat();"/>
 		<div class="error">
-			<form:errors path="codCarat" />
+			<form:errors path="cod_carat" />
 		</div>
 	</div>
 
@@ -32,16 +32,16 @@
 	</div>
 	<div class="panel-field tabbed">
 		<span>Codigo O.S.</span>
-		<form:input path="codObSoc" type="number" class="readonly"/>
+		<form:input path="cod_obsoc" type="number" class="readonly"/>
 		<div class="error">
-			<form:errors path="codObSoc" />
+			<form:errors path="cod_obsoc" />
 		</div>
 	</div>
 	<div class="panel-field tabbed">
 		<span>Codigo plan</span>
-		<form:input path="codPlan" type="number" class="readonly"/>
+		<form:input path="cod_plan" type="number" class="readonly"/>
 		<div class="error">
-			<form:errors path="codPlan" />
+			<form:errors path="cod_plan" />
 		</div>
 	</div>
 	<div class="panel-field tabbed">
@@ -53,9 +53,9 @@
 	</div>
 	<div class="panel-field tabbed">
 		<span>Codigo Farmacia</span>
-		<form:input path="codFarma" type="number" class="readonly"/>
+		<form:input path="cod_farma" type="number" class="readonly"/>
 		<div class="error">
-			<form:errors path="codFarma" />
+			<form:errors path="cod_farma" />
 		</div>
 	</div>
 	<div class="panel-field tabbed">
@@ -65,7 +65,7 @@
 			<form:errors path="caja" />
 		</div>
 	</div>
-	<div class="panel-field tabbed">
-		<span>Aca va total receta</span>
+	<div class="panel-field tabbed recetas">
+		<span class="label">Recetas cargadas:</span> <span id="totCargadas">0</span><span>de</span><span id="canRec">0</span>
 	</div>
 </div>

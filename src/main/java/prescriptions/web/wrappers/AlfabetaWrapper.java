@@ -2,7 +2,6 @@ package prescriptions.web.wrappers;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -15,9 +14,9 @@ public class AlfabetaWrapper {
 	private Price price;
 	private Alfabeta alfabeta;
 	
-	public AlfabetaWrapper(List<Price> prices, Alfabeta alfabeta, String fecha) throws ParseException {
+	public AlfabetaWrapper(List<Price> prices, Alfabeta alfabeta, Integer fecha) throws ParseException {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-		DateTime currentDate = new DateTime(format.parse(fecha));
+		DateTime currentDate = new DateTime(format.parse(String.valueOf(fecha)));
 		long minDays = Long.MAX_VALUE;
 		Price auxPrice = null;
 		for (Price p : prices) {

@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<%@ include file="partials/commons-head.jsp" %>
+		<%@ include file="../partials/commons-head.jsp" %>
 	</head>
 	<body>
 		<div class="ctn">

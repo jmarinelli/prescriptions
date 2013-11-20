@@ -2,12 +2,12 @@
 
 <html>
 	<head>
-		<%@ include file="partials/commons-head.jsp" %>
+		<%@ include file="../partials/commons-head.jsp" %>
 	</head>
 	<body>
 		<div class="login-form-container">
 		
-			<form method="post" action="/prescriptions/login">
+			<form method="post" action="login">
 				<div>
 					<label>
 						<span>Usuario</span>

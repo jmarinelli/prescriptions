@@ -11,76 +11,80 @@ public class PrescriptionForm {
 	
 	private Integer prescription;
 	
-	private Integer pago; // y esto?
+	private Integer pago;
 	
 	// Caratula
-	private String serCarat;
-	private Integer codCarat;
+	private String ser_carat;
+	private Integer cod_carat;
 	private Integer expediente;
 	private final Integer delegacion = 0;
-	private Integer codObSoc;
-	private Integer codPlan;
+	private Integer cod_obsoc;
+	private Integer cod_plan;
 	private String periodo; // YYYYMMPN
-	private Integer codFarma;
+	private Integer cod_farma;
 	private Integer caja;
 	
 	// Receta
-	private String serReceta;
-	private Integer numReceta;
+	private String ser_receta;
+	private Integer num_receta;
 	private Integer orden; // max 3 digitos
-	private Integer fecPrescr; // YYYYMMDD
-	private Integer fecDisp; // YYYYMMDD
-	private String letMatricula; // N, P o X
-	private Integer numMatricula; // 0 si es ilegible
-	private Integer totRec;
-	private Integer totAfil;
-	private Integer totAc;
+	private Integer fec_prescr; // YYYYMMDD
+	private Integer fec_disp; // YYYYMMDD
+	private String let_matricula; // N, P o X
+	private Integer num_matricula; // 0 si es ilegible
+	private Integer tot_rec;
+	private Integer tot_afil;
+	private Integer tot_ac;
 	private Integer ajuste; // y ajusteParcial??
+	private Integer ajuste_parcial; // y ajusteParcial??
 	private String rechazos; // dos digitos por cada rechazo, sale de una tabla...what?
-	private Integer poseeTicket; // 0 o 1
-	private Integer poseeMarcaComercial; // 0 o 1
-	private final String serVale = "";
-	private final Integer codVale = 0;
+	private Integer posee_ticket; // 0 o 1
+	private Integer posee_marca_comercial; // 0 o 1
+	private final String ser_vale = "";
+	private final Integer cod_vale = 0;
 	
 	// Afiliado
-	private Integer numAfi;
+	private Integer num_afi;
 	private Integer parentesco;
 	private final String sexo = "0";
-	private final String tratProlongado = "0";
-	private final String tipoDocumento = "";
-	private final Integer numDocumento = 0;
-	private final String fecNacimiento = "19000101";
+	private final String trat_prolongado = "0";
+	private final String tipo_documento = "";
+	private final Integer num_documento = 0;
+	private final String fec_nacimiento = "19000101";
 	private final String telefono = "0";
 	
 	// Codigo de barras?	
-		private String codBarra1; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
-		private Integer canPresc1;  //
-		private Integer canDisp1;	//	los 3 iguales
-		private Integer canReal1;	//
-		private Integer pciorp1;	//
-		private Integer pcioReal1;	//	los 2 iguales
-		private Integer troquel1;	// 7 digitos
-		private Integer laboratorio1;
-		
-		// Codigo de barras?	
-		private String codBarra2; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
-		private Integer canPresc2;  //
-		private Integer canDisp2;	//	los 3 iguales
-		private Integer canReal2;	//
-		private Integer pciorp2;	//
-		private Integer pcioReal2;	//	los 2 iguales
-		private Integer troquel2;	// 7 digitos
-		private Integer laboratorio2;
-		
-		// Codigo de barras?	
-		private String codBarra3; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
-		private Integer canPresc3;  //
-		private Integer canDisp3;	//	los 3 iguales
-		private Integer canReal3;	//
-		private Integer pciorp3;	//
-		private Integer pcioReal3;	//	los 2 iguales
-		private Integer troquel3;	// 7 digitos
-		private Integer laboratorio3;
+	private String cod_barra_1; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
+	private Integer can_presc_1;  //
+	private Integer can_disp_1;	//	los 3 iguales
+	private Integer can_real_1;	//
+	private Integer pciorp_1;	//
+	private Integer pcio_real_1;	//	los 2 iguales
+	private Integer troquel_1;	// 7 digitos
+	private Integer laboratorio_1;
+	private Integer alfabeta_1;
+	
+	// Codigo de barras?	
+	private String cod_barra_2; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
+	private Integer can_presc_2;  //
+	private Integer can_disp_2;	//	los 3 iguales
+	private Integer can_real_2;	//
+	private Integer pciorp_2;	//
+	private Integer pcio_real_2;	//	los 2 iguales
+	private Integer troquel_2;	// 7 digitos
+	private Integer laboratorio_2;
+	private Integer alfabeta_2;
+	
+	// Codigo de barras?	
+	private String cod_barra_3; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
+	private Integer can_presc_3;  //
+	private Integer can_disp_3;	//	los 3 iguales
+	private Integer can_real_3;	//
+	private Integer pciorp_3;	//
+	private Integer pcio_real_3;	//	los 2 iguales
+	private Integer troquel_3;	// 7 digitos
+	private Integer laboratorio_3;
+	private Integer alfabeta_3;
 	
 	public PrescriptionForm () {
 		
@@ -90,116 +94,117 @@ public class PrescriptionForm {
 		super();
 		this.prescription = p.getId();
 		this.pago = p.getPago();
-		this.serCarat = p.getSerCarat();
-		this.codCarat = p.getCodCarat();
+		this.ser_carat = p.getSer_carat();
+		this.cod_carat = p.getCod_carat();
 		this.expediente = p.getExpediente();
-		this.codObSoc = p.getCodObSoc();
-		this.codPlan = p.getCodPlan();
+		this.cod_obsoc = p.getCod_obsoc();
+		this.cod_plan = p.getCod_plan();
 		this.periodo = p.getPeriodo();
-		this.codFarma = p.getCodFarma();
+		this.cod_farma = p.getCod_farma();
 		this.caja = p.getCaja();
-		this.serReceta = p.getSerReceta();
-		this.numReceta = p.getNumReceta();
+		this.ser_receta = p.getSer_receta();
+		this.num_receta = p.getNum_receta();
 		this.orden = p.getOrden();
-		this.fecPrescr = p.getFecPrescr();
-		this.fecDisp = p.getFecDisp();
-		this.letMatricula = p.getLetMatricula();
-		this.numMatricula = p.getNumMatricula();
-		this.totRec = p.getTotRec();
-		this.totAfil = p.getTotAfil();
-		this.totAc = p.getTotAc();
+		this.fec_prescr = p.getFec_prescr();
+		this.fec_disp = p.getFec_disp();
+		this.let_matricula = p.getLet_matricula();
+		this.num_matricula = p.getNum_matricula();
+		this.tot_rec = p.getTot_rec();
+		this.tot_afil = p.getTot_afil();
+		this.tot_ac = p.getTot_ac();
 		this.ajuste = p.getAjuste();
 		this.rechazos = p.getRechazos();
-		this.poseeTicket = p.getPoseeTicket();
-		this.poseeMarcaComercial = p.getPoseeMarcaComercial();
-		this.numAfi = p.getNumAfi();
+		this.posee_ticket = p.getPosee_ticket();
+		this.posee_marca_comercial = p.getPosee_marca_comercial();
+		this.num_afi = p.getNum_afi();
 		this.parentesco = p.getParentesco();
-		this.codBarra1 = p.getCodBarra1();
-		this.canPresc1 = p.getCanPresc1();
-		this.canDisp1 = p.getCanDisp1();
-		this.canReal1 = p.getCanReal1();
-		this.pciorp1 = p.getPciorp1();
-		this.pcioReal1 = p.getPcioReal1();
-		this.troquel1 = p.getTroquel1();
-		this.laboratorio1 = p.getLaboratorio1();
-		this.codBarra2 = p.getCodBarra2();
-		this.canPresc2 = p.getCanPresc2();
-		this.canDisp2 = p.getCanDisp2();
-		this.canReal2 = p.getCanReal2();
-		this.pciorp2 = p.getPciorp2();
-		this.pcioReal2 = p.getPcioReal2();
-		this.troquel2 = p.getTroquel2();
-		this.laboratorio2 = p.getLaboratorio2();
-		this.codBarra3 = p.getCodBarra3();
-		this.canPresc3 = p.getCanPresc3();
-		this.canDisp3 = p.getCanDisp3();
-		this.canReal3 = p.getCanReal3();
-		this.pciorp3 = p.getPciorp3();
-		this.pcioReal3 = p.getPcioReal3();
-		this.troquel3 = p.getTroquel3();
-		this.laboratorio3 = p.getLaboratorio3();
-		
+		this.cod_barra_1 = p.getCod_barra_1();
+		this.can_presc_1 = p.getCan_presc_1();
+		this.can_disp_1 = p.getCan_disp_1();
+		this.can_real_1 = p.getCan_real_1();
+		this.pciorp_1 = p.getPciorp_1();
+		this.pcio_real_1 = p.getPcio_real_1();
+		this.troquel_1 = p.getTroquel_1();
+		this.laboratorio_1 = p.getLaboratorio_1();
+		this.alfabeta_1 = p.getAlfabeta_1();
+		this.cod_barra_2 = p.getCod_barra_2();
+		this.can_presc_2 = p.getCan_presc_2();
+		this.can_disp_2 = p.getCan_disp_2();
+		this.can_real_2 = p.getCan_real_2();
+		this.pciorp_2 = p.getPciorp_2();
+		this.pcio_real_2 = p.getPcio_real_2();
+		this.troquel_2 = p.getTroquel_2();
+		this.laboratorio_2 = p.getLaboratorio_2();
+		this.alfabeta_2 = p.getAlfabeta_2();
+		this.cod_barra_3 = p.getCod_barra_3();
+		this.can_presc_3 = p.getCan_presc_3();
+		this.can_disp_3 = p.getCan_disp_3();
+		this.can_real_3 = p.getCan_real_3();
+		this.pciorp_3 = p.getPciorp_3();
+		this.pcio_real_3 = p.getPcio_real_3();
+		this.troquel_3 = p.getTroquel_3();
+		this.laboratorio_3 = p.getLaboratorio_3();
+		this.alfabeta_3 = p.getAlfabeta_3();
+		this.ajuste_parcial = p.getAjuste_parcial();
 	}
 
 
 
 	public List<String> getNulledFields() {
 		List<String> nulled = new LinkedList<String>();
-		if (this.serCarat == null)
-			nulled.add("serCarat");
-		if (this.prescription == null)
-			nulled.add("prescription");
-		if (this.pago == null)
-			nulled.add("pago");
-		if (this.codCarat == null)
-			nulled.add("codCarat");
+		if (this.ser_carat == null)
+			nulled.add("ser_carat");
+//		if (this.prescription == null)
+//			nulled.add("prescription");
+//		if (this.pago == null)
+//			nulled.add("pago");
+		if (this.cod_carat == null)
+			nulled.add("cod_carat");
 		if (this.expediente == null)
 			nulled.add("expediente");
-		if (this.codObSoc == null)
-			nulled.add("codObSoc");
-		if (this.codPlan == null)
-			nulled.add("codPlan");
+		if (this.cod_obsoc == null)
+			nulled.add("cod_obsoc");
+		if (this.cod_plan == null)
+			nulled.add("cod_plan");
 		if (this.periodo == null)
 			nulled.add("periodo");
-		if (this.codFarma == null)
-			nulled.add("codFarma");
+		if (this.cod_farma == null)
+			nulled.add("cod_farma");
 		if (this.caja == null)
 			nulled.add("caja");
-		if (this.serReceta == null)
-			nulled.add("serReceta");
-		if (this.numReceta == null)
-			nulled.add("numReceta");
-		if (this.numAfi == null)
-			nulled.add("numAfi");
+		if (this.ser_receta == null)
+			nulled.add("ser_receta");
+//		if (this.num_receta == null)
+//			nulled.add("num_receta");
+		if (this.num_afi == null)
+			nulled.add("num_afi");
 		if (this.parentesco == null)
 			nulled.add("parentesco");
-		if (this.codBarra1 == null)
-			nulled.add("codBarra1");
-		if (this.pcioReal1 == null)
-			nulled.add("pcioReal1");
-		if (this.codBarra1 == null)
-			nulled.add("codBarra1");
-		if (this.totRec == null)
-			nulled.add("totRec");
-		if (this.totAfil == null)
-			nulled.add("totAfil");
-		if (this.totAc == null)
-			nulled.add("totAc");
-		if (this.letMatricula == null)
-			nulled.add("letMatricula");
-		if (this.numMatricula == null)
-			nulled.add("numMatricula");
+		if (this.cod_barra_1 == null)
+			nulled.add("cod_barra_1");
+		if (this.pcio_real_1 == null)
+			nulled.add("pcio_real_1");
+		if (this.tot_rec == null)
+			nulled.add("tot_rec");
+		if (this.tot_afil == null)
+			nulled.add("tot_afil");
+		if (this.tot_ac == null)
+			nulled.add("tot_ac");
+		if (this.let_matricula == null)
+			nulled.add("let_matricula");
+		if (this.num_matricula == null)
+			nulled.add("num_matricula");
 		if (this.ajuste == null)
 			nulled.add("ajuste");
 		if (this.rechazos == null)
 			nulled.add("rechazos");
-		if (this.poseeTicket == null)
-			nulled.add("poseeTicket");
-		if (this.poseeMarcaComercial == null)
-			nulled.add("poseeMarcaComercial");
+		if (this.posee_ticket == null)
+			nulled.add("posee_ticket");
+		if (this.posee_marca_comercial == null)
+			nulled.add("posee_marca_comercial");
 		return nulled;
 	}
-
+	
 	public Integer getPrescription() {
 		return prescription;
 	}
@@ -216,20 +221,20 @@ public class PrescriptionForm {
 		this.pago = pago;
 	}
 
-	public String getSerCarat() {
-		return serCarat;
+	public String getSer_carat() {
+		return ser_carat;
 	}
 
-	public void setSerCarat(String serCarat) {
-		this.serCarat = serCarat;
+	public void setSer_carat(String ser_carat) {
+		this.ser_carat = ser_carat;
 	}
 
-	public Integer getCodCarat() {
-		return codCarat;
+	public Integer getCod_carat() {
+		return cod_carat;
 	}
 
-	public void setCodCarat(Integer codCarat) {
-		this.codCarat = codCarat;
+	public void setCod_carat(Integer cod_carat) {
+		this.cod_carat = cod_carat;
 	}
 
 	public Integer getExpediente() {
@@ -240,20 +245,20 @@ public class PrescriptionForm {
 		this.expediente = expediente;
 	}
 
-	public Integer getCodObSoc() {
-		return codObSoc;
+	public Integer getCod_obsoc() {
+		return cod_obsoc;
 	}
 
-	public void setCodObSoc(Integer codObSoc) {
-		this.codObSoc = codObSoc;
+	public void setCod_obsoc(Integer cod_obsoc) {
+		this.cod_obsoc = cod_obsoc;
 	}
 
-	public Integer getCodPlan() {
-		return codPlan;
+	public Integer getCod_plan() {
+		return cod_plan;
 	}
 
-	public void setCodPlan(Integer codPlan) {
-		this.codPlan = codPlan;
+	public void setCod_plan(Integer cod_plan) {
+		this.cod_plan = cod_plan;
 	}
 
 	public String getPeriodo() {
@@ -264,16 +269,12 @@ public class PrescriptionForm {
 		this.periodo = periodo;
 	}
 
-	public Integer getDelegacion() {
-		return delegacion;
-	}
-	
-	public Integer getCodFarma() {
-		return codFarma;
+	public Integer getCod_farma() {
+		return cod_farma;
 	}
 
-	public void setCodFarma(Integer codFarma) {
-		this.codFarma = codFarma;
+	public void setCod_farma(Integer cod_farma) {
+		this.cod_farma = cod_farma;
 	}
 
 	public Integer getCaja() {
@@ -284,20 +285,20 @@ public class PrescriptionForm {
 		this.caja = caja;
 	}
 
-	public String getSerReceta() {
-		return serReceta;
+	public String getSer_receta() {
+		return ser_receta;
 	}
 
-	public void setSerReceta(String serReceta) {
-		this.serReceta = serReceta;
+	public void setSer_receta(String ser_receta) {
+		this.ser_receta = ser_receta;
 	}
 
-	public Integer getNumReceta() {
-		return numReceta;
+	public Integer getNum_receta() {
+		return num_receta;
 	}
 
-	public void setNumReceta(Integer numReceta) {
-		this.numReceta = numReceta;
+	public void setNum_receta(Integer num_receta) {
+		this.num_receta = num_receta;
 	}
 
 	public Integer getOrden() {
@@ -308,268 +309,60 @@ public class PrescriptionForm {
 		this.orden = orden;
 	}
 
-	public Integer getFecPrescr() {
-		return fecPrescr;
+	public Integer getFec_prescr() {
+		return fec_prescr;
 	}
 
-	public void setFecPrescr(Integer fecPrescr) {
-		this.fecPrescr = fecPrescr;
+	public void setFec_prescr(Integer fec_prescr) {
+		this.fec_prescr = fec_prescr;
 	}
 
-	public Integer getFecDisp() {
-		return fecDisp;
+	public Integer getFec_disp() {
+		return fec_disp;
 	}
 
-	public void setFecDisp(Integer fecDisp) {
-		this.fecDisp = fecDisp;
+	public void setFec_disp(Integer fec_disp) {
+		this.fec_disp = fec_disp;
 	}
 
-	public Integer getNumAfi() {
-		return numAfi;
+	public String getLet_matricula() {
+		return let_matricula;
 	}
 
-	public void setNumAfi(Integer numAfi) {
-		this.numAfi = numAfi;
+	public void setLet_matricula(String let_matricula) {
+		this.let_matricula = let_matricula;
 	}
 
-	public Integer getParentesco() {
-		return parentesco;
+	public Integer getNum_matricula() {
+		return num_matricula;
 	}
 
-	public void setParentesco(Integer parentesco) {
-		this.parentesco = parentesco;
+	public void setNum_matricula(Integer num_matricula) {
+		this.num_matricula = num_matricula;
 	}
 
-	public String getCodBarra1() {
-		return codBarra1;
+	public Integer getTot_rec() {
+		return tot_rec;
 	}
 
-	public void setCodBarra1(String codBarra1) {
-		this.codBarra1 = codBarra1;
+	public void setTot_rec(Integer tot_rec) {
+		this.tot_rec = tot_rec;
 	}
 
-	public Integer getCanPresc1() {
-		return canPresc1;
+	public Integer getTot_afil() {
+		return tot_afil;
 	}
 
-	public void setCanPresc1(Integer canPresc1) {
-		this.canPresc1 = canPresc1;
+	public void setTot_afil(Integer tot_afil) {
+		this.tot_afil = tot_afil;
 	}
 
-	public Integer getCanDisp1() {
-		return canDisp1;
+	public Integer getTot_ac() {
+		return tot_ac;
 	}
 
-	public void setCanDisp1(Integer canDisp1) {
-		this.canDisp1 = canDisp1;
-	}
-
-	public Integer getCanReal1() {
-		return canReal1;
-	}
-
-	public void setCanReal1(Integer canReal1) {
-		this.canReal1 = canReal1;
-	}
-
-	public Integer getPciorp1() {
-		return pciorp1;
-	}
-
-	public void setPciorp1(Integer pciorp1) {
-		this.pciorp1 = pciorp1;
-	}
-
-	public Integer getPcioReal1() {
-		return pcioReal1;
-	}
-
-	public void setPcioReal1(Integer pcioReal1) {
-		this.pcioReal1 = pcioReal1;
-	}
-
-	public Integer getTroquel1() {
-		return troquel1;
-	}
-
-	public void setTroquel1(Integer troquel1) {
-		this.troquel1 = troquel1;
-	}
-
-	public Integer getLaboratorio1() {
-		return laboratorio1;
-	}
-
-	public void setLaboratorio1(Integer laboratorio1) {
-		this.laboratorio1 = laboratorio1;
-	}
-
-	public String getCodBarra2() {
-		return codBarra2;
-	}
-
-	public void setCodBarra2(String codBarra2) {
-		this.codBarra2 = codBarra2;
-	}
-
-	public Integer getCanPresc2() {
-		return canPresc2;
-	}
-
-	public void setCanPresc2(Integer canPresc2) {
-		this.canPresc2 = canPresc2;
-	}
-
-	public Integer getCanDisp2() {
-		return canDisp2;
-	}
-
-	public void setCanDisp2(Integer canDisp2) {
-		this.canDisp2 = canDisp2;
-	}
-
-	public Integer getCanReal2() {
-		return canReal2;
-	}
-
-	public void setCanReal2(Integer canReal2) {
-		this.canReal2 = canReal2;
-	}
-
-	public Integer getPciorp2() {
-		return pciorp2;
-	}
-
-	public void setPciorp2(Integer pciorp2) {
-		this.pciorp2 = pciorp2;
-	}
-
-	public Integer getPcioReal2() {
-		return pcioReal2;
-	}
-
-	public void setPcioReal2(Integer pcioReal2) {
-		this.pcioReal2 = pcioReal2;
-	}
-
-	public Integer getTroquel2() {
-		return troquel2;
-	}
-
-	public void setTroquel2(Integer troquel2) {
-		this.troquel2 = troquel2;
-	}
-
-	public Integer getLaboratorio2() {
-		return laboratorio2;
-	}
-
-	public void setLaboratorio2(Integer laboratorio2) {
-		this.laboratorio2 = laboratorio2;
-	}
-
-	public String getCodBarra3() {
-		return codBarra3;
-	}
-
-	public void setCodBarra3(String codBarra3) {
-		this.codBarra3 = codBarra3;
-	}
-
-	public Integer getCanPresc3() {
-		return canPresc3;
-	}
-
-	public void setCanPresc3(Integer canPresc3) {
-		this.canPresc3 = canPresc3;
-	}
-
-	public Integer getCanDisp3() {
-		return canDisp3;
-	}
-
-	public void setCanDisp3(Integer canDisp3) {
-		this.canDisp3 = canDisp3;
-	}
-
-	public Integer getCanReal3() {
-		return canReal3;
-	}
-
-	public void setCanReal3(Integer canReal3) {
-		this.canReal3 = canReal3;
-	}
-
-	public Integer getPciorp3() {
-		return pciorp3;
-	}
-
-	public void setPciorp3(Integer pciorp3) {
-		this.pciorp3 = pciorp3;
-	}
-
-	public Integer getPcioReal3() {
-		return pcioReal3;
-	}
-
-	public void setPcioReal3(Integer pcioReal3) {
-		this.pcioReal3 = pcioReal3;
-	}
-
-	public Integer getTroquel3() {
-		return troquel3;
-	}
-
-	public void setTroquel3(Integer troquel3) {
-		this.troquel3 = troquel3;
-	}
-
-	public Integer getLaboratorio3() {
-		return laboratorio3;
-	}
-
-	public void setLaboratorio3(Integer laboratorio3) {
-		this.laboratorio3 = laboratorio3;
-	}
-
-	public Integer getTotRec() {
-		return totRec;
-	}
-
-	public void setTotRec(Integer totRec) {
-		this.totRec = totRec;
-	}
-
-	public Integer getTotAfil() {
-		return totAfil;
-	}
-
-	public void setTotAfil(Integer totAfil) {
-		this.totAfil = totAfil;
-	}
-
-	public Integer getTotAc() {
-		return totAc;
-	}
-
-	public void setTotAc(Integer totAc) {
-		this.totAc = totAc;
-	}
-
-	public String getLetMatricula() {
-		return letMatricula;
-	}
-
-	public void setLetMatricula(String letMatricula) {
-		this.letMatricula = letMatricula;
-	}
-
-	public Integer getNumMatricula() {
-		return numMatricula;
-	}
-
-	public void setNumMatricula(Integer numMatricula) {
-		this.numMatricula = numMatricula;
+	public void setTot_ac(Integer tot_ac) {
+		this.tot_ac = tot_ac;
 	}
 
 	public Integer getAjuste() {
@@ -580,6 +373,14 @@ public class PrescriptionForm {
 		this.ajuste = ajuste;
 	}
 
+	public Integer getAjuste_parcial() {
+		return ajuste_parcial;
+	}
+
+	public void setAjuste_parcial(Integer ajuste_parcial) {
+		this.ajuste_parcial = ajuste_parcial;
+	}
+
 	public String getRechazos() {
 		return rechazos;
 	}
@@ -588,149 +389,350 @@ public class PrescriptionForm {
 		this.rechazos = rechazos;
 	}
 
-	public Integer getPoseeTicket() {
-		return poseeTicket;
+	public Integer getPosee_ticket() {
+		return posee_ticket;
 	}
 
-	public void setPoseeTicket(Integer poseeTicket) {
-		this.poseeTicket = poseeTicket;
+	public void setPosee_ticket(Integer posee_ticket) {
+		this.posee_ticket = posee_ticket;
 	}
 
-	public Integer getPoseeMarcaComercial() {
-		return poseeMarcaComercial;
+	public Integer getPosee_marca_comercial() {
+		return posee_marca_comercial;
 	}
 
-	public void setPoseeMarcaComercial(Integer poseeMarcaComercial) {
-		this.poseeMarcaComercial = poseeMarcaComercial;
+	public void setPosee_marca_comercial(Integer posee_marca_comercial) {
+		this.posee_marca_comercial = posee_marca_comercial;
 	}
 
-	public String getTratProlongado() {
-		return tratProlongado;
+	public Integer getNum_afi() {
+		return num_afi;
 	}
 
-	public String getSerVale() {
-		return serVale;
+	public void setNum_afi(Integer num_afi) {
+		this.num_afi = num_afi;
 	}
 
-	public Integer getCodVale() {
-		return codVale;
+	public Integer getParentesco() {
+		return parentesco;
 	}
 
-	public String getTipoDocumento() {
-		return tipoDocumento;
+	public void setParentesco(Integer parentesco) {
+		this.parentesco = parentesco;
 	}
 
-	public Integer getNumDocumento() {
-		return numDocumento;
+	public String getCod_barra_1() {
+		return cod_barra_1;
 	}
 
-	public String getFecNacimiento() {
-		return fecNacimiento;
+	public void setCod_barra_1(String cod_barra_1) {
+		this.cod_barra_1 = cod_barra_1;
 	}
 
-	public String getTelefono() {
-		return telefono;
+	public Integer getCan_presc_1() {
+		return can_presc_1;
+	}
+
+	public void setCan_presc_1(Integer can_presc_1) {
+		this.can_presc_1 = can_presc_1;
+	}
+
+	public Integer getCan_disp_1() {
+		return can_disp_1;
+	}
+
+	public void setCan_disp_1(Integer can_disp_1) {
+		this.can_disp_1 = can_disp_1;
+	}
+
+	public Integer getCan_real_1() {
+		return can_real_1;
+	}
+
+	public void setCan_real_1(Integer can_real_1) {
+		this.can_real_1 = can_real_1;
+	}
+
+	public Integer getPciorp_1() {
+		return pciorp_1;
+	}
+
+	public void setPciorp_1(Integer pciorp_1) {
+		this.pciorp_1 = pciorp_1;
+	}
+
+	public Integer getPcio_real_1() {
+		return pcio_real_1;
+	}
+
+	public void setPcio_real_1(Integer pcio_real_1) {
+		this.pcio_real_1 = pcio_real_1;
+	}
+
+	public Integer getTroquel_1() {
+		return troquel_1;
+	}
+
+	public void setTroquel_1(Integer troquel_1) {
+		this.troquel_1 = troquel_1;
+	}
+
+	public Integer getLaboratorio_1() {
+		return laboratorio_1;
+	}
+
+	public void setLaboratorio_1(Integer laboratorio_1) {
+		this.laboratorio_1 = laboratorio_1;
+	}
+
+	public String getCod_barra_2() {
+		return cod_barra_2;
+	}
+
+	public void setCod_barra_2(String cod_barra_2) {
+		this.cod_barra_2 = cod_barra_2;
+	}
+
+	public Integer getCan_presc_2() {
+		return can_presc_2;
+	}
+
+	public void setCan_presc_2(Integer can_presc_2) {
+		this.can_presc_2 = can_presc_2;
+	}
+
+	public Integer getCan_disp_2() {
+		return can_disp_2;
+	}
+
+	public void setCan_disp_2(Integer can_disp_2) {
+		this.can_disp_2 = can_disp_2;
+	}
+
+	public Integer getCan_real_2() {
+		return can_real_2;
+	}
+
+	public void setCan_real_2(Integer can_real_2) {
+		this.can_real_2 = can_real_2;
+	}
+
+	public Integer getPciorp_2() {
+		return pciorp_2;
+	}
+
+	public void setPciorp_2(Integer pciorp_2) {
+		this.pciorp_2 = pciorp_2;
+	}
+
+	public Integer getPcio_real_2() {
+		return pcio_real_2;
+	}
+
+	public void setPcio_real_2(Integer pcio_real_2) {
+		this.pcio_real_2 = pcio_real_2;
+	}
+
+	public Integer getTroquel_2() {
+		return troquel_2;
+	}
+
+	public void setTroquel_2(Integer troquel_2) {
+		this.troquel_2 = troquel_2;
+	}
+
+	public Integer getLaboratorio_2() {
+		return laboratorio_2;
+	}
+
+	public void setLaboratorio_2(Integer laboratorio_2) {
+		this.laboratorio_2 = laboratorio_2;
+	}
+
+	public String getCod_barra_3() {
+		return cod_barra_3;
+	}
+
+	public void setCod_barra_3(String cod_barra_3) {
+		this.cod_barra_3 = cod_barra_3;
+	}
+
+	public Integer getCan_presc_3() {
+		return can_presc_3;
+	}
+
+	public void setCan_presc_3(Integer can_presc_3) {
+		this.can_presc_3 = can_presc_3;
+	}
+
+	public Integer getCan_disp_3() {
+		return can_disp_3;
+	}
+
+	public void setCan_disp_3(Integer can_disp_3) {
+		this.can_disp_3 = can_disp_3;
+	}
+
+	public Integer getCan_real_3() {
+		return can_real_3;
+	}
+
+	public void setCan_real_3(Integer can_real_3) {
+		this.can_real_3 = can_real_3;
+	}
+
+	public Integer getPciorp_3() {
+		return pciorp_3;
+	}
+
+	public void setPciorp_3(Integer pciorp_3) {
+		this.pciorp_3 = pciorp_3;
+	}
+
+	public Integer getPcio_real_3() {
+		return pcio_real_3;
+	}
+
+	public void setPcio_real_3(Integer pcio_real_3) {
+		this.pcio_real_3 = pcio_real_3;
+	}
+
+	public Integer getTroquel_3() {
+		return troquel_3;
+	}
+
+	public void setTroquel_3(Integer troquel_3) {
+		this.troquel_3 = troquel_3;
+	}
+
+	public Integer getLaboratorio_3() {
+		return laboratorio_3;
+	}
+
+	public void setLaboratorio_3(Integer laboratorio_3) {
+		this.laboratorio_3 = laboratorio_3;
+	}
+
+	public Integer getDelegacion() {
+		return delegacion;
+	}
+
+	public String getSer_vale() {
+		return ser_vale;
+	}
+
+	public Integer getCod_vale() {
+		return cod_vale;
 	}
 
 	public String getSexo() {
 		return sexo;
 	}
 
+	public String getTrat_prolongado() {
+		return trat_prolongado;
+	}
+
+	public String getTipo_documento() {
+		return tipo_documento;
+	}
+
+	public Integer getNum_documento() {
+		return num_documento;
+	}
+
+	public String getFec_nacimiento() {
+		return fec_nacimiento;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public Integer getAlfabeta_1() {
+		return alfabeta_1;
+	}
+
+	public void setAlfabeta_1(Integer alfabeta_1) {
+		this.alfabeta_1 = alfabeta_1;
+	}
+
+	public Integer getAlfabeta_2() {
+		return alfabeta_2;
+	}
+
+	public void setAlfabeta_2(Integer alfabeta_2) {
+		this.alfabeta_2 = alfabeta_2;
+	}
+
+	public Integer getAlfabeta_3() {
+		return alfabeta_3;
+	}
+
+	public void setAlfabeta_3(Integer alfabeta_3) {
+		this.alfabeta_3 = alfabeta_3;
+	}
+
 	public Prescription build(PrescriptionRepo prescriptionRepo) throws CorruptedDataException {
 		if (this.prescription == null)
-			return new Prescription(pago, serCarat, codCarat, expediente,
-					codObSoc, codPlan, periodo, codFarma, caja, serReceta,
-					numReceta, orden, fecPrescr, fecDisp, letMatricula,
-					numMatricula, totRec, totAfil, totAc, ajuste, rechazos,
-					poseeTicket, poseeMarcaComercial, numAfi, parentesco,
-					codBarra1, canPresc1, canDisp1, canReal1, pciorp1,
-					pcioReal1, troquel1, laboratorio1, codBarra2, canPresc2,
-					canDisp2, canReal2, pciorp2, pcioReal2, troquel2,
-					laboratorio2, codBarra3, canPresc3, canDisp3, canReal3,
-					pciorp3, pcioReal3, troquel3, laboratorio3);
+			return new Prescription(pago, ser_carat, cod_carat, expediente,
+					cod_obsoc, cod_plan, periodo, cod_farma, caja, ser_receta,
+					num_receta, orden, fec_prescr, fec_disp, let_matricula,
+					num_matricula, tot_rec, tot_afil, tot_ac, ajuste, ajuste_parcial, rechazos,
+					posee_ticket, posee_marca_comercial, num_afi, parentesco,
+					cod_barra_1, can_presc_1, can_disp_1, can_real_1, pciorp_1,
+					pcio_real_1, troquel_1, laboratorio_1, alfabeta_1, cod_barra_2, can_presc_2, can_disp_2, can_real_2, pciorp_2,
+					pcio_real_2, troquel_2, laboratorio_2, alfabeta_2, cod_barra_3, can_presc_3, can_disp_3, can_real_3, pciorp_3,
+					pcio_real_3, troquel_3, laboratorio_3, alfabeta_3);
 		else {
 			Prescription p = prescriptionRepo.get(this.prescription);
 			update(p);
 			return p;
-//			prescription.setPago(pago);
-//			prescription.setSerCarat(serCarat);
-//			prescription.setCodCarat(codCarat);
-//			prescription.setExpediente(expediente);
-//			prescription.setCodObSoc(codObSoc);
-//			prescription.setCodPlan(codPlan);
-//			prescription.setPeriodo(periodo);
-//			prescription.setCodFarma(codFarma);
-//			prescription.setCaja(caja);
-//			prescription.setSerReceta(serReceta);
-//			prescription.setNumReceta(numReceta);
-//			prescription.setOrden(orden);
-//			prescription.setFecPrescr(fecPrescr);
-//			prescription.setFecDisp(fecDisp);
-//			prescription.setNumAfi(numAfi);
-//			prescription.setParentesco(parentesco);
-//			prescription.setCanPresc1(canPresc1);
-//			prescription.setCanDisp1(canDisp1);
-//			prescription.setCanReal1(canReal1);
-//			prescription.setTroquel1(troquel1);
-//			prescription.setLaboratorio1(laboratorio1);
-//			prescription.setCanPresc2(canPresc2);
-//			prescription.setCanDisp2(canDisp2);
-//			prescription.setCanReal2(canReal2);
-//			prescription.setTroquel2(troquel2);
-//			prescription.setLaboratorio2(laboratorio2);
-//			prescription.setCanPresc3(canPresc3);
-//			prescription.setCanDisp3(canDisp3);
-//			prescription.setCanReal3(canReal3);
-//			prescription.setTroquel3(troquel3);
-//			prescription.setLaboratorio3(laboratorio3);
-//			prescription.setLetMatricula(letMatricula);
-//			prescription.setNumMatricula(numMatricula);
-//			prescription.setAjuste(ajuste);
-//			prescription.setRechazos(rechazos);
-//			prescription.setPoseeTicket(poseeTicket);
-//			prescription.setPoseeMarcaComercial(poseeMarcaComercial);
-//			return prescription;
 		}
 	}
 	
 	public void update(Prescription prescription) {
 		prescription.setPago(pago);
-		prescription.setSerCarat(serCarat);
-		prescription.setCodCarat(codCarat);
+		prescription.setSer_carat(ser_carat);
+		prescription.setCod_carat(cod_carat);
 		prescription.setExpediente(expediente);
-		prescription.setCodObSoc(codObSoc);
-		prescription.setCodPlan(codPlan);
+		prescription.setCod_obsoc(cod_obsoc);
+		prescription.setCod_plan(cod_plan);
 		prescription.setPeriodo(periodo);
-		prescription.setCodFarma(codFarma);
+		prescription.setCod_farma(cod_farma);
 		prescription.setCaja(caja);
-		prescription.setSerReceta(serReceta);
-		prescription.setNumReceta(numReceta);
+		prescription.setSer_receta(ser_receta);
+		prescription.setNum_receta(num_receta);
 		prescription.setOrden(orden);
-		prescription.setFecPrescr(fecPrescr);
-		prescription.setFecDisp(fecDisp);
-		prescription.setNumAfi(numAfi);
+		prescription.setFec_prescr(fec_prescr);
+		prescription.setFec_disp(fec_disp);
+		prescription.setNum_afi(num_afi);
 		prescription.setParentesco(parentesco);
-		prescription.setCanPresc1(canPresc1);
-		prescription.setCanDisp1(canDisp1);
-		prescription.setCanReal1(canReal1);
-		prescription.setTroquel1(troquel1);
-		prescription.setLaboratorio1(laboratorio1);
-		prescription.setCanPresc2(canPresc2);
-		prescription.setCanDisp2(canDisp2);
-		prescription.setCanReal2(canReal2);
-		prescription.setTroquel2(troquel2);
-		prescription.setLaboratorio2(laboratorio2);
-		prescription.setCanPresc3(canPresc3);
-		prescription.setCanDisp3(canDisp3);
-		prescription.setCanReal3(canReal3);
-		prescription.setTroquel3(troquel3);
-		prescription.setLaboratorio3(laboratorio3);
-		prescription.setLetMatricula(letMatricula);
-		prescription.setNumMatricula(numMatricula);
+		prescription.setCan_presc_1(can_presc_1);
+		prescription.setCan_disp_1(can_disp_1);
+		prescription.setCan_real_1(can_real_1);
+		prescription.setTroquel_1(troquel_1);
+		prescription.setLaboratorio_1(laboratorio_1);
+		prescription.setAlfabeta_1(alfabeta_1);
+		prescription.setCan_presc_2(can_presc_2);
+		prescription.setCan_disp_2(can_disp_2);
+		prescription.setCan_real_2(can_real_2);
+		prescription.setTroquel_2(troquel_2);
+		prescription.setLaboratorio_2(laboratorio_2);
+		prescription.setAlfabeta_2(alfabeta_2);
+		prescription.setCan_presc_3(can_presc_3);
+		prescription.setCan_disp_3(can_disp_3);
+		prescription.setCan_real_3(can_real_3);
+		prescription.setTroquel_3(troquel_3);
+		prescription.setLaboratorio_3(laboratorio_3);
+		prescription.setAlfabeta_3(alfabeta_3);
+		prescription.setLet_matricula(let_matricula);
+		prescription.setNum_matricula(num_matricula);
 		prescription.setAjuste(ajuste);
 		prescription.setRechazos(rechazos);
-		prescription.setPoseeTicket(poseeTicket);
-		prescription.setPoseeMarcaComercial(poseeMarcaComercial);
+		prescription.setPosee_ticket(posee_ticket);
+		prescription.setPosee_marca_comercial(posee_marca_comercial);
+		prescription.setAjuste_parcial(ajuste_parcial);
 	}
 
 }
