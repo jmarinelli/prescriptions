@@ -182,7 +182,7 @@ public class Prescription extends PersistentEntity {
 	}
 
 	public void setSer_carat(String ser_carat) {
-		this.ser_carat = ser_carat;
+		this.ser_carat = ser_carat.toUpperCase();
 	}
 
 	public Integer getCod_carat() {
@@ -286,7 +286,7 @@ public class Prescription extends PersistentEntity {
 	}
 
 	public void setLet_matricula(String let_matricula) {
-		this.let_matricula = let_matricula;
+		this.let_matricula = let_matricula.toUpperCase();
 	}
 
 	public Integer getNum_matricula() {

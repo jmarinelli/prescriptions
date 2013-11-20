@@ -138,7 +138,7 @@ public class HomeController {
 	@RequestMapping(value = "getCaratula", method = RequestMethod.GET)
 	@ResponseBody
 	public Caratula getCaratula(@RequestParam("ser_carat") String ser_carat, @RequestParam("cod_carat") Integer cod_carat) {
-		Caratula carat = caratulaRepo.get(ser_carat, cod_carat);
+		Caratula carat = caratulaRepo.get(ser_carat.toUpperCase(), cod_carat);
 		if (carat == null) {
 			carat = new Caratula(ser_carat, cod_carat);
 			caratulaRepo.save(carat);
