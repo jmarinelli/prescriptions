@@ -6,6 +6,7 @@
 		<%@ include file="../partials/commons-head.jsp" %>
 	</head>
 	<body class="prescription-page-ctn">
+		<%@ include file="../partials/header.jsp" %>
 		<div>
 			<div>
 				<h1>Usuario:</h3>
@@ -17,7 +18,7 @@
 		</div>
 		<div>
 			<c:forEach var="prescription" items="${user.prescriptions}">
-				<div><a href="edit/${prescription.id}">Codigo caratula: ${prescription.cod_carat}, Orden: ${prescription.orden}</a></div>
+				<div><a href="/prescriptions/edit/${prescription.id}">Codigo caratula: ${prescription.cod_carat}, Orden: ${prescription.orden}</a></div>
 			</c:forEach>
 		</div>
 	</body>

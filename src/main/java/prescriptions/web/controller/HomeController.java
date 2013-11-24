@@ -57,12 +57,20 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "home", method = RequestMethod.GET)
-	public ModelAndView home() {
-		return new ModelAndView("home/home");
+	public ModelAndView home(HttpSession session) {
+		ModelAndView mav = new ModelAndView("home/home");
+		mav.addObject("isAdmin", roleRepo.get((Integer)session.getAttribute("userId")).isAdmin());
+		return mav;
 	}
 	
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public ModelAndView login() {
+		return new ModelAndView("home/login");
+	}
+	
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	public ModelAndView logout(HttpSession session) {
+		session.invalidate();
 		return new ModelAndView("home/login");
 	}
 	
@@ -77,7 +85,9 @@ public class HomeController {
 	public ModelAndView edit(@PathVariable Integer prescriptionId, HttpSession httpSession) {
 		ModelAndView mav = new ModelAndView("home/add");
 		Prescription prescription = prescriptionRepo.get(prescriptionId);
-		if (prescription.getCreator().getId() == (Integer)httpSession.getAttribute("userId")) {
+		Role user = roleRepo.get((Integer)httpSession.getAttribute("userId"));
+		if (prescription.getCreator().getId() == (Integer)httpSession.getAttribute("userId") 
+				|| user.isAdmin()) {
 			mav.addObject("prescriptionForm", new PrescriptionForm(prescription));
 		}
 		return mav;
@@ -114,25 +124,29 @@ public class HomeController {
 		}
 		try {
 			Prescription prescription = prescriptionForm.build(this.prescriptionRepo);
-			prescription.setCreator(user);;
-			Caratula carat = this.getCaratula(prescription.getSer_carat(), prescription.getCod_carat());
-			carat.cargar();
-			prescriptionRepo.save(prescription);
+			prescription.setCreator(user);
+			if (prescriptionRepo.save(prescription)) {
+				Caratula carat = this.getCaratula(prescription.getSer_carat(), prescription.getCod_carat());
+				carat.cargar();
+				mav.addObject("message", "'Receta cargada'");
+			} else {
+				mav.addObject("message", "'Receta duplicada'");
+			}
 		} catch (CorruptedDataException e) {
 			errors.rejectValue("username", "corrupt");
 			return null;
 		}
-		mav.addObject("cargado", true);
-
 		return mav;
 	}
 	
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String login(@RequestParam String username, @RequestParam String password, HttpSession session) {
 		Role user = roleRepo.getByUsername(username);
-		if (user != null && user.getPassword().equals(password))
+		if (user != null && user.getPassword().equals(password)) {
 			session.setAttribute("userId", user.getId());
-		return "redirect:/prescriptions/home";	
+			return "redirect:/prescriptions/home";
+		}
+		return null;
 	}
 	
 	@RequestMapping(value = "getCaratula", method = RequestMethod.GET)

@@ -23,6 +23,13 @@
 			</div>
 		</div>
 		<div class="panel-field">
+			<span>Posee Marca Comercial</span>
+			<form:input path="posee_marca_comercial" type="number" class="checkbox"/>
+			<div class="error">
+				<form:errors path="posee_marca_comercial" />
+			</div>
+		</div>
+		<div class="panel-field">
 			<span>Fecha Prescripcion</span>
 			<form:input path="fec_prescr" type="number" />
 			<div class="error">
@@ -92,13 +99,6 @@
 			<form:input path="posee_ticket" type="number" class="checkbox"/>
 			<div class="error">
 				<form:errors path="posee_ticket" />
-			</div>
-		</div>
-		<div class="panel-field">
-			<span>Posee Marca Comercial</span>
-			<form:input path="posee_marca_comercial" type="number" class="checkbox"/>
-			<div class="error">
-				<form:errors path="posee_marca_comercial" />
 			</div>
 		</div>
 		<div class="panel-field">

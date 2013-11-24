@@ -5,9 +5,10 @@
 		<%@ include file="../partials/commons-head.jsp" %>
 	</head>
 	<body>
+		<%@ include file="../partials/header.jsp" %>
 		<div class="login-form-container">
 		
-			<form method="post" action="login">
+			<form method="post" action="/prescriptions/login">
 				<div>
 					<label>
 						<span>Usuario</span>

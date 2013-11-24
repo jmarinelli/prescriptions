@@ -17,36 +17,44 @@ public class PrescriptionFormValidator implements Validator{
 		PrescriptionForm object = (PrescriptionForm) target;
 		if (object.getOrden() == null || object.getOrden() > 999)
 			errors.rejectValue("orden", "inv_value.orden");
-		if (!validateDate(object.getFec_disp()))
+		if (!validateDate(object.getFec_prescr()))
 			errors.rejectValue("fec_prescr", "inv_form.fecha");
 		if (!validateDate(object.getFec_disp()))
 			errors.rejectValue("fec_disp", "inv_form.fecha");
+		if (!validateDates(object.getFec_prescr(), object.getFec_disp()))
+			errors.rejectValue("fec_disp", "inv_value.fecha_disp");
 		if (!object.getLet_matricula().toUpperCase().equals("N") && !object.getLet_matricula().toUpperCase().equals("P") && !object.getLet_matricula().toUpperCase().equals("X"))
 			errors.rejectValue("let_matricula", "inv_value.let_matricula");
-		if (!validatePeriod(object.getPeriodo()))
-			errors.rejectValue("periodo", "inv_form.periodo");
 		for (String s : object.getNulledFields())
 			errors.rejectValue(s, "not_null");
 	}
 	
-	private boolean validatePeriod(String period) {
-		if (period == null)
+	private boolean validateDates(Integer fecPresc, Integer fecDisp) {
+		if (fecPresc == null || fecDisp == null)
 			return false;
-		if (period.length() != 8)
-			return false;
-		int month = Integer.valueOf(period.substring(4,6));
-		char periodType = period.charAt(6);
-		int periodNumber = Integer.valueOf(period.substring(7));
-		if (periodType == 'M' && periodNumber != 1)
-			return false;
-		if (periodType == 'Q' && !(periodNumber == 1 || periodNumber == 2))
-			return false;
-		if (periodType != 'Q' && periodType != 'M')
-			return false;
-		if (month > 12 || month < 1)
+		if (fecDisp < fecPresc)
 			return false;
 		return true;
 	}
+	
+//	private boolean validatePeriod(String period) {
+//		if (period == null)
+//			return false;
+//		if (period.length() != 8)
+//			return false;
+//		int month = Integer.valueOf(period.substring(4,6));
+//		char periodType = period.charAt(6);
+//		int periodNumber = Integer.valueOf(period.substring(7));
+//		if (periodType == 'M' && periodNumber != 1)
+//			return false;
+//		if (periodType == 'Q' && !(periodNumber == 1 || periodNumber == 2))
+//			return false;
+//		if (periodType != 'Q' && periodType != 'M')
+//			return false;
+//		if (month > 12 || month < 1)
+//			return false;
+//		return true;
+//	}
 	
 	private boolean validateDate(Integer date) {
 		if (date == null)

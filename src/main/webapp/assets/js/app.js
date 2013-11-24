@@ -2,11 +2,18 @@ var loadInfo = function(barras, nro) {
 	if (!barras)
 		return;
 	var fecha = parseInt($("#fec_disp").val());
+	if (!fecha) {
+		alert("Fecha invalida.");
+		return;
+	}
 	var settings = {
 		complete : function(response) {
 			var json = response.responseJSON;
 			if (!json) {
-				alert("Numero de troquel invalido.");
+				alert("Troquel no encontrado, intente nuevamente.");
+				return;
+			} else if (!json.price) {
+				alert("Fecha invalida.");
 				return;
 			}
 			populate(json, nro);
@@ -16,7 +23,7 @@ var loadInfo = function(barras, nro) {
 			"fecha" : fecha
 		}
 	};
-	jQuery.ajax("alfabeta", settings);
+	jQuery.ajax("/prescriptions/alfabeta", settings);
 };
 
 var getCarat = function() {
@@ -46,11 +53,21 @@ var getCarat = function() {
 				"ser_carat" : ser_carat
 			}
 	}
-	debugger;
 	jQuery.ajax("getCaratula", settings);
 }
 
 var populate = function(result, nro) {
+	for (var i = 0 ; i < 3 ; i++) {
+		if (i != nro) {
+			if ($("#cod_barra_" + i).val() == result.alfabeta.barras) {
+				$("#can_presc_" + i).val(parseInt($("#can_presc_" + i).val()) + parseInt(1));
+				$("#can_disp_" + i).val(parseInt($("#can_disp_" + i).val()) + parseInt(1));
+				$("#can_real_" + i).val(parseInt($("#can_real_" + i).val()) + parseInt(1));
+				$("#cod_barra_" + nro).val("");
+				return;
+			}
+		}
+	}
 	$("#pcio_real_" + nro).val(result.price.precio);
 	$("#troquel_" + nro).val(result.alfabeta.troquel);
 	$("#laboratorio_" + nro).val(result.alfabeta.codLab);

@@ -6,7 +6,7 @@ import prescriptions.domain.entity.Prescription;
 
 public interface PrescriptionRepo {
 
-	public void save(Prescription prescription);
+	public boolean save(Prescription prescription);
 	
 	public Prescription get(Serializable id);
 	

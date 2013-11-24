@@ -162,6 +162,51 @@ form input {
 	margin-left: 140px;
 }
 
+/* -------------------------- troquelN1 -------------------------- */
+
+#troquelN4 {
+	width: 360px;
+}
+
+#troquelN4 > .panel-field > span{
+	width: 140px;
+	color: #333;
+}
+
+#troquelN4 > .tabbed {
+	margin-left: 140px;
+}
+
+/* -------------------------- troquelN1 -------------------------- */
+
+#troquelN5 {
+	width: 360px;
+}
+
+#troquelN5 > .panel-field > span{
+	width: 140px;
+	color: #333;
+}
+
+#troquelN5 > .tabbed {
+	margin-left: 140px;
+}
+
+/* -------------------------- troquelN1 -------------------------- */
+
+#troquelN6 {
+	width: 360px;
+}
+
+#troquelN6 > .panel-field > span{
+	width: 140px;
+	color: #333;
+}
+
+#troquelN6 > .tabbed {
+	margin-left: 140px;
+}
+
 form input, form textarea {
 	display: inline-block;
 	padding: 2px;
