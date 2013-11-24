@@ -19,9 +19,9 @@
 			<%@ include file="partials/troquel1.jsp" %>
 			<%@ include file="partials/troquel2.jsp" %>
 			<%@ include file="partials/troquel3.jsp" %>
-			<%@ include file="partials/troquel4.jsp" %>
-			<%@ include file="partials/troquel5.jsp" %>
-			<%@ include file="partials/troquel6.jsp" %>
+<%-- 			<%@ include file="partials/troquel4.jsp" %> --%>
+<%-- 			<%@ include file="partials/troquel5.jsp" %> --%>
+<%-- 			<%@ include file="partials/troquel6.jsp" %> --%>
 		</div>
 		
 		<input type="submit" value="Cargar Receta" class="big-btn" />
