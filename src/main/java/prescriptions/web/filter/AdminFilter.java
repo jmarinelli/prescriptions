@@ -36,7 +36,7 @@ public class AdminFilter extends OncePerRequestFilter {
 			if (user.isAdmin())
 				filterChain.doFilter(request, response);
 		} else {
-			response.sendRedirect("/prescriptions/login");
+			response.sendRedirect("/prescriptions/bin/home/login");
 		}		
 	}
 

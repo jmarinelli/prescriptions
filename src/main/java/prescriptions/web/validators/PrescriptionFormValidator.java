@@ -25,8 +25,19 @@ public class PrescriptionFormValidator implements Validator{
 			errors.rejectValue("fec_disp", "inv_value.fecha_disp");
 		if (!object.getLet_matricula().toUpperCase().equals("N") && !object.getLet_matricula().toUpperCase().equals("P") && !object.getLet_matricula().toUpperCase().equals("X"))
 			errors.rejectValue("let_matricula", "inv_value.let_matricula");
+//		if (!validateAjuste(object))
+//			errors.rejectValue("ajuste", "ajuste.invalid");
 		for (String s : object.getNulledFields())
 			errors.rejectValue(s, "not_null");
+	}
+	
+	private boolean validateAjuste(PrescriptionForm form) {
+		if ((form.getPcio_real_1() != form.getPciorp_1() ||
+				form.getPcio_real_2() != form.getPciorp_2() ||
+				form.getPcio_real_3() != form.getPciorp_3()) &&
+				form.getAjuste() != 0)
+			return false;
+		return true;
 	}
 	
 	private boolean validateDates(Integer fecPresc, Integer fecDisp) {

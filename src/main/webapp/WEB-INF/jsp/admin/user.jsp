@@ -18,7 +18,7 @@
 		</div>
 		<div>
 			<c:forEach var="prescription" items="${user.prescriptions}">
-				<div><a href="/prescriptions/edit/${prescription.id}">${prescription.serReceta}, ${prescription.numReceta}</a></div>
+				<div><a href="/prescriptions/bin/edit/${prescription.id}">${prescription.serReceta}, ${prescription.numReceta}</a></div>
 			</c:forEach>
 		</div>
 	</body>

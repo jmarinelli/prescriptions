@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import prescriptions.domain.CorruptedDataException;
 import prescriptions.domain.entity.Alfabeta;
 import prescriptions.domain.entity.Caratula;
 import prescriptions.domain.entity.Prescription;
@@ -34,7 +33,7 @@ import prescriptions.web.wrappers.AlfabetaWrapper;
 
 @Controller
 @SessionAttributes("userId")
-@RequestMapping("/")
+@RequestMapping("/home")
 public class HomeController {
 
 	private RoleRepo roleRepo;
@@ -75,9 +74,19 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "add", method = RequestMethod.GET)
-	public ModelAndView add() {
+	public ModelAndView add(
+			@RequestParam(required = false, value = "status") String status,
+			@RequestParam(required = false, value = "cod_carat") String cod_carat,
+			@RequestParam(required = false, value = "ser_carat") String ser_carat,
+			@RequestParam(required = false, value = "fec_prescr") String fec_prescr,
+			@RequestParam(required = false, value = "let_matricula") String let_matricula) {
 		ModelAndView mav = new ModelAndView("home/add");
 		mav.addObject("prescriptionForm", new PrescriptionForm());
+		mav.addObject("status", "'" + (status != null ? status : "none") + "'");
+		mav.addObject("cod_carat", "'" + (cod_carat != null ? cod_carat : "") + "'");
+		mav.addObject("ser_carat", "'" + (ser_carat != null ? ser_carat : "") + "'");
+		mav.addObject("fec_prescr", "'" + (fec_prescr != null ? fec_prescr : "") + "'");
+		mav.addObject("let_matricula", "'" + (let_matricula != null ? let_matricula : "") + "'");
 		return mav;
 	}
 	
@@ -97,6 +106,9 @@ public class HomeController {
 	@ResponseBody
 	public AlfabetaWrapper alfabeta(@RequestParam("barras") String barras, @RequestParam("fecha") Integer fecha) throws ParseException {
 		Alfabeta alfabeta = alfabetaRepo.getByBarras(barras);
+		if (alfabeta == null) {
+			alfabeta = alfabetaRepo.getByTroquel(barras);
+		}
 		if (alfabeta != null) { 
 			List<Price> price = priceRepo.getByRegistro(alfabeta.getRegistro());
 			return new AlfabetaWrapper(price, alfabeta, fecha);
@@ -105,38 +117,51 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public ModelAndView list(HttpSession session) {
+	public ModelAndView list(@RequestParam(required = false, value = "status") String status, HttpSession session) {
 		Integer userId = (Integer) session.getAttribute("userId");
 		Role person = roleRepo.get(userId);
 		ModelAndView mav = new ModelAndView("home/list");
 		mav.addObject("user", person);
+		mav.addObject("status", status);
 		return mav;
 	}
 	
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public ModelAndView add(PrescriptionForm prescriptionForm, Errors errors, @ModelAttribute("userId") Integer userId) {
+	public String add(PrescriptionForm prescriptionForm, Errors errors, @ModelAttribute("userId") Integer userId) {
 		ModelAndView mav = new ModelAndView("home/add");
 		Role user = roleRepo.get(userId);
 		this.prescriptionFormValidator.validate(prescriptionForm, errors);
 		if (errors.hasErrors()) {
 			mav.addObject("errors", errors);
-			return mav;
+			return null;
 		}
-		try {
+		if (prescriptionForm.getPrescription() == null) {
 			Prescription prescription = prescriptionForm.build(this.prescriptionRepo);
 			prescription.setCreator(user);
 			if (prescriptionRepo.save(prescription)) {
 				Caratula carat = this.getCaratula(prescription.getSer_carat(), prescription.getCod_carat());
 				carat.cargar();
 				mav.addObject("message", "'Receta cargada'");
+				String url = "redirect:add?status=success";
+				if (prescriptionForm.isFix_cod_carat())
+					url += "&cod_carat=" + prescriptionForm.getCod_carat();
+				if (prescriptionForm.isFix_ser_carat())
+					url += "&ser_carat=" + prescriptionForm.getSer_carat();
+				if (prescriptionForm.isFix_fec_prescr())
+					url += "&fec_prescr=" + prescriptionForm.getFec_prescr();
+				if (prescriptionForm.isFix_let_matricula())
+					url += "&let_matricula=" + prescriptionForm.getLet_matricula();
+				return url;
 			} else {
-				mav.addObject("message", "'Receta duplicada'");
+				errors.rejectValue("duplicated", "duplicated");
+				mav.addObject("errors", errors);
+				return null;
 			}
-		} catch (CorruptedDataException e) {
-			errors.rejectValue("username", "corrupt");
-			return null;
-		}
-		return mav;
+		} else {
+			prescriptionForm.update();
+			mav.addObject("message", "'Receta actualizada");
+			return "redirect:list?status=success";
+		}	
 	}
 	
 	@RequestMapping(value = "login", method = RequestMethod.POST)
@@ -144,7 +169,7 @@ public class HomeController {
 		Role user = roleRepo.getByUsername(username);
 		if (user != null && user.getPassword().equals(password)) {
 			session.setAttribute("userId", user.getId());
-			return "redirect:/prescriptions/home";
+			return "redirect:home";
 		}
 		return null;
 	}

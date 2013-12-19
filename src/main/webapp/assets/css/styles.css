@@ -80,6 +80,15 @@ BODY {
 	padding: 2px;
 }
 
+.duplicated-error > span {
+	position: absolute;
+	color: red;
+	width: 100%;
+	text-align: center;
+	font-size: 30px;
+	top: -45px;
+}
+
 /* input.error { */
 /* 	background-color: #FFC5C5; */
 /* 	border-color: red; */

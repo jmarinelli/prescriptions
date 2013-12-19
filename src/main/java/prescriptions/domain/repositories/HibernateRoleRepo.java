@@ -27,7 +27,11 @@ public class HibernateRoleRepo extends AbstractHibernateRepo implements RoleRepo
 	}
 
 	public List<Role> findAll() {
-		return super.find("from Role r where r.roleId = 0");
+		return super.find("from Role");
+	}
+
+	public Serializable save(Role role) {
+		return super.save(role);
 	}
 
 }

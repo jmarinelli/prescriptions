@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import prescriptions.domain.entity.Role;
@@ -34,6 +35,17 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView("home/list");
 		mav.addObject("user", role);
 		return mav;
+	}
+	
+	@RequestMapping(value = "create-user", method = RequestMethod.GET)
+	public ModelAndView create() {
+		return new ModelAndView("admin/create-user");
+	}
+	
+	@RequestMapping(value = "create-user", method = RequestMethod.POST)
+	public String create(@RequestParam String username, @RequestParam String password) {
+		roleRepo.save(new Role(username, password));
+		return "redirect:";
 	}
 
 }

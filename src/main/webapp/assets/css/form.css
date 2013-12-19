@@ -239,3 +239,19 @@ form button {
     width: auto!important;
     color: blue!important;	
 }
+
+#clean-fields {
+	position: relative;
+	top: -75px;
+}
+
+.fix-field {
+	position: absolute;
+	float: left;
+	margin-left: 225px;
+	margin-top: 5px;
+}
+
+.fix-checkbox {
+	width: auto;
+}

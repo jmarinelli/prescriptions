@@ -23,7 +23,7 @@ var loadInfo = function(barras, nro) {
 			"fecha" : fecha
 		}
 	};
-	jQuery.ajax("/prescriptions/alfabeta", settings);
+	jQuery.ajax("/prescriptions/bin/home/alfabeta", settings);
 };
 
 var getCarat = function() {
@@ -53,24 +53,32 @@ var getCarat = function() {
 				"ser_carat" : ser_carat
 			}
 	}
-	jQuery.ajax("getCaratula", settings);
+	jQuery.ajax("/prescriptions/bin/home/getCaratula", settings);
 }
 
 var populate = function(result, nro) {
 	for (var i = 0 ; i < 3 ; i++) {
 		if (i != nro) {
-			if ($("#cod_barra_" + i).val() == result.alfabeta.barras) {
+			if ($("#cod_barra_" + i).val() == result.alfabeta.barras || $("#cod_barra_" + i).val() == result.alfabeta.troquel) {
 				$("#can_presc_" + i).val(parseInt($("#can_presc_" + i).val()) + parseInt(1));
 				$("#can_disp_" + i).val(parseInt($("#can_disp_" + i).val()) + parseInt(1));
 				$("#can_real_" + i).val(parseInt($("#can_real_" + i).val()) + parseInt(1));
+				$("#pciorp_" + i).val(parseInt($("#pciorp_" + i).val()) + result.price.precio);
 				$("#cod_barra_" + nro).val("");
 				return;
 			}
 		}
+	}
+	if (result.price.precio == $("#tot_rec").val()) {
+		$("#can_presc_" + nro).val(1);
+		$("#can_disp_" + nro).val(1);
+		$("#can_real_" + nro).val(1);
+		$("#pciorp_" + nro).val(result.price.precio);
 	}
 	$("#pcio_real_" + nro).val(result.price.precio);
 	$("#troquel_" + nro).val(result.alfabeta.troquel);
 	$("#laboratorio_" + nro).val(result.alfabeta.codLab);
 	$("#alfabeta_" + nro).val(result.alfabeta.registro);
 	$("#alfabetaName" + nro).html(result.alfabeta.nombre);
+	calculateAjuste();
 }

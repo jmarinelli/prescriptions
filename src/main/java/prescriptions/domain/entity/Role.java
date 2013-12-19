@@ -23,6 +23,7 @@ public class Role extends PersistentEntity {
 	public Role(String username, String password) {
 		this.username = username;
 		this.password = password;
+		this.roleId = 0;
 	}
 
 	public String getUsername() {

@@ -13,4 +13,6 @@ public interface RoleRepo {
 	
 	public List<Role> findAll();
 	
+	public Serializable save(Role role);
+	
 }

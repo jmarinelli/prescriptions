@@ -12,7 +12,7 @@
 			<div>
 				<div>
 					<h3>Nombre:</h3>
-					<h3><a href="/prescriptions/admin/user/${user.id}">${user.username}</a></h3>
+					<h3><a href="/prescriptions/bin/admin/user/${user.id}">${user.username}</a></h3>
 				</div>
 				<div>
 					<h3>Cantidad cargada: ${user.presQty}</h3>

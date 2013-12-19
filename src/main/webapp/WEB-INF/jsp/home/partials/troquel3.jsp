@@ -38,7 +38,7 @@
 	</div>
 	<div class="panel-field">
 		<span>Precio Real</span>
-		<form:input path="pcio_real_3" type="number" class="readonly"/>
+		<form:input path="pcio_real_3" type="number" readonly="true" class="readonly"/>
 		<div class="error">
 			<form:errors path="pcio_real_3" />
 		</div>

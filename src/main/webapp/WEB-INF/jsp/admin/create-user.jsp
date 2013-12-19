@@ -7,8 +7,9 @@
 	<body>
 		<%@ include file="../partials/header.jsp" %>
 		<div class="login-form-container">
+		<h2>Crear Usuario:</h2>
 		
-			<form method="post" action="/prescriptions/bin/home/login">
+			<form method="post" action="/prescriptions/bin/admin/create-user">
 				<div>
 					<label>
 						<span>Usuario</span>
@@ -22,7 +23,7 @@
 					</label>
 				</div>
 				<div>
-					<input type="submit" value="Iniciar sesion" />
+					<input type="submit" value="Crear Usuario" />
 				</div>
 			</form>
 			

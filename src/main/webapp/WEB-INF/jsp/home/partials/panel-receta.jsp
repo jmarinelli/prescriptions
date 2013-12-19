@@ -32,6 +32,10 @@
 		<div class="panel-field">
 			<span>Fecha Prescripcion</span>
 			<form:input path="fec_prescr" type="number" />
+			<div class="fix-field">
+				<form:input path="fix_fec_prescr" type="checkbox" class="fix-checkbox"/>
+				<span>Fijar</span>
+			</div>
 			<div class="error">
 				<form:errors path="fec_prescr" max="21200000" />
 			</div>
@@ -46,6 +50,10 @@
 		<div class="panel-field">
 			<span>Letra Matricula</span>
 			<form:input path="let_matricula" type="text" value="" maxlength="1" />
+			<div class="fix-field">
+				<form:input path="fix_let_matricula" type="checkbox" class="fix-checkbox"/>
+				<span>Fijar</span>
+			</div>
 			<div class="error">
 				<form:errors path="let_matricula" />
 			</div>

@@ -4,6 +4,12 @@
 <html>
 	<head>
 		<%@ include file="../partials/commons-head.jsp" %>
+		<script type="text/javascript">
+			(function(){
+				if (${status} == "success")
+					alert("Receta actualizada");
+			})();
+		</script>
 	</head>
 	<body class="prescription-page-ctn">
 		<%@ include file="../partials/header.jsp" %>
@@ -18,7 +24,7 @@
 		</div>
 		<div>
 			<c:forEach var="prescription" items="${user.prescriptions}">
-				<div><a href="/prescriptions/edit/${prescription.id}">Codigo caratula: ${prescription.cod_carat}, Orden: ${prescription.orden}</a></div>
+				<div><a href="/prescriptions/bin/home/edit/${prescription.id}">Codigo caratula: ${prescription.cod_carat}, Orden: ${prescription.orden}</a></div>
 			</c:forEach>
 		</div>
 	</body>

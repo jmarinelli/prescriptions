@@ -3,13 +3,18 @@ package prescriptions.web.validation;
 import java.util.LinkedList;
 import java.util.List;
 
-import prescriptions.domain.CorruptedDataException;
 import prescriptions.domain.entity.Prescription;
 import prescriptions.domain.repositories.PrescriptionRepo;
 
 public class PrescriptionForm {
 	
-	private Integer prescription;
+	private Prescription prescription;
+	
+	private boolean duplicated;
+	private boolean fix_ser_carat = true;
+	private boolean fix_cod_carat = true;
+	private boolean fix_let_matricula = true;
+	private boolean fix_fec_prescr = true;
 	
 	private Integer pago;
 	
@@ -92,7 +97,7 @@ public class PrescriptionForm {
 	
 	public PrescriptionForm(Prescription p) {
 		super();
-		this.prescription = p.getId();
+		this.prescription = p;
 		this.pago = p.getPago();
 		this.ser_carat = p.getSer_carat();
 		this.cod_carat = p.getCod_carat();
@@ -205,11 +210,11 @@ public class PrescriptionForm {
 		return nulled;
 	}
 	
-	public Integer getPrescription() {
+	public Prescription getPrescription() {
 		return prescription;
 	}
 
-	public void setPrescription(Integer prescription) {
+	public void setPrescription(Prescription prescription) {
 		this.prescription = prescription;
 	}
 
@@ -673,25 +678,60 @@ public class PrescriptionForm {
 		this.alfabeta_3 = alfabeta_3;
 	}
 
-	public Prescription build(PrescriptionRepo prescriptionRepo) throws CorruptedDataException {
-		if (this.prescription == null)
-			return new Prescription(pago, ser_carat, cod_carat, expediente,
-					cod_obsoc, cod_plan, periodo, cod_farma, caja, ser_receta,
-					num_receta, orden, fec_prescr, fec_disp, let_matricula,
-					num_matricula, tot_rec, tot_afil, tot_ac, ajuste, ajuste_parcial, rechazos,
-					posee_ticket, posee_marca_comercial, num_afi, parentesco,
-					cod_barra_1, can_presc_1, can_disp_1, can_real_1, pciorp_1,
-					pcio_real_1, troquel_1, laboratorio_1, alfabeta_1, cod_barra_2, can_presc_2, can_disp_2, can_real_2, pciorp_2,
-					pcio_real_2, troquel_2, laboratorio_2, alfabeta_2, cod_barra_3, can_presc_3, can_disp_3, can_real_3, pciorp_3,
-					pcio_real_3, troquel_3, laboratorio_3, alfabeta_3);
-		else {
-			Prescription p = prescriptionRepo.get(this.prescription);
-			update(p);
-			return p;
-		}
+	public boolean isDuplicated() {
+		return duplicated;
+	}
+
+	public void setDuplicated(boolean duplicated) {
+		this.duplicated = duplicated;
+	}
+
+	public boolean isFix_ser_carat() {
+		return fix_ser_carat;
+	}
+
+	public void setFix_ser_carat(boolean fix_ser_carat) {
+		this.fix_ser_carat = fix_ser_carat;
+	}
+
+	public boolean isFix_cod_carat() {
+		return fix_cod_carat;
+	}
+
+	public void setFix_cod_carat(boolean fix_cod_carat) {
+		this.fix_cod_carat = fix_cod_carat;
+	}
+
+	public boolean isFix_let_matricula() {
+		return fix_let_matricula;
+	}
+
+	public void setFix_let_matricula(boolean fix_let_matricula) {
+		this.fix_let_matricula = fix_let_matricula;
+	}
+
+	public boolean isFix_fec_prescr() {
+		return fix_fec_prescr;
+	}
+
+	public void setFix_fec_prescr(boolean fix_fec_prescr) {
+		this.fix_fec_prescr = fix_fec_prescr;
+	}
+
+	public Prescription build(PrescriptionRepo prescriptionRepo) {
+		return new Prescription(pago, ser_carat, cod_carat, expediente,
+				cod_obsoc, cod_plan, periodo, cod_farma, caja, ser_receta,
+				num_receta, orden, fec_prescr, fec_disp, let_matricula,
+				num_matricula, tot_rec, tot_afil, tot_ac, ajuste, ajuste_parcial, rechazos,
+				posee_ticket, posee_marca_comercial, num_afi, parentesco,
+				cod_barra_1, can_presc_1, can_disp_1, can_real_1, pciorp_1,
+				pcio_real_1, troquel_1, laboratorio_1, alfabeta_1, cod_barra_2, can_presc_2, can_disp_2, can_real_2, pciorp_2,
+				pcio_real_2, troquel_2, laboratorio_2, alfabeta_2, cod_barra_3, can_presc_3, can_disp_3, can_real_3, pciorp_3,
+				pcio_real_3, troquel_3, laboratorio_3, alfabeta_3);
+	
 	}
 	
-	public void update(Prescription prescription) {
+	public void update() {
 		prescription.setPago(pago);
 		prescription.setSer_carat(ser_carat);
 		prescription.setCod_carat(cod_carat);
@@ -711,6 +751,9 @@ public class PrescriptionForm {
 		prescription.setCan_presc_1(can_presc_1);
 		prescription.setCan_disp_1(can_disp_1);
 		prescription.setCan_real_1(can_real_1);
+		prescription.setCod_barra_1(cod_barra_1);
+		prescription.setPcio_real_1(pcio_real_1);
+		prescription.setPciorp_1(pciorp_1);
 		prescription.setTroquel_1(troquel_1);
 		prescription.setLaboratorio_1(laboratorio_1);
 		prescription.setAlfabeta_1(alfabeta_1);
@@ -720,12 +763,18 @@ public class PrescriptionForm {
 		prescription.setTroquel_2(troquel_2);
 		prescription.setLaboratorio_2(laboratorio_2);
 		prescription.setAlfabeta_2(alfabeta_2);
+		prescription.setCod_barra_2(cod_barra_2);
+		prescription.setPcio_real_2(pcio_real_2);
+		prescription.setPciorp_2(pciorp_2);
 		prescription.setCan_presc_3(can_presc_3);
 		prescription.setCan_disp_3(can_disp_3);
 		prescription.setCan_real_3(can_real_3);
 		prescription.setTroquel_3(troquel_3);
 		prescription.setLaboratorio_3(laboratorio_3);
 		prescription.setAlfabeta_3(alfabeta_3);
+		prescription.setCod_barra_3(cod_barra_3);
+		prescription.setPcio_real_3(pcio_real_3);
+		prescription.setPciorp_3(pciorp_3);
 		prescription.setLet_matricula(let_matricula);
 		prescription.setNum_matricula(num_matricula);
 		prescription.setAjuste(ajuste);
