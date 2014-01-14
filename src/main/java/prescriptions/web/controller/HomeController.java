@@ -79,6 +79,7 @@ public class HomeController {
 			@RequestParam(required = false, value = "cod_carat") String cod_carat,
 			@RequestParam(required = false, value = "ser_carat") String ser_carat,
 			@RequestParam(required = false, value = "fec_prescr") String fec_prescr,
+			@RequestParam(required = false, value = "fec_disp") String fec_disp,
 			@RequestParam(required = false, value = "let_matricula") String let_matricula) {
 		ModelAndView mav = new ModelAndView("home/add");
 		mav.addObject("prescriptionForm", new PrescriptionForm());
@@ -86,6 +87,7 @@ public class HomeController {
 		mav.addObject("cod_carat", "'" + (cod_carat != null ? cod_carat : "") + "'");
 		mav.addObject("ser_carat", "'" + (ser_carat != null ? ser_carat : "") + "'");
 		mav.addObject("fec_prescr", "'" + (fec_prescr != null ? fec_prescr : "") + "'");
+		mav.addObject("fec_disp", "'" + (fec_disp != null ? fec_disp : "") + "'");
 		mav.addObject("let_matricula", "'" + (let_matricula != null ? let_matricula : "") + "'");
 		return mav;
 	}
@@ -149,8 +151,11 @@ public class HomeController {
 					url += "&ser_carat=" + prescriptionForm.getSer_carat();
 				if (prescriptionForm.isFix_fec_prescr())
 					url += "&fec_prescr=" + prescriptionForm.getFec_prescr();
+				if (prescriptionForm.isFix_fec_disp())
+					url += "&fec_disp=" + prescriptionForm.getFec_disp();
 				if (prescriptionForm.isFix_let_matricula())
 					url += "&let_matricula=" + prescriptionForm.getLet_matricula();
+				
 				return url;
 			} else {
 				errors.rejectValue("duplicated", "duplicated");

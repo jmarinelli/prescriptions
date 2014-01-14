@@ -11,11 +11,12 @@ public class PrescriptionForm {
 	private Prescription prescription;
 	
 	private boolean duplicated;
-	private boolean fix_ser_carat = true;
-	private boolean fix_cod_carat = true;
-	private boolean fix_let_matricula = true;
-	private boolean fix_fec_prescr = true;
-	
+	private boolean fix_ser_carat;
+	private boolean fix_cod_carat;
+	private boolean fix_let_matricula;
+	private boolean fix_fec_prescr;
+	private boolean fix_fec_disp;
+
 	private Integer pago;
 	
 	// Caratula
@@ -181,9 +182,11 @@ public class PrescriptionForm {
 			nulled.add("ser_receta");
 //		if (this.num_receta == null)
 //			nulled.add("num_receta");
-		if (this.num_afi == null)
+		if (this.num_afi == null && !this.rechazos.equals("05")
+				&& !this.rechazos.equals("5"))
 			nulled.add("num_afi");
-		if (this.parentesco == null)
+		if (this.parentesco == null && !this.rechazos.equals("05")
+				&& !this.rechazos.equals("5"))
 			nulled.add("parentesco");
 		if (this.cod_barra_1 == null)
 			nulled.add("cod_barra_1");
@@ -201,8 +204,8 @@ public class PrescriptionForm {
 			nulled.add("num_matricula");
 		if (this.ajuste == null)
 			nulled.add("ajuste");
-		if (this.rechazos == null)
-			nulled.add("rechazos");
+//		if (this.rechazos == null)
+//			nulled.add("rechazos");
 		if (this.posee_ticket == null)
 			nulled.add("posee_ticket");
 		if (this.posee_marca_comercial == null)
@@ -716,6 +719,14 @@ public class PrescriptionForm {
 
 	public void setFix_fec_prescr(boolean fix_fec_prescr) {
 		this.fix_fec_prescr = fix_fec_prescr;
+	}
+	
+	public boolean isFix_fec_disp() {
+		return fix_fec_disp;
+	}
+
+	public void setFix_fec_disp(boolean fix_fec_disp) {
+		this.fix_fec_disp = fix_fec_disp;
 	}
 
 	public Prescription build(PrescriptionRepo prescriptionRepo) {

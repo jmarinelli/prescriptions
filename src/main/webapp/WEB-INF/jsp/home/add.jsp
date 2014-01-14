@@ -27,6 +27,10 @@
 						$("#fec_prescr").val(${fec_prescr});
 						$("#fix_fec_prescr").attr("checked", true);
 					}
+					if (${fec_disp} != '') {
+						$("#fec_disp").val(${fec_disp});
+						$("#fix_fec_disp").attr("checked", true);
+					}
 					if (${let_matricula} != '') {
 						$("#let_matricula").val(${let_matricula});
 						$("#fix_let_matricula").attr("checked", true);
@@ -48,8 +52,8 @@
 		
 		<div class="caratula-afiliado">
 			<%@ include file="partials/panel-caratula.jsp" %>
-			<%@ include file="partials/panel-receta.jsp" %>
 			<%@ include file="partials/panel-afiliado.jsp" %>
+			<%@ include file="partials/panel-receta.jsp" %>
 			<%@ include file="partials/troquel1.jsp" %>
 			<%@ include file="partials/troquel2.jsp" %>
 			<%@ include file="partials/troquel3.jsp" %>
