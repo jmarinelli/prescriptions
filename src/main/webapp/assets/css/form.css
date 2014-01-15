@@ -252,6 +252,13 @@ form button {
 	margin-top: 5px;
 }
 
+.fix-field-span {
+	position: absolute;
+	float: left;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+
 .fix-checkbox {
 	width: auto;
 }

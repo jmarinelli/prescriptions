@@ -35,6 +35,10 @@
 						$("#let_matricula").val(${let_matricula});
 						$("#fix_let_matricula").attr("checked", true);
 					}
+					if (${convenio} != '') {
+						$("#convenio_select").val(${convenio});
+						setConvenio(${convenio});
+					}
 				});
 			})();
 		</script>
@@ -49,6 +53,18 @@
 				<form:errors path="duplicated" />
 			</div>
 		</div>
+		
+		
+		<form:select id="convenio_select" onchange="convenioOnChange()" path="convenio">
+			<form:option value="NONE"> --SELECT--</form:option>
+			<c:forEach var="convenio" items="${convenios}">
+				<form:option value="${ convenio.name }">${ convenio.name }</form:option>
+			</c:forEach>
+		</form:select>
+		<span class="fix-field-span">
+			<form:input path="fix_convenio" type="checkbox" class="fix-checkbox"/>
+			<span>Fijar</span>
+		</span>
 		
 		<div class="caratula-afiliado">
 			<%@ include file="partials/panel-caratula.jsp" %>

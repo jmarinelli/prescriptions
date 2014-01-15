@@ -19,11 +19,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import prescriptions.domain.entity.Alfabeta;
 import prescriptions.domain.entity.Caratula;
+import prescriptions.domain.entity.Convenio;
 import prescriptions.domain.entity.Prescription;
 import prescriptions.domain.entity.Price;
 import prescriptions.domain.entity.Role;
 import prescriptions.domain.repositories.AlfabetaRepo;
 import prescriptions.domain.repositories.CaratulaRepo;
+import prescriptions.domain.repositories.ConvenioRepo;
 import prescriptions.domain.repositories.PrescriptionRepo;
 import prescriptions.domain.repositories.PriceRepo;
 import prescriptions.domain.repositories.RoleRepo;
@@ -41,17 +43,19 @@ public class HomeController {
 	private PriceRepo priceRepo;
 	private AlfabetaRepo alfabetaRepo;
 	private CaratulaRepo caratulaRepo;
+	private ConvenioRepo convenioRepo;
 	
 	private PrescriptionFormValidator prescriptionFormValidator;
 	
 	@Autowired
 	public HomeController(RoleRepo roleRepo, PrescriptionRepo prescriptionRepo, AlfabetaRepo alfabetaRepo, 
-						PriceRepo priceRepo, PrescriptionFormValidator prescriptionFormValidator, CaratulaRepo caratulaRepo) {
+						PriceRepo priceRepo, PrescriptionFormValidator prescriptionFormValidator, CaratulaRepo caratulaRepo, ConvenioRepo convenioRepo) {
 		this.roleRepo = roleRepo;
 		this.prescriptionRepo = prescriptionRepo;
 		this.alfabetaRepo = alfabetaRepo;
 		this.priceRepo = priceRepo;
 		this.caratulaRepo = caratulaRepo;
+		this.convenioRepo = convenioRepo;
 		this.prescriptionFormValidator = prescriptionFormValidator;
 	}
 	
@@ -80,7 +84,8 @@ public class HomeController {
 			@RequestParam(required = false, value = "ser_carat") String ser_carat,
 			@RequestParam(required = false, value = "fec_prescr") String fec_prescr,
 			@RequestParam(required = false, value = "fec_disp") String fec_disp,
-			@RequestParam(required = false, value = "let_matricula") String let_matricula) {
+			@RequestParam(required = false, value = "let_matricula") String let_matricula,
+			@RequestParam(required = false, value = "convenio") String convenio) {
 		ModelAndView mav = new ModelAndView("home/add");
 		mav.addObject("prescriptionForm", new PrescriptionForm());
 		mav.addObject("status", "'" + (status != null ? status : "none") + "'");
@@ -89,6 +94,8 @@ public class HomeController {
 		mav.addObject("fec_prescr", "'" + (fec_prescr != null ? fec_prescr : "") + "'");
 		mav.addObject("fec_disp", "'" + (fec_disp != null ? fec_disp : "") + "'");
 		mav.addObject("let_matricula", "'" + (let_matricula != null ? let_matricula : "") + "'");
+		mav.addObject("convenio", "'" + (convenio != null ? convenio : "") + "'");
+		mav.addObject("convenios", convenioRepo.getAll());
 		return mav;
 	}
 	
@@ -155,7 +162,8 @@ public class HomeController {
 					url += "&fec_disp=" + prescriptionForm.getFec_disp();
 				if (prescriptionForm.isFix_let_matricula())
 					url += "&let_matricula=" + prescriptionForm.getLet_matricula();
-				
+				if (prescriptionForm.isFix_convenio())
+					url += "&convenio=" + prescriptionForm.getConvenio();
 				return url;
 			} else {
 				errors.rejectValue("duplicated", "duplicated");
@@ -188,6 +196,14 @@ public class HomeController {
 			caratulaRepo.save(carat);
 		}
 		return carat;
+	}
+	
+	@RequestMapping(value = "convenio", method = RequestMethod.GET)
+	@ResponseBody
+	public Convenio getConvenio(@RequestParam String name) {
+		if (name == null)
+			return null;
+		return convenioRepo.get(name);
 	}
 
 }

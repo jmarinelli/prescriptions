@@ -16,6 +16,9 @@ public class PrescriptionForm {
 	private boolean fix_let_matricula;
 	private boolean fix_fec_prescr;
 	private boolean fix_fec_disp;
+	private boolean fix_convenio;
+
+	private String convenio;
 
 	private Integer pago;
 	
@@ -727,6 +730,22 @@ public class PrescriptionForm {
 
 	public void setFix_fec_disp(boolean fix_fec_disp) {
 		this.fix_fec_disp = fix_fec_disp;
+	}
+	
+	public String getConvenio() {
+		return convenio;
+	}
+
+	public void setConvenio(String convenio) {
+		this.convenio = convenio;
+	}
+	
+	public boolean isFix_convenio() {
+		return fix_convenio;
+	}
+
+	public void setFix_convenio(boolean fix_convenio) {
+		this.fix_convenio = fix_convenio;
 	}
 
 	public Prescription build(PrescriptionRepo prescriptionRepo) {

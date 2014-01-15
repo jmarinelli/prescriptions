@@ -49,12 +49,12 @@ var getCarat = function() {
 				$("#canRec").html(json.can_rec);
 			},
 			data : {
-				"cod_carat" : cod_carat,
-				"ser_carat" : ser_carat
+				"ser_carat" : ser_carat,
+				"cod_carat" : cod_carat
 			}
-	}
+	};
 	jQuery.ajax("/prescriptions/bin/home/getCaratula", settings);
-}
+};
 
 var populate = function(result, nro) {
 	for (var i = 0 ; i < 3 ; i++) {
@@ -81,4 +81,4 @@ var populate = function(result, nro) {
 	$("#alfabeta_" + nro).val(result.alfabeta.registro);
 	$("#alfabetaName" + nro).html(result.alfabeta.nombre);
 	calculateAjuste();
-}
+};

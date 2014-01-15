@@ -4,13 +4,14 @@ var formEvents = function() {
 		if (e.charCode == 45){
 			$("#tot_ac").val(e.target.value);
 			$("#tot_afil").val(0);
+			$("#ajuste").focus();
 			return false;
 		}
 	});
 	$("#fec_prescr").keypress(function(e){
 		if (e.charCode == 45){
 			$("#fec_disp").val(e.target.value);
-			$("#let_matricula").focus();
+			$("#posee_marca_comercial").focus();
 			return false;
 		}
 	});
@@ -45,12 +46,13 @@ var formEvents = function() {
 		}
 	});
 	$("#let_matricula").keypress(function(e) {
-		debugger;
-		if (e.which == 47) {
+		var charCode = e.which || e.keyCode;
+		var charStr = String.fromCharCode(charCode);
+		if (charStr == "n" || charStr == "N") {
 			$("#let_matricula").val("N");
-		} else if (e.which == 42) {
+		} else if (charStr == "p" || charStr == "P") {
 			$("#let_matricula").val("P");
-		} else if (e.which == 46) {
+		} else if (charStr == "x" || charStr == "X") {
 			$("#let_matricula").val("X");
 		}
 		return false;
@@ -92,12 +94,7 @@ var formEvents = function() {
 		}
 	});
 	$("#clean-fields").click(function(e){
-		$("input[type='text'], input[type='number']").each(function() {
-			var readonly = $(this).attr("readonly");
-			if (!(readonly && readonly.toLowerCase() !== 'false')) {
-				$(this).val("");
-			}
-		});
+		cleanFields();
 	});
 	for (var i = 0 ; i < 3 ; i++) {
 		$("#pciorp_" + i).change(function(e){
@@ -107,6 +104,17 @@ var formEvents = function() {
 };
 
 var ctrlPressed = false;
+var convenio;
+var previousConvenio;
+
+var cleanFields = function() {
+	$("input[type='text'], input[type='number']").each(function() {
+		var readonly = $(this).attr("readonly");
+		if (!(readonly && readonly.toLowerCase() !== 'false')) {
+			$(this).val("");
+		}
+	});
+}
 
 var calculateAjuste = function() {
 	var ajuste = 0;
@@ -116,4 +124,57 @@ var calculateAjuste = function() {
 			ajuste += diff;
 	}
 	$("#ajuste").val(ajuste);
+};
+
+var convenioOnChange = function() {
+	var name = $("#convenio_select").val();
+	setConvenio(name);
+};
+
+var setConvenio = function(name) {
+	var settings = {
+		complete : function(response) {
+			if (!response)
+				return;
+			if (convenio)
+				undoConvenio();
+			convenio = response.responseJSON;
+			setFieldsByConvenio();
+		},
+		data : {
+			name : name
+		}
+	};
+	jQuery.ajax("/prescriptions/bin/home/convenio", settings);
+};
+
+var setFieldsByConvenio = function() {
+	var fields = Object.keys(convenio.options);
+
+	for (var i = 0; i < fields.length; i++) {
+		var defaults = convenio.options[fields[i]];
+		var field = $("#" + fields[i]);
+		field.val(defaults.defaultValue);
+		field.prop("readonly", !defaults.available);
+		if (!defaults.available) {
+			field.addClass("readonly");
+		} else {
+			field.removeClass("readonly");
+		}
+		if ((fields[i] == "cod_carat" && $("#ser_carat").val())
+				|| (fields[i] == "ser_carat" && $("#cod_carat").val())) {
+			getCarat();
+		}
+	}
+};
+
+var undoConvenio = function() {
+	var fields = Object.keys(convenio.options);
+	cleanFields();
+	for (var i = 0; i < fields.length; i++) {
+		var field = $("#" + fields[i]);
+		field.prop("readonly", false);
+		field.removeClass("readonly");
+	}
+	cleanFields();
 };
