@@ -87,14 +87,38 @@ public class HomeController {
 			@RequestParam(required = false, value = "let_matricula") String let_matricula,
 			@RequestParam(required = false, value = "convenio") String convenio) {
 		ModelAndView mav = new ModelAndView("home/add");
-		mav.addObject("prescriptionForm", new PrescriptionForm());
 		mav.addObject("status", "'" + (status != null ? status : "none") + "'");
-		mav.addObject("cod_carat", "'" + (cod_carat != null ? cod_carat : "") + "'");
-		mav.addObject("ser_carat", "'" + (ser_carat != null ? ser_carat : "") + "'");
-		mav.addObject("fec_prescr", "'" + (fec_prescr != null ? fec_prescr : "") + "'");
-		mav.addObject("fec_disp", "'" + (fec_disp != null ? fec_disp : "") + "'");
-		mav.addObject("let_matricula", "'" + (let_matricula != null ? let_matricula : "") + "'");
-		mav.addObject("convenio", "'" + (convenio != null ? convenio : "") + "'");
+		PrescriptionForm form = new PrescriptionForm();
+		try {
+			if (ser_carat != null) {
+				form.setFix_ser_carat(true);
+				form.setSer_carat(ser_carat);
+			}
+			if (cod_carat != null) {
+				form.setFix_cod_carat(true);
+				form.setCod_carat(Integer.valueOf(cod_carat));
+			}
+			if (fec_prescr != null) {
+				form.setFix_fec_prescr(true);
+				form.setFec_prescr(Integer.valueOf(fec_prescr));
+			}
+			if (fec_disp != null) {
+				form.setFix_fec_disp(true);
+				form.setFec_disp(Integer.valueOf(fec_disp));
+				
+			}
+			if (let_matricula != null) {
+				form.setFix_let_matricula(true);
+				form.setLet_matricula(let_matricula);
+			}
+			if (convenio != null) {
+				form.setFix_convenio(true);
+				form.setConvenio(convenio);
+			}
+		} catch (Exception e) {
+			mav.addObject("status", "Valor a fijar invalido");
+		}
+		mav.addObject("prescriptionForm", form);
 		mav.addObject("convenios", convenioRepo.getAll());
 		return mav;
 	}

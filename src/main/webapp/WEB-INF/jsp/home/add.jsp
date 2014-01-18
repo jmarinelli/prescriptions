@@ -14,26 +14,26 @@
 				$(document).ready(function(){
 					if (${ser_carat} != '') {
 						$("#ser_carat").val(${ser_carat});
-						$("#fix_ser_carat").attr("checked", true);
+// 						$("#fix_ser_carat").attr("checked", true);
 					}
 					if (${cod_carat} != '') {
 						$("#cod_carat").val(${cod_carat});
-						$("#fix_cod_carat").attr("checked", true);
+// 						$("#fix_cod_carat").attr("checked", true);
 					}
 					if (${cod_carat} != '' && ${ser_carat} != '') {
 						getCarat();
 					}
 					if (${fec_prescr} != '') {
 						$("#fec_prescr").val(${fec_prescr});
-						$("#fix_fec_prescr").attr("checked", true);
+// 						$("#fix_fec_prescr").attr("checked", true);
 					}
 					if (${fec_disp} != '') {
 						$("#fec_disp").val(${fec_disp});
-						$("#fix_fec_disp").attr("checked", true);
+// 						$("#fix_fec_disp").attr("checked", true);
 					}
 					if (${let_matricula} != '') {
 						$("#let_matricula").val(${let_matricula});
-						$("#fix_let_matricula").attr("checked", true);
+// 						$("#fix_let_matricula").attr("checked", true);
 					}
 					if (${convenio} != '') {
 						$("#convenio_select").val(${convenio});

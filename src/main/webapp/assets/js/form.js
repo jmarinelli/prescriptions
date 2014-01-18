@@ -1,4 +1,63 @@
+var validationsMade = {
+		dispensationDate : false,
+		prescribedDispensation: false,
+		amountDifference: false,
+		invalidPrescription: false,
+};
+
 var formEvents = function() {
+	
+	var setValidations = function() {
+		$("#fec_disp").blur(function(e) {
+			var fecPrescr = $("#fec_prescr").val();
+			var fecDisp = $("#fec_disp").val();
+			var prescr = new Date(fecPrescr.substring(0,4), fecPrescr.substring(4,6), fecPrescr.substring(6,8));
+			var disp = new Date(fecDisp.substring(0,4), fecDisp.substring(4,6), fecDisp.substring(6,8));
+			var invalidDispensation = disp.getTime() < prescr.getTime();
+			if (!validationsMade.dispensationDate) {
+				if (invalidDispensation) {
+					$("#rechazos").val($("#rechazos").val() + "83");
+					validationsMade.dispensationDate = true;
+				}
+			} else {
+				if (!invalidDispensation) {
+					$("#rechazos").val($("#rechazos").val().replace("83", ""));
+					validationsMade.dispensationDate = false;
+				}
+			}
+			var prescribed = disp.getTime() > (prescr.getTime() + (30 * 24 * 60 * 60 * 1000));
+			if (!validationsMade.prescribedDispensation) {
+				if (prescribed) {
+					$("#rechazos").val($("#rechazos").val() + "77");
+					validationsMade.prescribedDispensation = true;
+				}
+			} else {
+				if (!prescribed) {
+					$("#rechazos").val($("#rechazos").val().replace("77", ""));
+					validationsMade.prescribedDispensation = false;
+				}
+			}
+		});
+		$("#fec_prescr").blur(function(e) {
+			var fecPrescr = $("#fec_prescr").val(); 
+			var prescr = new Date(fecPrescr.substring(0,4), fecPrescr.substring(4,6), fecPrescr.substring(6,8));
+			var today = new Date();
+			var future = prescr.getTime() > today.getTime();
+			if (!validationsMade.invalidPrescription) {
+				if (future) {
+					$("#rechazos").val($("#rechazos").val() + "51");
+					validationsMade.invalidPrescription = true;
+				}
+			} else {
+				if (!future) {
+					$("#rechazos").val($("#rechazos").val().replace("51", ""));
+					validationsMade.invalidPrescription = false;
+				}
+			}
+		});
+	};
+	
+	setValidations();
 
 	$("#tot_rec").keypress(function(e){
 		if (e.charCode == 45){

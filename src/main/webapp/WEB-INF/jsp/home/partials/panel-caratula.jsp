@@ -4,7 +4,7 @@
 		<span>Serie Caratula</span>
 		<form:input path="ser_carat" type="text" value="" id="ser_carat"/>
 		<div class="fix-field">
-			<form:input path="fix_ser_carat" type="checkbox" class="fix-checkbox"/>
+			<form:checkbox path="fix_ser_carat" class="fix-checkbox"/>
 			<span>Fijar</span>
 		</div>
 		<div class="error">
@@ -15,7 +15,7 @@
 		<span>Codigo Caratula</span>
 		<form:input path="cod_carat" type="text" value="" id="cod_carat" onblur="getCarat();"/>
 		<div class="fix-field">
-			<form:input path="fix_cod_carat" type="checkbox" class="fix-checkbox"/>
+			<form:checkbox path="fix_cod_carat" class="fix-checkbox"/>
 			<span>Fijar</span>
 		</div>
 		<div class="error">

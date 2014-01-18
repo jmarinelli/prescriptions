@@ -21,8 +21,8 @@ public class PrescriptionFormValidator implements Validator{
 			errors.rejectValue("fec_prescr", "inv_form.fecha");
 		if (!validateDate(object.getFec_disp()))
 			errors.rejectValue("fec_disp", "inv_form.fecha");
-		if (!validateDates(object.getFec_prescr(), object.getFec_disp()))
-			errors.rejectValue("fec_disp", "inv_value.fecha_disp");
+//		if (!validateDates(object.getFec_prescr(), object.getFec_disp()))
+//			errors.rejectValue("fec_disp", "inv_value.fecha_disp");
 		if (!object.getLet_matricula().toUpperCase().equals("N") && !object.getLet_matricula().toUpperCase().equals("P") && !object.getLet_matricula().toUpperCase().equals("X"))
 			errors.rejectValue("let_matricula", "inv_value.let_matricula");
 //		if (!validateAjuste(object))
