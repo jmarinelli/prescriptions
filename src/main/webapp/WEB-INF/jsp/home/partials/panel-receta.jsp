@@ -19,7 +19,7 @@
 			<span>Letra Matricula</span>
 			<form:input path="let_matricula" type="text" value="" maxlength="1" />
 			<div class="fix-field">
-				<form:input path="fix_let_matricula" type="checkbox" class="fix-checkbox"/>
+				<form:checkbox path="fix_let_matricula" class="fix-checkbox"/>
 			</div>
 			<div class="error">
 				<form:errors path="let_matricula" />
@@ -36,7 +36,7 @@
 			<span>Fecha Prescripcion</span>
 			<form:input path="fec_prescr" type="number" />
 			<div class="fix-field">
-				<form:input path="fix_fec_prescr" type="checkbox" class="fix-checkbox"/>
+				<form:checkbox path="fix_fec_prescr" class="fix-checkbox"/>
 			</div>
 			<div class="error">
 				<form:errors path="fec_prescr" max="21200000" />
@@ -62,7 +62,7 @@
 			<span>Fecha Dispensacion</span>
 			<form:input path="fec_disp" type="number" max="21200000" />
 			<div class="fix-field">
-				<form:input path="fix_fec_disp" type="checkbox" class="fix-checkbox"/>
+				<form:checkbox path="fix_fec_disp" class="fix-checkbox"/>
 			</div>
 			<div class="error">
 				<form:errors path="fec_disp" />

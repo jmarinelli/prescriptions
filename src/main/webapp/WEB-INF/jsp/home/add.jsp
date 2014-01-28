@@ -10,12 +10,10 @@
 				if (${status} == "success")
 					alert("Receta cargada");
 				else if (${status} == "duplicated")
-					alert("Receta duplicada");
+					alert("Receta duplicada. Revise el numero de orden");
 				$(document).ready(function(){
-// 					if (${prescriptionForm.convenio} != '') {
-// 						$("#convenio_select").val(${convenio});
-// 						setConvenio(${convenio});
-// 					}
+					getCarat();
+					setFocus();
 				});
 			})();
 		</script>

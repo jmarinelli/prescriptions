@@ -53,7 +53,7 @@ public class PrescriptionForm {
 	private final Integer cod_vale = 0;
 	
 	// Afiliado
-	private String num_afi;
+	private Integer num_afi;
 	private Integer parentesco;
 	private final String sexo = "0";
 	private final String trat_prolongado = "0";
@@ -416,11 +416,11 @@ public class PrescriptionForm {
 		this.posee_marca_comercial = posee_marca_comercial;
 	}
 
-	public String getNum_afi() {
+	public Integer getNum_afi() {
 		return num_afi;
 	}
 
-	public void setNum_afi(String num_afi) {
+	public void setNum_afi(Integer num_afi) {
 		this.num_afi = num_afi;
 	}
 

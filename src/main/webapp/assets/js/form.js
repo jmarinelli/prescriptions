@@ -3,6 +3,9 @@ var validationsMade = {
 		prescribedDispensation: false,
 		amountDifference: false,
 		invalidPrescription: false,
+		troquelOne : false,
+		troquelTwo : false,
+		troquelThree : false
 };
 
 var formEvents = function() {
@@ -107,11 +110,11 @@ var formEvents = function() {
 	$("#let_matricula").keypress(function(e) {
 		var charCode = e.which || e.keyCode;
 		var charStr = String.fromCharCode(charCode);
-		if (charStr == "n" || charStr == "N") {
+		if (charStr == "n" || charStr == "N" || e.which == 47) {
 			$("#let_matricula").val("N");
-		} else if (charStr == "p" || charStr == "P") {
+		} else if (charStr == "p" || charStr == "P" || e.which == 42) {
 			$("#let_matricula").val("P");
-		} else if (charStr == "x" || charStr == "X") {
+		} else if (charStr == "x" || charStr == "X" || e.which == 46) {
 			$("#let_matricula").val("X");
 		}
 		return false;
@@ -236,4 +239,14 @@ var undoConvenio = function() {
 		field.removeClass("readonly");
 	}
 	cleanFields();
+};
+
+var setFocus = function() {
+	var allInputs = $("input[type=text], input[type=number]");
+	for (var i = 0; i < allInputs.length - 1; i++) {
+		if (!$(allInputs[i]).attr("readonly") && !$(allInputs[i]).val()) {
+			$(allInputs[i]).focus();
+			return;
+		}
+	}
 };

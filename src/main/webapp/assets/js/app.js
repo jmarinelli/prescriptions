@@ -10,11 +10,42 @@ var loadInfo = function(barras, nro) {
 		complete : function(response) {
 			var json = response.responseJSON;
 			if (!json) {
-				alert("Troquel no encontrado, intente nuevamente.");
+				var rechazo = "";
+				var rechazoMsg = "";
+				if (nro == 1 && !validationsMade.troquelOne) {
+					rechazo = "56";
+					validationsMade.troquelOne = true;
+				}
+				else if (nro == 2 && !validationsMade.troquelTwo) {
+					rechazo = "61";
+					validationsMade.troquelTwo = true;
+				}
+				else if (nro == 3 && !validationsMade.troquelThree) {
+					rechazo = "94";
+					validationsMade.troquelThree = true;
+				}
+				
+				if (rechazo) {
+					rechazoMsg = " Se cargo error " + rechazo;
+					$("#rechazos").val($("#rechazos").val() + rechazo);
+				}
+				alert("Troquel no encontrado, intente nuevamente." + rechazoMsg);
 				return;
 			} else if (!json.price) {
 				alert("Fecha invalida.");
 				return;
+			}
+			if (nro == 1 && validationsMade.troquelOne) {
+				$("#rechazos").val($("#rechazos").val().replace("56", ""));
+				validationsMade.troquelOne = false;
+			}
+			else if (nro == 2 && validationsMade.troquelTwo) {
+				$("#rechazos").val($("#rechazos").val().replace("61", ""));
+				validationsMade.troquelTwo = false;
+			}
+			else if (nro == 3 && validationsMade.troquelThree) {
+				$("#rechazos").val($("#rechazos").val().replace("94", ""));
+				validationsMade.troquelThree = false;
 			}
 			populate(json, nro);
 		},
@@ -47,6 +78,7 @@ var getCarat = function() {
 				$("#caja").val(json.caja);
 				$("#totCargadas").html(json.cargadas);
 				$("#canRec").html(json.can_rec);
+//				$("#num_afi").focus()
 			},
 			data : {
 				"ser_carat" : ser_carat,
