@@ -3,7 +3,14 @@
 <html>
 	<head>
 		<%@ include file="../partials/commons-head.jsp" %>
-	</head>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("a > button").click(function() {
+					location.href = $(this).closest("a").attr("href");
+				});
+			});
+		</script>
+</head>
 	<body>
 		<%@ include file="../partials/header.jsp" %>
 		<div class="ctn">

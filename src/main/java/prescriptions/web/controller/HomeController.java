@@ -114,6 +114,8 @@ public class HomeController {
 			if (convenio != null) {
 				form.setFix_convenio(true);
 				form.setConvenio(convenio);
+			} else {
+				form.setConvenio("");
 			}
 		} catch (Exception e) {
 			mav.addObject("status", "Valor a fijar invalido");

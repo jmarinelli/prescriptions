@@ -74,14 +74,14 @@ var formEvents = function() {
 			return false;
 		}
 	});
-	$("#tot_afil").keypress(function(e){
-		if (e.charCode == 48) {
-			$("#tot_ac").val($("#tot_rec").val());
-		}
-	});
+//	$("#tot_afil").keypress(function(e){
+//		if (e.charCode == 48) {
+//			$("#tot_ac").val($("#tot_rec").val());
+//		}
+//	});
 	$(document).keydown(function(e) {
 		if (e.which == 43 || e.which == 47
-				|| e.which == 42 || e.which == 46) {
+				|| e.which == 42) {
 			e.stopPropagation();
 			e.preventDefault();
 			return false;

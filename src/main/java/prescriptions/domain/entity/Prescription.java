@@ -42,7 +42,7 @@ public class Prescription extends PersistentEntity {
 	private final Integer cod_vale = 0;
 	
 	// Afiliado
-	private Integer num_afi;
+	private String num_afi;
 	private Integer parentesco;
 	private final String sexo = "0";
 	private final String trat_prolongado = "0";
@@ -95,7 +95,7 @@ public class Prescription extends PersistentEntity {
 			Integer fec_disp, String let_matricula, Integer num_matricula,
 			Integer tot_rec, Integer tot_afil, Integer tot_ac, Integer ajuste,
 			Integer ajuste_parcial, String rechazos, Integer posee_ticket,
-			Integer posee_marca_comercial, Integer num_afi, Integer parentesco,
+			Integer posee_marca_comercial, String num_afi, Integer parentesco,
 			String cod_barra_1, Integer can_presc_1, Integer can_disp_1,
 			Integer can_real_1, Integer pciorp_1, Integer pcio_real_1,
 			Integer troquel_1, Integer laboratorio_1, Integer alfabeta_1,
@@ -361,11 +361,11 @@ public class Prescription extends PersistentEntity {
 		this.posee_marca_comercial = posee_marca_comercial;
 	}
 
-	public Integer getNum_afi() {
+	public String getNum_afi() {
 		return num_afi;
 	}
 
-	public void setNum_afi(Integer num_afi) {
+	public void setNum_afi(String num_afi) {
 		this.num_afi = num_afi;
 	}
 

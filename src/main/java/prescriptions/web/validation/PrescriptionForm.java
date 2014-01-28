@@ -53,7 +53,7 @@ public class PrescriptionForm {
 	private final Integer cod_vale = 0;
 	
 	// Afiliado
-	private Integer num_afi;
+	private String num_afi;
 	private Integer parentesco;
 	private final String sexo = "0";
 	private final String trat_prolongado = "0";
@@ -191,10 +191,10 @@ public class PrescriptionForm {
 		if (this.parentesco == null && !this.rechazos.equals("05")
 				&& !this.rechazos.equals("5"))
 			nulled.add("parentesco");
-		if (this.cod_barra_1 == null)
-			nulled.add("cod_barra_1");
-		if (this.pcio_real_1 == null)
-			nulled.add("pcio_real_1");
+//		if (this.cod_barra_1 == null)
+//			nulled.add("cod_barra_1");
+//		if (this.pcio_real_1 == null)
+//			nulled.add("pcio_real_1");
 		if (this.tot_rec == null)
 			nulled.add("tot_rec");
 		if (this.tot_afil == null)
@@ -416,11 +416,11 @@ public class PrescriptionForm {
 		this.posee_marca_comercial = posee_marca_comercial;
 	}
 
-	public Integer getNum_afi() {
+	public String getNum_afi() {
 		return num_afi;
 	}
 
-	public void setNum_afi(Integer num_afi) {
+	public void setNum_afi(String num_afi) {
 		this.num_afi = num_afi;
 	}
 
