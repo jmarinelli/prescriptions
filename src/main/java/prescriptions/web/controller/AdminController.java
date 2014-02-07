@@ -58,18 +58,17 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "dump", method = RequestMethod.GET)
-	public String dump(@RequestParam String serCarat) throws FileNotFoundException, UnsupportedEncodingException {
+	@ResponseBody
+	public String dump(@RequestParam String serCarat) {
 		List<Prescription> presc = this.prescriptionsRepo.getBySerCarat(serCarat);
 		
-		PrintWriter writer = new PrintWriter("dump.txt", "UTF-8");
-		
+		StringBuffer sBuffer = new StringBuffer();
+
 		for (Prescription p : presc) {
 			
-			writer.println(p);
+			sBuffer.append(p.toString()).append('\n');
 		}
 		
-		writer.close();
-		
-		return "redirect:";
+		return sBuffer.toString();
 	}
 }
