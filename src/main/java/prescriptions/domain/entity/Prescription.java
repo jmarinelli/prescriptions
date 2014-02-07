@@ -12,38 +12,38 @@ public class Prescription extends PersistentEntity {
 	private Role creator;
 	
 	// Caratula
-	private String ser_carat;
-	private Integer cod_carat;
-	private Integer expediente;
+	private String ser_carat = "";
+	private Integer cod_carat = 0;
+	private Integer expediente = 0;
 	private final Integer delegacion = 0;
-	private Integer cod_obsoc;
-	private Integer cod_plan;
-	private String periodo; // YYYYMMPN
-	private Integer cod_farma;
-	private Integer caja;
+	private Integer cod_obsoc = 0;
+	private Integer cod_plan = 0;
+	private String periodo = ""; // YYYYMMPN
+	private Integer cod_farma = 0;
+	private Integer caja = 0;
 	
 	// Receta
 	private String ser_receta = "";
 	private Integer num_receta = 0;
-	private Integer orden; // max 3 digitos
-	private Integer fec_prescr; // YYYYMMDD
-	private Integer fec_disp; // YYYYMMDD
-	private String let_matricula; // N, P o X
+	private Integer orden = 0; // max 3 digitos
+	private Integer fec_prescr = 0; // YYYYMMDD
+	private Integer fec_disp = 0; // YYYYMMDD
+	private String let_matricula = ""; // N, P o X
 	private Integer num_matricula; // 0 si es ilegible
-	private Integer tot_rec;
-	private Integer tot_afil;
-	private Integer tot_ac;
-	private Integer ajuste; // y ajusteParcial??
-	private Integer ajuste_parcial; // y ajusteParcial??
-	private String rechazos; // dos digitos por cada rechazo, sale de una tabla...what?
-	private Integer posee_ticket; // 0 o 1
-	private Integer posee_marca_comercial; // 0 o 1
+	private Integer tot_rec = 0;
+	private Integer tot_afil = 0;
+	private Integer tot_ac = 0;
+	private Integer ajuste = 0; // y ajusteParcial??
+	private Integer ajuste_parcial = 0; // y ajusteParcial??
+	private String rechazos = ""; // dos digitos por cada rechazo, sale de una tabla...what?
+	private Integer posee_ticket = 0; // 0 o 1
+	private Integer posee_marca_comercial = 0; // 0 o 1
 	private final String ser_vale = "";
 	private final Integer cod_vale = 0;
 	
 	// Afiliado
-	private Integer num_afi;
-	private Integer parentesco;
+	private Integer num_afi = 0;
+	private Integer parentesco = 0;
 	private final String sexo = "0";
 	private final String trat_prolongado = "0";
 	private final String tipo_documento = "";
@@ -52,37 +52,37 @@ public class Prescription extends PersistentEntity {
 	private final String telefono = "0";
 	
 	// Codigo de barras?	
-	private String cod_barra_1; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
-	private Integer can_presc_1;  //
-	private Integer can_disp_1;	//	los 3 iguales
-	private Integer can_real_1;	//
-	private Integer pciorp_1;	//
-	private Integer pcio_real_1;	//	los 2 iguales
-	private Integer troquel_1;	// 7 digitos
-	private Integer laboratorio_1;
-	private Integer alfabeta_1;
+	private String cod_barra_1 = ""; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
+	private Integer can_presc_1 = 0;  //
+	private Integer can_disp_1 = 0;	//	los 3 iguales
+	private Integer can_real_1 = 0;	//
+	private Integer pciorp_1 = 0;	//
+	private Integer pcio_real_1 = 0;	//	los 2 iguales
+	private Integer troquel_1 = 0;	// 7 digitos
+	private Integer laboratorio_1 = 0;
+	private Integer alfabeta_1 = 0;
 	
 	// Codigo de barras?	
-	private String cod_barra_2; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
-	private Integer can_presc_2;  //
-	private Integer can_disp_2;	//	los 3 iguales
-	private Integer can_real_2;	//
-	private Integer pciorp_2;	//
-	private Integer pcio_real_2;	//	los 2 iguales
-	private Integer troquel_2;	// 7 digitos
-	private Integer laboratorio_2;
-	private Integer alfabeta_2;
+	private String cod_barra_2 = ""; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
+	private Integer can_presc_2 = 0;  //
+	private Integer can_disp_2 = 0;	//	los 3 iguales
+	private Integer can_real_2 = 0;	//
+	private Integer pciorp_2 = 0;	//
+	private Integer pcio_real_2 = 0;	//	los 2 iguales
+	private Integer troquel_2 = 0;	// 7 digitos
+	private Integer laboratorio_2 = 0;
+	private Integer alfabeta_2 = 0;
 	
 	// Codigo de barras?	
-	private String cod_barra_3; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
-	private Integer can_presc_3;  //
-	private Integer can_disp_3;	//	los 3 iguales
-	private Integer can_real_3;	//
-	private Integer pciorp_3;	//
-	private Integer pcio_real_3;	//	los 2 iguales
-	private Integer troquel_3;	// 7 digitos
-	private Integer laboratorio_3;
-	private Integer alfabeta_3;
+	private String cod_barra_3 = ""; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
+	private Integer can_presc_3 = 0;  //
+	private Integer can_disp_3 = 0;	//	los 3 iguales
+	private Integer can_real_3 = 0;	//
+	private Integer pciorp_3 = 0;	//
+	private Integer pcio_real_3 = 0;	//	los 2 iguales
+	private Integer troquel_3 = 0;	// 7 digitos
+	private Integer laboratorio_3 = 0;
+	private Integer alfabeta_3 = 0;
 	
 	public Prescription() {
 		
@@ -627,6 +627,50 @@ public class Prescription extends PersistentEntity {
 
 	public void setAlfabeta_3(Integer alfabeta_3) {
 		this.alfabeta_3 = alfabeta_3;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(pago).append(", ").append(ser_carat).append(", ")
+				.append(cod_carat).append(", ").append(expediente).append(", ")
+				.append(delegacion).append(", ").append(cod_obsoc).append(", ")
+				.append(cod_plan).append(", ").append(periodo).append(", ")
+				.append(cod_farma).append(", ").append(caja).append(", ")
+				.append(ser_receta).append(", ").append(num_receta)
+				.append(", ").append(orden).append(", ").append(fec_prescr)
+				.append(", ").append(fec_disp).append(", ").append(num_afi).append(", ")
+				.append(parentesco).append(", ").append(can_presc_1)
+				.append(", ").append(can_disp_1).append(", ")
+				.append(can_real_1).append(", ").append(troquel_1).append(", ")
+				.append(laboratorio_1).append(", ").append(pciorp_1)
+				.append(", ").append(pcio_real_1).append(", ").append(", ,")
+				.append(cod_barra_1).append(", ").append(alfabeta_1)
+				.append(", ").append(", , , ").append(can_presc_2).append(", ")
+				.append(can_disp_2).append(", ").append(can_real_2)
+				.append(", ").append(troquel_2).append(", ")
+				.append(laboratorio_2).append(", ").append(pciorp_2)
+				.append(", ").append(pcio_real_2).append(", ").append(", ,")
+				.append(cod_barra_2).append(", ").append(alfabeta_2)
+				.append(", ").append(", , , ").append(can_presc_3).append(", ")
+				.append(can_disp_3).append(", ").append(can_real_3)
+				.append(", ").append(troquel_3).append(", ")
+				.append(laboratorio_3).append(", ").append(pciorp_3)
+				.append(", ").append(pcio_real_3).append(", ").append(", ,")
+				.append(cod_barra_3).append(", ").append(alfabeta_3)
+				.append(", ").append(", , , ").append(tot_rec).append(", ")
+				.append(tot_afil).append(", ").append(tot_ac).append(", ")
+				.append(let_matricula).append(", ").append(num_matricula)
+				.append(", ").append(ajuste).append(", ")
+				.append(ajuste_parcial).append(", ").append(rechazos).append(", ")
+				.append(trat_prolongado).append(", ").append(ser_vale)
+				.append(", ").append(cod_vale).append(", ")
+				.append(tipo_documento).append(", ").append(num_documento)
+				.append(", ").append(fec_nacimiento).append(", ")
+				.append(telefono).append(", ").append(sexo).append(", ")
+				.append(posee_ticket).append(", ")
+				.append(posee_marca_comercial);
+		return builder.toString();
 	}
 
 }

@@ -1,5 +1,10 @@
 package prescriptions.web.controller;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import prescriptions.domain.entity.Prescription;
 import prescriptions.domain.entity.Role;
+import prescriptions.domain.repositories.PrescriptionRepo;
 import prescriptions.domain.repositories.RoleRepo;
 
 @Controller
@@ -16,10 +23,12 @@ import prescriptions.domain.repositories.RoleRepo;
 public class AdminController {
 	
 	private RoleRepo roleRepo;
+	private PrescriptionRepo prescriptionsRepo;
 	
 	@Autowired
-	public AdminController(RoleRepo roleRepo) {
+	public AdminController(RoleRepo roleRepo, PrescriptionRepo prescriptionsRepo) {
 		this.roleRepo = roleRepo;
+		this.prescriptionsRepo = prescriptionsRepo;
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
@@ -48,4 +57,19 @@ public class AdminController {
 		return "redirect:";
 	}
 
+	@RequestMapping(value = "dump", method = RequestMethod.GET)
+	public String dump(@RequestParam String serCarat) throws FileNotFoundException, UnsupportedEncodingException {
+		List<Prescription> presc = this.prescriptionsRepo.getBySerCarat(serCarat);
+		
+		PrintWriter writer = new PrintWriter("dump.txt", "UTF-8");
+		
+		for (Prescription p : presc) {
+			
+			writer.println(p);
+		}
+		
+		writer.close();
+		
+		return "redirect:";
+	}
 }

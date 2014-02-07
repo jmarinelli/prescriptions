@@ -1,6 +1,7 @@
 package prescriptions.domain.repositories;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,11 @@ public class HibernatePrescriptionRepo extends AbstractHibernateRepo implements 
 
 	public Prescription get(Serializable id) {
 		return super.get(Prescription.class, id);
+	}
+
+	public List<Prescription> getBySerCarat(String serCarat) {
+		String hql = "from Prescription where ser_carat = ?";
+		return super.find(hql, serCarat);
 	}
 
 }
