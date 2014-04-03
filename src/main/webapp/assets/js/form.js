@@ -137,6 +137,9 @@ var formEvents = function() {
 				}
 			}
 			return false;
+		} else if (e.which == 88) {
+			$(this).val("19000101");
+			return false;
 		}
 	});
 	$("input").keypress(function(e) {

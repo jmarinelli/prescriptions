@@ -10,7 +10,7 @@
 		</div>
 		<div class="panel-field">
 			<span>Orden</span>
-			<form:input path="orden" type="number" max="999" />
+			<form:input path="orden" type="number" min="1" max="999" />
 			<div class="error">
 				<form:errors path="orden" />
 			</div>
