@@ -7,10 +7,12 @@ import javax.persistence.ManyToOne;
 public class Prescription extends PersistentEntity {
 
 	private Integer pago = 0;
-	
+
 	@ManyToOne
 	private Role creator;
-	
+
+	private transient Boolean checked = false;
+
 	// Caratula
 	private String ser_carat = "";
 	private Integer cod_carat = 0;
@@ -21,7 +23,7 @@ public class Prescription extends PersistentEntity {
 	private String periodo = ""; // YYYYMMPN
 	private Integer cod_farma = 0;
 	private Integer caja = 0;
-	
+
 	// Receta
 	private String ser_receta = "";
 	private Integer num_receta = 0;
@@ -35,12 +37,13 @@ public class Prescription extends PersistentEntity {
 	private Integer tot_ac = 0;
 	private Integer ajuste = 0; // y ajusteParcial??
 	private Integer ajuste_parcial = 0; // y ajusteParcial??
-	private String rechazos = ""; // dos digitos por cada rechazo, sale de una tabla...what?
+	private String rechazos = ""; // dos digitos por cada rechazo, sale de una
+									// tabla...what?
 	private Integer posee_ticket = 0; // 0 o 1
 	private Integer posee_marca_comercial = 0; // 0 o 1
 	private final String ser_vale = "";
 	private final Integer cod_vale = 0;
-	
+
 	// Afiliado
 	private Integer num_afi = 0;
 	private Integer parentesco = 0;
@@ -50,42 +53,45 @@ public class Prescription extends PersistentEntity {
 	private final Integer num_documento = 0;
 	private final String fec_nacimiento = "19000101";
 	private final String telefono = "0";
-	
-	// Codigo de barras?	
-	private String cod_barra_1 = ""; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
-	private Integer can_presc_1 = 0;  //
-	private Integer can_disp_1 = 0;	//	los 3 iguales
-	private Integer can_real_1 = 0;	//
-	private Integer pciorp_1 = 0;	//
-	private Integer pcio_real_1 = 0;	//	los 2 iguales
-	private Integer troquel_1 = 0;	// 7 digitos
+
+	// Codigo de barras?
+	private String cod_barra_1 = ""; // codigo de barras -> alfabetaN,
+										// atributoAN, atributoBN, atributoCN??
+	private Integer can_presc_1 = 0; //
+	private Integer can_disp_1 = 0; // los 3 iguales
+	private Integer can_real_1 = 0; //
+	private Integer pciorp_1 = 0; //
+	private Integer pcio_real_1 = 0; // los 2 iguales
+	private Integer troquel_1 = 0; // 7 digitos
 	private Integer laboratorio_1 = 0;
 	private Integer alfabeta_1 = 0;
-	
-	// Codigo de barras?	
-	private String cod_barra_2 = ""; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
-	private Integer can_presc_2 = 0;  //
-	private Integer can_disp_2 = 0;	//	los 3 iguales
-	private Integer can_real_2 = 0;	//
-	private Integer pciorp_2 = 0;	//
-	private Integer pcio_real_2 = 0;	//	los 2 iguales
-	private Integer troquel_2 = 0;	// 7 digitos
+
+	// Codigo de barras?
+	private String cod_barra_2 = ""; // codigo de barras -> alfabetaN,
+										// atributoAN, atributoBN, atributoCN??
+	private Integer can_presc_2 = 0; //
+	private Integer can_disp_2 = 0; // los 3 iguales
+	private Integer can_real_2 = 0; //
+	private Integer pciorp_2 = 0; //
+	private Integer pcio_real_2 = 0; // los 2 iguales
+	private Integer troquel_2 = 0; // 7 digitos
 	private Integer laboratorio_2 = 0;
 	private Integer alfabeta_2 = 0;
-	
-	// Codigo de barras?	
-	private String cod_barra_3 = ""; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
-	private Integer can_presc_3 = 0;  //
-	private Integer can_disp_3 = 0;	//	los 3 iguales
-	private Integer can_real_3 = 0;	//
-	private Integer pciorp_3 = 0;	//
-	private Integer pcio_real_3 = 0;	//	los 2 iguales
-	private Integer troquel_3 = 0;	// 7 digitos
+
+	// Codigo de barras?
+	private String cod_barra_3 = ""; // codigo de barras -> alfabetaN,
+										// atributoAN, atributoBN, atributoCN??
+	private Integer can_presc_3 = 0; //
+	private Integer can_disp_3 = 0; // los 3 iguales
+	private Integer can_real_3 = 0; //
+	private Integer pciorp_3 = 0; //
+	private Integer pcio_real_3 = 0; // los 2 iguales
+	private Integer troquel_3 = 0; // 7 digitos
 	private Integer laboratorio_3 = 0;
 	private Integer alfabeta_3 = 0;
-	
+
 	public Prescription() {
-		
+
 	}
 
 	public Prescription(Integer pago, String ser_carat, Integer cod_carat,
@@ -632,44 +638,138 @@ public class Prescription extends PersistentEntity {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(pago == null ? " " : pago).append(", ").append(ser_carat == null ? " " : ser_carat).append(", ")
-				.append(cod_carat == null ? " " : cod_carat).append(", ").append(expediente == null ? " " : expediente).append(", ")
-				.append(delegacion == null ? " " : delegacion).append(", ").append(cod_obsoc == null ? " " : cod_obsoc).append(", ")
-				.append(cod_plan == null ? " " : cod_plan).append(", ").append(periodo == null ? " " : periodo).append(", ")
-				.append(cod_farma == null ? " " : cod_farma).append(", ").append(caja == null ? " " : caja).append(", ")
-				.append(ser_receta == null ? " " : ser_receta).append(", ").append(num_receta == null ? " " : num_receta)
-				.append(", ").append(orden == null ? " " : orden).append(", ").append(fec_prescr == null ? " " : fec_prescr)
-				.append(", ").append(fec_disp == null ? " " : fec_disp).append(", ").append(num_afi == null ? " " : num_afi ).append(", ")
-				.append(parentesco == null ? " " : parentesco).append(", ").append(can_presc_1 == null ? " " : can_presc_1)
-				.append(", ").append(can_disp_1 == null ? " " : can_disp_1 ).append(", ")
-				.append(can_real_1 == null ? " " : can_real_1 ).append(", ").append(troquel_1 == null ? " " : troquel_1).append(", ")
-				.append(laboratorio_1 == null ? " " : laboratorio_1 ).append(", ").append(pciorp_1 == null ? " " : pciorp_1)
-				.append(", ").append(pcio_real_1 == null ? " " : pcio_real_1 ).append(", ").append(", ,")
-				.append(cod_barra_1 == null ? " " : cod_barra_1 ).append(", ").append(alfabeta_1 == null ? " " : alfabeta_1)
-				.append(", ").append(", , , ").append(can_presc_2 == null ? " " : can_presc_2)
-				.append(", ").append(can_disp_2 == null ? " " : can_disp_2 ).append(", ")
-				.append(can_real_2 == null ? " " : can_real_2 ).append(", ").append(troquel_2 == null ? " " : troquel_2).append(", ")
-				.append(laboratorio_2 == null ? " " : laboratorio_2 ).append(", ").append(pciorp_2 == null ? " " : pciorp_2)
-				.append(", ").append(pcio_real_2 == null ? " " : pcio_real_2 ).append(", ").append(", ,")
-				.append(cod_barra_2 == null ? " " : cod_barra_2 ).append(", ").append(alfabeta_2 == null ? " " : alfabeta_2)
-				.append(", ").append(", , , ").append(can_presc_3 == null ? " " : can_presc_3)
-				.append(", ").append(can_disp_3 == null ? " " : can_disp_3 ).append(", ")
-				.append(can_real_3 == null ? " " : can_real_3 ).append(", ").append(troquel_3 == null ? " " : troquel_3).append(", ")
-				.append(laboratorio_3 == null ? " " : laboratorio_3 ).append(", ").append(pciorp_3 == null ? " " : pciorp_3)
-				.append(", ").append(pcio_real_3 == null ? " " : pcio_real_3 ).append(", ").append(", ,")
-				.append(cod_barra_3 == null ? " " : cod_barra_3 ).append(", ").append(alfabeta_3 == null ? " " : alfabeta_3)
-				.append(", ").append(", , , ").append(tot_rec == null ? " " : tot_rec).append(", ")
-				.append(tot_afil == null ? " " : tot_afil).append(", ").append(tot_ac == null ? " " : tot_ac).append(", ")
-				.append(let_matricula == null ? " " : let_matricula).append(", ").append(num_matricula == null ? " " : num_matricula)
-				.append(", ").append(ajuste == null ? " " : ajuste).append(", ")
-				.append(ajuste_parcial == null ? " " : ajuste_parcial).append(", ").append(rechazos == null ? " " : rechazos).append(", ")
-				.append(trat_prolongado == null ? " " : trat_prolongado).append(", ").append(ser_vale == null ? " " : ser_vale)
-				.append(", ").append(cod_vale == null ? " " : cod_vale).append(", ")
-				.append(tipo_documento == null ? " " : tipo_documento).append(", ").append(num_documento == null ? " " : num_documento)
-				.append(", ").append(fec_nacimiento == null ? " " : fec_nacimiento).append(", ")
-				.append(telefono == null ? " " : telefono).append(", ").append(sexo == null ? " " : sexo).append(", ")
-				.append(posee_ticket == null ? " " : posee_ticket ).append(", ")
-				.append(posee_marca_comercial == null ? " " : posee_marca_comercial);
+		builder.append(pago == null ? " " : pago)
+				.append(", ")
+				.append(ser_carat == null ? " " : ser_carat)
+				.append(", ")
+				.append(cod_carat == null ? " " : cod_carat)
+				.append(", ")
+				.append(expediente == null ? " " : expediente)
+				.append(", ")
+				.append(delegacion == null ? " " : delegacion)
+				.append(", ")
+				.append(cod_obsoc == null ? " " : cod_obsoc)
+				.append(", ")
+				.append(cod_plan == null ? " " : cod_plan)
+				.append(", ")
+				.append(periodo == null ? " " : periodo)
+				.append(", ")
+				.append(cod_farma == null ? " " : cod_farma)
+				.append(", ")
+				.append(caja == null ? " " : caja)
+				.append(", ")
+				.append(ser_receta == null ? " " : ser_receta)
+				.append(", ")
+				.append(num_receta == null ? " " : num_receta)
+				.append(", ")
+				.append(orden == null ? " " : orden)
+				.append(", ")
+				.append(fec_prescr == null ? " " : fec_prescr)
+				.append(", ")
+				.append(fec_disp == null ? " " : fec_disp)
+				.append(", ")
+				.append(num_afi == null ? " " : num_afi)
+				.append(", ")
+				.append(parentesco == null ? " " : parentesco)
+				.append(", ")
+				.append(can_presc_1 == null ? " " : can_presc_1)
+				.append(", ")
+				.append(can_disp_1 == null ? " " : can_disp_1)
+				.append(", ")
+				.append(can_real_1 == null ? " " : can_real_1)
+				.append(", ")
+				.append(troquel_1 == null ? " " : troquel_1)
+				.append(", ")
+				.append(laboratorio_1 == null ? " " : laboratorio_1)
+				.append(", ")
+				.append(pciorp_1 == null ? " " : pciorp_1)
+				.append(", ")
+				.append(pcio_real_1 == null ? " " : pcio_real_1)
+				.append(", ")
+				.append(", ,")
+				.append(cod_barra_1 == null ? " " : cod_barra_1)
+				.append(", ")
+				.append(alfabeta_1 == null ? " " : alfabeta_1)
+				.append(", ")
+				.append(", , , ")
+				.append(can_presc_2 == null ? " " : can_presc_2)
+				.append(", ")
+				.append(can_disp_2 == null ? " " : can_disp_2)
+				.append(", ")
+				.append(can_real_2 == null ? " " : can_real_2)
+				.append(", ")
+				.append(troquel_2 == null ? " " : troquel_2)
+				.append(", ")
+				.append(laboratorio_2 == null ? " " : laboratorio_2)
+				.append(", ")
+				.append(pciorp_2 == null ? " " : pciorp_2)
+				.append(", ")
+				.append(pcio_real_2 == null ? " " : pcio_real_2)
+				.append(", ")
+				.append(", ,")
+				.append(cod_barra_2 == null ? " " : cod_barra_2)
+				.append(", ")
+				.append(alfabeta_2 == null ? " " : alfabeta_2)
+				.append(", ")
+				.append(", , , ")
+				.append(can_presc_3 == null ? " " : can_presc_3)
+				.append(", ")
+				.append(can_disp_3 == null ? " " : can_disp_3)
+				.append(", ")
+				.append(can_real_3 == null ? " " : can_real_3)
+				.append(", ")
+				.append(troquel_3 == null ? " " : troquel_3)
+				.append(", ")
+				.append(laboratorio_3 == null ? " " : laboratorio_3)
+				.append(", ")
+				.append(pciorp_3 == null ? " " : pciorp_3)
+				.append(", ")
+				.append(pcio_real_3 == null ? " " : pcio_real_3)
+				.append(", ")
+				.append(", ,")
+				.append(cod_barra_3 == null ? " " : cod_barra_3)
+				.append(", ")
+				.append(alfabeta_3 == null ? " " : alfabeta_3)
+				.append(", ")
+				.append(", , , ")
+				.append(tot_rec == null ? " " : tot_rec)
+				.append(", ")
+				.append(tot_afil == null ? " " : tot_afil)
+				.append(", ")
+				.append(tot_ac == null ? " " : tot_ac)
+				.append(", ")
+				.append(let_matricula == null ? " " : let_matricula)
+				.append(", ")
+				.append(num_matricula == null ? " " : num_matricula)
+				.append(", ")
+				.append(ajuste == null ? " " : ajuste)
+				.append(", ")
+				.append(ajuste_parcial == null ? " " : ajuste_parcial)
+				.append(", ")
+				.append(rechazos == null ? " " : rechazos)
+				.append(", ")
+				.append(trat_prolongado == null ? " " : trat_prolongado)
+				.append(", ")
+				.append(ser_vale == null ? " " : ser_vale)
+				.append(", ")
+				.append(cod_vale == null ? " " : cod_vale)
+				.append(", ")
+				.append(tipo_documento == null ? " " : tipo_documento)
+				.append(", ")
+				.append(num_documento == null ? " " : num_documento)
+				.append(", ")
+				.append(fec_nacimiento == null ? " " : fec_nacimiento)
+				.append(", ")
+				.append(telefono == null ? " " : telefono)
+				.append(", ")
+				.append(sexo == null ? " " : sexo)
+				.append(", ")
+				.append(posee_ticket == null ? " " : posee_ticket)
+				.append(", ")
+				.append(posee_marca_comercial == null ? " "
+						: posee_marca_comercial).append(", ")
+				.append(this.creator == null ? " " : this.creator).append(", ")
+				.append(this.checked);
 		return builder.toString();
 	}
 

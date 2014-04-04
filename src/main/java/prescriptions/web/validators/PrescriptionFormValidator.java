@@ -31,16 +31,32 @@ public class PrescriptionFormValidator implements Validator {
 		if (!validatePrescr(object.getFec_prescr())) {
 			errors.rejectValue("fec_prescr", "inv_form.fec_prescr");
 		}
-		// if (!validateDates(object.getFec_prescr(), object.getFec_disp()))
-		// errors.rejectValue("fec_disp", "inv_value.fecha_disp");
+		if (object.getCan_disp_1() == null || object.getCan_disp_1().equals(0) || object.getCan_disp_1() > 9) {
+			errors.rejectValue("can_disp_1", "can_not_zero");
+		}
+		if (object.getCan_disp_2() == null || object.getCan_disp_2().equals(0) || object.getCan_disp_2() > 9) {
+			errors.rejectValue("can_disp_2", "can_not_zero");
+		}
+		if (object.getCan_disp_3() == null || object.getCan_disp_3().equals(0) || object.getCan_disp_3() > 9) {
+			errors.rejectValue("can_disp_3", "can_not_zero");
+		}
+		if (object.getRechazos().length() % 2 != 0) {
+			errors.rejectValue("rechazos", "rechazos_impar");
+		}
+		if (!object.getRechazos().equals("") && object.getAjuste() > 0){
+			errors.rejectValue("ajuste", "rechazos_not_ajuste");
+		}
+		if (object.getAjuste().equals(0) && object.getRechazos().equals("")) {
+			errors.rejectValue("rechazos", "ajuste_not_rechazo");
+		}
 		if (!object.getLet_matricula().toUpperCase().equals("N")
 				&& !object.getLet_matricula().toUpperCase().equals("P")
 				&& !object.getLet_matricula().toUpperCase().equals("X"))
 			errors.rejectValue("let_matricula", "inv_value.let_matricula");
 		if (!validateDiff(object.getFec_prescr(), object.getFec_disp()))
 			errors.rejectValue("fec_disp", "inv_form.date_diff");
-		// if (!validateAjuste(object))
-		// errors.rejectValue("ajuste", "ajuste.invalid");
+		 if (object.getAjuste() > object.getTot_ac())
+		 errors.rejectValue("ajuste", "ajuste.invalid");
 		for (String s : object.getNulledFields())
 			errors.rejectValue(s, "not_null");
 	}

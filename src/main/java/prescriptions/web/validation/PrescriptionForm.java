@@ -44,9 +44,9 @@ public class PrescriptionForm {
 	private Integer tot_rec;
 	private Integer tot_afil;
 	private Integer tot_ac;
-	private Integer ajuste; // y ajusteParcial??
+	private Integer ajuste = 0; // y ajusteParcial??
 	private Integer ajuste_parcial; // y ajusteParcial??
-	private String rechazos; // dos digitos por cada rechazo, sale de una tabla...what?
+	private String rechazos = ""; // dos digitos por cada rechazo, sale de una tabla...what?
 	private Integer posee_ticket; // 0 o 1
 	private Integer posee_marca_comercial; // 0 o 1
 	private final String ser_vale = "";
