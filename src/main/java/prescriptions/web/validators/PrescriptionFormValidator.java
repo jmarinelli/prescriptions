@@ -31,6 +31,12 @@ public class PrescriptionFormValidator implements Validator {
 		if (!validatePrescr(object.getFec_prescr())) {
 			errors.rejectValue("fec_prescr", "inv_form.fec_prescr");
 		}
+		if (object.getTroquel_1() == null) {
+			errors.rejectValue("troquel_1", "troquel_not_null");
+		}
+		if (object.getCod_barra_1() == null || object.getCod_barra_1().equals("")) {
+			errors.rejectValue("cod_barra_1", "cod_barra_not_null");
+		}
 		if (object.getCan_disp_1() == null || object.getCan_disp_1().equals(0) || object.getCan_disp_1() > 9) {
 			errors.rejectValue("can_disp_1", "can_not_zero");
 		}
@@ -47,7 +53,7 @@ public class PrescriptionFormValidator implements Validator {
 			errors.rejectValue("ajuste", "rechazos_not_ajuste");
 		}
 		if (object.getAjuste().equals(0) && object.getRechazos().equals("")) {
-			errors.rejectValue("rechazos", "ajuste_not_rechazo");
+			errors.rejectValue("rechazos", "ajuste_not_rechazos");
 		}
 		if (!object.getLet_matricula().toUpperCase().equals("N")
 				&& !object.getLet_matricula().toUpperCase().equals("P")
@@ -55,7 +61,7 @@ public class PrescriptionFormValidator implements Validator {
 			errors.rejectValue("let_matricula", "inv_value.let_matricula");
 		if (!validateDiff(object.getFec_prescr(), object.getFec_disp()))
 			errors.rejectValue("fec_disp", "inv_form.date_diff");
-		 if (object.getAjuste() > object.getTot_ac())
+		 if (object.getAjuste() != null && object.getTot_ac() != null && object.getAjuste() > object.getTot_ac())
 		 errors.rejectValue("ajuste", "ajuste.invalid");
 		for (String s : object.getNulledFields())
 			errors.rejectValue(s, "not_null");

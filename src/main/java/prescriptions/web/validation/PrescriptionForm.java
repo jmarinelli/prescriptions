@@ -75,9 +75,9 @@ public class PrescriptionForm {
 	
 	// Codigo de barras?	
 	private String cod_barra_2; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
-	private Integer can_presc_2;  //
-	private Integer can_disp_2;	//	los 3 iguales
-	private Integer can_real_2;	//
+	private Integer can_presc_2 = 0;  //
+	private Integer can_disp_2 = 0;	//	los 3 iguales
+	private Integer can_real_2 = 0;	//
 	private Integer pciorp_2;	//
 	private Integer pcio_real_2;	//	los 2 iguales
 	private Integer troquel_2;	// 7 digitos
@@ -86,9 +86,9 @@ public class PrescriptionForm {
 	
 	// Codigo de barras?	
 	private String cod_barra_3; // codigo de barras -> alfabetaN, atributoAN, atributoBN, atributoCN??
-	private Integer can_presc_3;  //
-	private Integer can_disp_3;	//	los 3 iguales
-	private Integer can_real_3;	//
+	private Integer can_presc_3 = 0;  //
+	private Integer can_disp_3 = 0;	//	los 3 iguales
+	private Integer can_real_3 = 0;	//
 	private Integer pciorp_3;	//
 	private Integer pcio_real_3;	//	los 2 iguales
 	private Integer troquel_3;	// 7 digitos

@@ -101,12 +101,13 @@ var populate = function(result, nro) {
 			}
 		}
 	}
-	if (result.price.precio == $("#tot_rec").val() || nro == 0) {
-		$("#can_presc_" + nro).val(1);
-		$("#can_disp_" + nro).val(1);
-		$("#can_real_" + nro).val(1);
+	if (result.price.precio == $("#tot_rec").val()) {
 		$("#pciorp_" + nro).val(result.price.precio);
 	}
+	$("#can_presc_" + nro).val(1);
+	$("#can_disp_" + nro).val(1);
+	$("#can_real_" + nro).val(1);
+	
 	$("#pcio_real_" + nro).val(result.price.precio);
 	$("#troquel_" + nro).val(result.alfabeta.troquel);
 	$("#laboratorio_" + nro).val(result.alfabeta.codLab);
