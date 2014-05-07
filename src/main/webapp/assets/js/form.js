@@ -161,7 +161,7 @@ var formEvents = function() {
 	$("#clean-fields").click(function(e){
 		cleanFields();
 	});
-	for (var i = 0 ; i < 3 ; i++) {
+	for (var i = 1 ; i < 4 ; i++) {
 		$("#pciorp_" + i).change(function(e){
 			calculateAjuste();
 		});
@@ -183,22 +183,25 @@ var cleanFields = function() {
 
 var calculateAjuste = function() {
 	var ajuste = 0;
-	for (var i = 0 ; i < 3 ; i++) {
+	var codes = ["58", "63", "97"];
+	for (var i = 1 ; i < 4 ; i++) {
 		var diff = $("#pcio_real_" + i).val() - $("#pciorp_" + i).val();
-		if (diff) {
-			debugger;
-			ajuste += diff;
-			if (i == 0)
-				$("#rechazos").val($("#rechazos").val() + "5878");
-			else if (i == 1)
-				$("#rechazos").val($("#rechazos").val() + "6378");
-			else
-				$("#rechazos").val($("#rechazos").val() + "9778");
-		}
+		ajuste += diff;
+		code = codes[i - 1];
+		if ($("#rechazos").val().indexOf(code) < 0 && diff)
+			$("#rechazos").val($("#rechazos").val() + code);
+		else if (!diff && $("#rechazos").val().indexOf(code) >= 0)
+			$("#rechazos").val($("#rechazos").val().replace(code, ""));
 	}
 	var totalOS = $("#tot_ac").val();
 	var totalReceta = $("#tot_rec").val();
-	$("#ajuste").val((totalOS / totalReceta) * ajuste);
+	var ajusteTotal = (totalOS / totalReceta) * ajuste;
+	if (ajuste && $("#rechazos").val().indexOf("78") < 0) {
+		$("#rechazos").val($("#rechazos").val() + "78");
+	} else if (!ajuste && $("#rechazos").val().indexOf("78") >= 0) {
+		$("#rechazos").val($("#rechazos").val().replace("78", ""));
+	}
+	$("#ajuste").val(ajusteTotal);
 };
 
 var convenioOnChange = function() {
