@@ -45,10 +45,10 @@ public class PrescriptionFormValidator implements Validator {
 		if (object.getRechazos().length() % 2 != 0) {
 			errors.rejectValue("rechazos", "rechazos_impar");
 		}
-		if (!object.getRechazos().equals("") && object.getAjuste() > 0) {
+		if (object.getRechazos().contains("78") && object.getAjuste().equals(0)) {
 			errors.rejectValue("ajuste", "rechazos_not_ajuste");
 		}
-		if (!object.getAjuste().equals(0) && object.getRechazos().equals("")) {
+		if (!object.getAjuste().equals(0) && !object.getRechazos().contains("78")) {
 			errors.rejectValue("rechazos", "ajuste_not_rechazos");
 		}
 		if (!object.getLet_matricula().toUpperCase().equals("N")

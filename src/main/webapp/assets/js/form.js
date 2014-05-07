@@ -179,16 +179,26 @@ var cleanFields = function() {
 			$(this).val("");
 		}
 	});
-}
+};
 
 var calculateAjuste = function() {
 	var ajuste = 0;
 	for (var i = 0 ; i < 3 ; i++) {
 		var diff = $("#pcio_real_" + i).val() - $("#pciorp_" + i).val();
-		if (diff)
+		if (diff) {
+			debugger;
 			ajuste += diff;
+			if (i == 0)
+				$("#rechazos").val($("#rechazos").val() + "5878");
+			else if (i == 1)
+				$("#rechazos").val($("#rechazos").val() + "6378");
+			else
+				$("#rechazos").val($("#rechazos").val() + "9778");
+		}
 	}
-	$("#ajuste").val(ajuste);
+	var totalOS = $("#tot_ac").val();
+	var totalReceta = $("#tot_rec").val();
+	$("#ajuste").val((totalOS / totalReceta) * ajuste);
 };
 
 var convenioOnChange = function() {

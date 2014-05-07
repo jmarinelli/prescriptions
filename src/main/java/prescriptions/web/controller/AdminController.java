@@ -61,7 +61,7 @@ public class AdminController {
 	public String dump(@RequestParam String serCarat) throws IOException {
 		List<Prescription> presc = this.prescriptionsRepo.getBySerCarat(serCarat);
 		
-		File file = new File("/home/juanjo/dumps/dump_" + serCarat + ".txt");
+		File file = new File("/home/ferri/dumps/dump_" + serCarat + ".txt");
 		
 		FileOutputStream fos = new FileOutputStream(file);
 		
