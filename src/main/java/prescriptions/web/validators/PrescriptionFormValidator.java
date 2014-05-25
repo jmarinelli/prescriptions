@@ -60,6 +60,8 @@ public class PrescriptionFormValidator implements Validator {
 		if (object.getAjuste() != null && object.getTot_ac() != null
 				&& object.getAjuste() > object.getTot_ac())
 			errors.rejectValue("ajuste", "ajuste.invalid");
+		if (object.getParentesco() > 99)
+			errors.rejectValue("parentesco", "parentesco.invalid");
 		for (String s : object.getNulledFields())
 			errors.rejectValue(s, "not_null");
 	}

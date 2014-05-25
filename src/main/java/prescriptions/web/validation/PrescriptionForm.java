@@ -167,6 +167,12 @@ public class PrescriptionForm {
 //			nulled.add("prescription");
 //		if (this.pago == null)
 //			nulled.add("pago");
+		if (this.laboratorio_1 == null || this.laboratorio_1 == 0)
+			nulled.add("laboratorio_1");
+		if (this.laboratorio_2 == null || this.laboratorio_2 == 0)
+			nulled.add("laboratorio_2");
+		if (this.laboratorio_3 == null || this.laboratorio_3 == 0)
+			nulled.add("laboratorio_3");
 		if (this.cod_carat == null)
 			nulled.add("cod_carat");
 		if (this.expediente == null)
@@ -193,8 +199,30 @@ public class PrescriptionForm {
 			nulled.add("parentesco");
 //		if (this.cod_barra_1 == null)
 //			nulled.add("cod_barra_1");
-//		if (this.pcio_real_1 == null)
-//			nulled.add("pcio_real_1");
+		if (this.cod_barra_1 != null && !this.cod_barra_1.equals("")) {
+			if (this.pcio_real_1 == null)
+				nulled.add("pcio_real_1");
+			if (this.pciorp_1 == null)
+				nulled.add("pciorp_1");
+			if (this.alfabeta_1 == null || this.alfabeta_1 == 0)
+				nulled.add("alfabeta_1");
+		}
+		if (this.cod_barra_2 != null && !this.cod_barra_2.equals("")) {
+			if (this.pcio_real_2 == null)
+				nulled.add("pcio_real_2");
+			if (this.pciorp_2 == null)
+				nulled.add("pciorp_2");
+			if (this.alfabeta_2 == null || this.alfabeta_2 == 0)
+				nulled.add("alfabeta_2");
+		}
+		if (this.cod_barra_3 != null && !this.cod_barra_3.equals("")) {
+			if (this.pcio_real_3 == null)
+				nulled.add("pcio_real_3");
+			if (this.pciorp_3 == null)
+				nulled.add("pciorp_3");
+			if (this.alfabeta_3 == null || this.alfabeta_3 == 0)
+				nulled.add("alfabeta_3");
+		}
 		if (this.tot_rec == null)
 			nulled.add("tot_rec");
 		if (this.tot_afil == null)

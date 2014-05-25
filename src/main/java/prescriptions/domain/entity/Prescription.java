@@ -768,7 +768,7 @@ public class Prescription extends PersistentEntity {
 				.append(", ")
 				.append(posee_marca_comercial == null ? " "
 						: posee_marca_comercial).append(", ")
-				.append(this.creator == null ? " " : this.creator).append(", ")
+				.append(this.creator == null ? " " : this.creator.getUsername()).append(", ")
 				.append(this.checked);
 		return builder.toString();
 	}
