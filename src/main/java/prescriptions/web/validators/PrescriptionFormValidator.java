@@ -51,6 +51,22 @@ public class PrescriptionFormValidator implements Validator {
 		if (!object.getAjuste().equals(0) && !object.getRechazos().contains("78")) {
 			errors.rejectValue("rechazos", "ajuste_not_rechazos");
 		}
+		
+		if (object.getPciorp_1() != null && object.getPcio_real_1() != null) {
+			if (checkDifference(object.getPciorp_1(), object.getPcio_real_1()))
+				errors.rejectValue("pciorp_1", "price.difference");
+		}
+		
+		if (object.getPciorp_1() != null && object.getPcio_real_1() != null) {
+			if (checkDifference(object.getPciorp_1(), object.getPcio_real_1()))
+				errors.rejectValue("pciorp_1", "price.difference");
+		}
+		
+		if (object.getPciorp_3() != null && object.getPcio_real_3() != null) {
+			if (checkDifference(object.getPciorp_3(), object.getPcio_real_3()))
+				errors.rejectValue("pciorp_3", "price.difference");
+		}
+		
 		if (!object.getLet_matricula().toUpperCase().equals("N")
 				&& !object.getLet_matricula().toUpperCase().equals("P")
 				&& !object.getLet_matricula().toUpperCase().equals("X"))
@@ -64,6 +80,12 @@ public class PrescriptionFormValidator implements Validator {
 			errors.rejectValue("parentesco", "parentesco.invalid");
 		for (String s : object.getNulledFields())
 			errors.rejectValue(s, "not_null");
+	}
+
+	private boolean checkDifference(Integer farm, Integer real) {
+		Integer diff = Math.abs(farm - real);
+		
+		return (diff * 100 / real) > 25;
 	}
 
 	private boolean validateDiff(Integer fec_prescr, Integer fec_disp) {

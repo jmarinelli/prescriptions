@@ -186,7 +186,7 @@ var calculateAjuste = function() {
 	var codes = ["58", "63", "97"];
 	for (var i = 1 ; i < 4 ; i++) {
 		var diff = $("#pcio_real_" + i).val() - $("#pciorp_" + i).val();
-		ajuste += diff;
+		ajuste += diff * $("#can_real_" + i).val();
 		code = codes[i - 1];
 		if ($("#rechazos").val().indexOf(code) < 0 && diff)
 			$("#rechazos").val($("#rechazos").val() + code);
@@ -201,7 +201,7 @@ var calculateAjuste = function() {
 	} else if (!ajuste && $("#rechazos").val().indexOf("78") >= 0) {
 		$("#rechazos").val($("#rechazos").val().replace("78", ""));
 	}
-	$("#ajuste").val(ajusteTotal);
+	$("#ajuste").val(Math.floor(ajusteTotal));
 };
 
 var convenioOnChange = function() {
