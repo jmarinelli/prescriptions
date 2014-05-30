@@ -49,6 +49,12 @@
 				<form:errors path="posee_marca_comercial" />
 			</div>
 		</div>
+		<div class="panel-field">
+			<span>Comentarios (opcional)</span>
+			<div>
+				<form:textarea path="comentarios"/>
+			</div>
+		</div>
 	</div>
 	<div class="sub-panel">
 		<div class="panel-field">

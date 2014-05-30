@@ -52,6 +52,8 @@ public class PrescriptionForm {
 	private final String ser_vale = "";
 	private final Integer cod_vale = 0;
 	
+	private String comentarios;
+	
 	// Afiliado
 	private Integer num_afi;
 	private Integer parentesco;
@@ -776,6 +778,14 @@ public class PrescriptionForm {
 		this.fix_convenio = fix_convenio;
 	}
 
+	public String getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(String comentarios) {
+		this.comentarios = comentarios;
+	}
+
 	public Prescription build(PrescriptionRepo prescriptionRepo) {
 		return new Prescription(pago, ser_carat, cod_carat, expediente,
 				cod_obsoc, cod_plan, periodo, cod_farma, caja, ser_receta,
@@ -785,7 +795,7 @@ public class PrescriptionForm {
 				cod_barra_1, can_presc_1, can_disp_1, can_real_1, pciorp_1,
 				pcio_real_1, troquel_1, laboratorio_1, alfabeta_1, cod_barra_2, can_presc_2, can_disp_2, can_real_2, pciorp_2,
 				pcio_real_2, troquel_2, laboratorio_2, alfabeta_2, cod_barra_3, can_presc_3, can_disp_3, can_real_3, pciorp_3,
-				pcio_real_3, troquel_3, laboratorio_3, alfabeta_3);
+				pcio_real_3, troquel_3, laboratorio_3, alfabeta_3, comentarios);
 	
 	}
 	
@@ -840,6 +850,7 @@ public class PrescriptionForm {
 		prescription.setPosee_ticket(posee_ticket);
 		prescription.setPosee_marca_comercial(posee_marca_comercial);
 		prescription.setAjuste_parcial(ajuste_parcial);
+		prescription.setComentarios(comentarios);
 	}
 
 }

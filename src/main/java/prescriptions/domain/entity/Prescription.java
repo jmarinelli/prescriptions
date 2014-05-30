@@ -44,6 +44,8 @@ public class Prescription extends PersistentEntity {
 	private final String ser_vale = "";
 	private final Integer cod_vale = 0;
 
+	private String comentarios;
+
 	// Afiliado
 	private Integer num_afi = 0;
 	private Integer parentesco = 0;
@@ -110,7 +112,8 @@ public class Prescription extends PersistentEntity {
 			Integer troquel_2, Integer laboratorio_2, Integer alfabeta_2,
 			String cod_barra_3, Integer can_presc_3, Integer can_disp_3,
 			Integer can_real_3, Integer pciorp_3, Integer pcio_real_3,
-			Integer troquel_3, Integer laboratorio_3, Integer alfabeta_3) {
+			Integer troquel_3, Integer laboratorio_3, Integer alfabeta_3,
+			String comentarios) {
 		super();
 		this.pago = pago;
 		this.ser_carat = ser_carat;
@@ -165,6 +168,7 @@ public class Prescription extends PersistentEntity {
 		this.troquel_3 = troquel_3;
 		this.laboratorio_3 = laboratorio_3;
 		this.alfabeta_3 = alfabeta_3;
+		this.comentarios = comentarios;
 	}
 
 	public Integer getPago() {
@@ -635,6 +639,14 @@ public class Prescription extends PersistentEntity {
 		this.alfabeta_3 = alfabeta_3;
 	}
 
+	public String getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(String comentarios) {
+		this.comentarios = comentarios;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -767,9 +779,11 @@ public class Prescription extends PersistentEntity {
 				.append(posee_ticket == null ? " " : posee_ticket)
 				.append(", ")
 				.append(posee_marca_comercial == null ? " "
-						: posee_marca_comercial).append(", ")
-				.append(this.creator == null ? " " : this.creator.getUsername()).append(", ")
-				.append(this.checked);
+						: posee_marca_comercial)
+				.append(", ")
+				.append(this.creator == null ? " " : this.creator.getUsername())
+				.append(", ").append(this.checked).append(", ")
+				.append(this.comentarios == null ? " " : this.comentarios);
 		return builder.toString();
 	}
 
