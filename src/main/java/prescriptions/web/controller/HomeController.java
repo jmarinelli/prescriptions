@@ -1,6 +1,7 @@
 package prescriptions.web.controller;
 
 import java.text.ParseException;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -29,6 +30,7 @@ import prescriptions.domain.repositories.ConvenioRepo;
 import prescriptions.domain.repositories.PrescriptionRepo;
 import prescriptions.domain.repositories.PriceRepo;
 import prescriptions.domain.repositories.RoleRepo;
+import prescriptions.web.dto.AutocompleteDTO;
 import prescriptions.web.validation.PrescriptionForm;
 import prescriptions.web.validators.PrescriptionFormValidator;
 import prescriptions.web.wrappers.AlfabetaWrapper;
@@ -44,12 +46,14 @@ public class HomeController {
 	private AlfabetaRepo alfabetaRepo;
 	private CaratulaRepo caratulaRepo;
 	private ConvenioRepo convenioRepo;
-	
+
 	private PrescriptionFormValidator prescriptionFormValidator;
-	
+
 	@Autowired
-	public HomeController(RoleRepo roleRepo, PrescriptionRepo prescriptionRepo, AlfabetaRepo alfabetaRepo, 
-						PriceRepo priceRepo, PrescriptionFormValidator prescriptionFormValidator, CaratulaRepo caratulaRepo, ConvenioRepo convenioRepo) {
+	public HomeController(RoleRepo roleRepo, PrescriptionRepo prescriptionRepo,
+			AlfabetaRepo alfabetaRepo, PriceRepo priceRepo,
+			PrescriptionFormValidator prescriptionFormValidator,
+			CaratulaRepo caratulaRepo, ConvenioRepo convenioRepo) {
 		this.roleRepo = roleRepo;
 		this.prescriptionRepo = prescriptionRepo;
 		this.alfabetaRepo = alfabetaRepo;
@@ -58,25 +62,27 @@ public class HomeController {
 		this.convenioRepo = convenioRepo;
 		this.prescriptionFormValidator = prescriptionFormValidator;
 	}
-	
+
 	@RequestMapping(value = "home", method = RequestMethod.GET)
 	public ModelAndView home(HttpSession session) {
 		ModelAndView mav = new ModelAndView("home/home");
-		mav.addObject("isAdmin", roleRepo.get((Integer)session.getAttribute("userId")).isAdmin());
+		mav.addObject("isAdmin",
+				roleRepo.get((Integer) session.getAttribute("userId"))
+						.isAdmin());
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public ModelAndView login() {
 		return new ModelAndView("home/login");
 	}
-	
+
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public ModelAndView logout(HttpSession session) {
 		session.invalidate();
 		return new ModelAndView("home/login");
 	}
-	
+
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public ModelAndView add(
 			@RequestParam(required = false, value = "status") String status,
@@ -105,7 +111,7 @@ public class HomeController {
 			if (fec_disp != null) {
 				form.setFix_fec_disp(true);
 				form.setFec_disp(Integer.valueOf(fec_disp));
-				
+
 			}
 			if (let_matricula != null) {
 				form.setFix_let_matricula(true);
@@ -124,35 +130,53 @@ public class HomeController {
 		mav.addObject("convenios", convenioRepo.getAll());
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "edit/{prescriptionId}", method = RequestMethod.GET)
-	public ModelAndView edit(@PathVariable Integer prescriptionId, HttpSession httpSession) {
+	public ModelAndView edit(@PathVariable Integer prescriptionId,
+			HttpSession httpSession) {
 		ModelAndView mav = new ModelAndView("home/add");
 		Prescription prescription = prescriptionRepo.get(prescriptionId);
-		Role user = roleRepo.get((Integer)httpSession.getAttribute("userId"));
-		if (prescription.getCreator().getId() == (Integer)httpSession.getAttribute("userId") 
-				|| user.isAdmin()) {
-			mav.addObject("prescriptionForm", new PrescriptionForm(prescription));
+		Role user = roleRepo.get((Integer) httpSession.getAttribute("userId"));
+		if (prescription.getCreator().getId() == (Integer) httpSession
+				.getAttribute("userId") || user.isAdmin()) {
+			mav.addObject("prescriptionForm",
+					new PrescriptionForm(prescription));
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "alfabeta", method = RequestMethod.GET)
 	@ResponseBody
-	public AlfabetaWrapper alfabeta(@RequestParam("barras") String barras, @RequestParam("fecha") Integer fecha) throws ParseException {
+	public AlfabetaWrapper alfabeta(@RequestParam("barras") String barras,
+			@RequestParam("fecha") Integer fecha) throws ParseException {
 		Alfabeta alfabeta = alfabetaRepo.getByBarras(barras);
 		if (alfabeta == null) {
 			alfabeta = alfabetaRepo.getByTroquel(barras);
 		}
-		if (alfabeta != null) { 
+		if (alfabeta != null) {
 			List<Price> price = priceRepo.getByRegistro(alfabeta.getRegistro());
 			return new AlfabetaWrapper(price, alfabeta, fecha);
 		}
 		return null;
 	}
-	
+
+	@RequestMapping(value = "alfabetas", method = RequestMethod.GET)
+	@ResponseBody
+	public List<AutocompleteDTO> autocomplete(@RequestParam("term") String value) {
+		List<AutocompleteDTO> ret = new LinkedList<AutocompleteDTO>();
+		List<Alfabeta> alfabeta = alfabetaRepo.getByName(value);
+		if (alfabeta != null && !alfabeta.isEmpty()) {
+			for (Alfabeta a : alfabeta) {
+				ret.add(new AutocompleteDTO(a.getNombre(), a.getBarras()));
+			}
+		}
+		return ret;
+	}
+
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public ModelAndView list(@RequestParam(required = false, value = "status") String status, HttpSession session) {
+	public ModelAndView list(
+			@RequestParam(required = false, value = "status") String status,
+			HttpSession session) {
 		Integer userId = (Integer) session.getAttribute("userId");
 		Role person = roleRepo.get(userId);
 		ModelAndView mav = new ModelAndView("home/list");
@@ -160,9 +184,10 @@ public class HomeController {
 		mav.addObject("status", status);
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public String add(PrescriptionForm prescriptionForm, Errors errors, @ModelAttribute("userId") Integer userId) {
+	public String add(PrescriptionForm prescriptionForm, Errors errors,
+			@ModelAttribute("userId") Integer userId) {
 		ModelAndView mav = new ModelAndView("home/add");
 		Role user = roleRepo.get(userId);
 		this.prescriptionFormValidator.validate(prescriptionForm, errors);
@@ -171,10 +196,12 @@ public class HomeController {
 			return null;
 		}
 		if (prescriptionForm.getPrescription() == null) {
-			Prescription prescription = prescriptionForm.build(this.prescriptionRepo);
+			Prescription prescription = prescriptionForm
+					.build(this.prescriptionRepo);
 			prescription.setCreator(user);
 			if (prescriptionRepo.save(prescription)) {
-				Caratula carat = this.getCaratula(prescription.getSer_carat(), prescription.getCod_carat());
+				Caratula carat = this.getCaratula(prescription.getSer_carat(),
+						prescription.getCod_carat());
 				carat.cargar();
 				mav.addObject("message", "'Receta cargada'");
 				String url = "redirect:add?status=success";
@@ -187,7 +214,8 @@ public class HomeController {
 				if (prescriptionForm.isFix_fec_disp())
 					url += "&fec_disp=" + prescriptionForm.getFec_disp();
 				if (prescriptionForm.isFix_let_matricula())
-					url += "&let_matricula=" + prescriptionForm.getLet_matricula();
+					url += "&let_matricula="
+							+ prescriptionForm.getLet_matricula();
 				if (prescriptionForm.isFix_convenio())
 					url += "&convenio=" + prescriptionForm.getConvenio();
 				return url;
@@ -200,11 +228,12 @@ public class HomeController {
 			prescriptionForm.update();
 			mav.addObject("message", "'Receta actualizada");
 			return "redirect:list?status=success";
-		}	
+		}
 	}
-	
+
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public String login(@RequestParam String username, @RequestParam String password, HttpSession session) {
+	public String login(@RequestParam String username,
+			@RequestParam String password, HttpSession session) {
 		Role user = roleRepo.getByUsername(username);
 		if (user != null && user.getPassword().equals(password)) {
 			session.setAttribute("userId", user.getId());
@@ -212,10 +241,11 @@ public class HomeController {
 		}
 		return null;
 	}
-	
+
 	@RequestMapping(value = "getCaratula", method = RequestMethod.GET)
 	@ResponseBody
-	public Caratula getCaratula(@RequestParam("ser_carat") String ser_carat, @RequestParam("cod_carat") Integer cod_carat) {
+	public Caratula getCaratula(@RequestParam("ser_carat") String ser_carat,
+			@RequestParam("cod_carat") Integer cod_carat) {
 		Caratula carat = caratulaRepo.get(ser_carat.toUpperCase(), cod_carat);
 		if (carat == null) {
 			carat = new Caratula(ser_carat, cod_carat);
@@ -223,7 +253,7 @@ public class HomeController {
 		}
 		return carat;
 	}
-	
+
 	@RequestMapping(value = "convenio", method = RequestMethod.GET)
 	@ResponseBody
 	public Convenio getConvenio(@RequestParam String name) {

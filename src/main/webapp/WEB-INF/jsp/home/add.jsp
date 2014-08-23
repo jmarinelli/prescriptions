@@ -17,6 +17,26 @@
 				});
 			})();
 		</script>
+		<script>
+		$(function() {
+			
+			var set = function(i) {
+				$( "#autocomplete_" + i ).autocomplete({
+					source: "/prescriptions/bin/home/alfabetas",
+					minLength: 3,
+					select:  function( event, ui ) {
+						alert(i);
+						$("#cod_barra_" + i).val(ui.item.value);
+						loadInfo(ui.item.value, i);
+					} 
+				});
+			};
+		
+			for (var i = 1 ; i <= 3 ; i++) {
+				set(i);
+			}
+		});
+		</script>
 	</head>
 	<%@ include file="../partials/header.jsp" %>
 	<body class="prescription-page-ctn" onload="formEvents();">

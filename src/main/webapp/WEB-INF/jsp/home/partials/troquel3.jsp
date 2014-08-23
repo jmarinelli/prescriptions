@@ -1,6 +1,11 @@
 <div class="panel" id="troquelN3">
 	<h3>Tercero</h3>
 	<div class="panel-field">
+	  <span>Buscar: </span>
+	  <input id="autocomplete_3">
+	</div>
+	=================
+	<div class="panel-field">
 		<span>C&oacute;digo de barra</span>
 		<form:input path="cod_barra_3" type="text" onblur="loadInfo(this.value, 3);" />
 		<span id="alfabetaName3" class="alfabeta-name"></span>
