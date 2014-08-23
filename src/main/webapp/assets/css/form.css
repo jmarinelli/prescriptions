@@ -6,6 +6,19 @@
 	height: 350px;
 }
 
+.errors-panel {
+	float: left;
+	border-style: solid;
+	margin-right: 1px;
+	padding: 0 10px 15px;
+	height: 80px;
+	width: 190px;
+}
+
+.errors-checkbox {
+	margin-top: 7px;
+}
+
 .panel .sub-panel {
 	float: left;
 }

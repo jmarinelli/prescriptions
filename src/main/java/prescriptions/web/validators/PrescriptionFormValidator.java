@@ -21,6 +21,12 @@ public class PrescriptionFormValidator implements Validator {
 
 	public void validate(Object target, Errors errors) {
 		PrescriptionForm object = (PrescriptionForm) target;
+		if (object.getWith_errors()) {
+			if (object.getErrors_reason() == null || object.getErrors_reason().equals("")){
+				errors.rejectValue("errors_reason", "no_reason");
+			}
+			return;
+		}
 		if (object.getOrden() == null || object.getOrden() > 999
 				|| object.getOrden() == 0)
 			errors.rejectValue("orden", "inv_value.orden");
@@ -78,10 +84,27 @@ public class PrescriptionFormValidator implements Validator {
 		if (object.getAjuste() != null && object.getTot_ac() != null
 				&& object.getAjuste() > object.getTot_ac())
 			errors.rejectValue("ajuste", "ajuste.invalid");
+		if (object.getAjuste() == null || object.getAjuste() <= 0)
+			errors.rejectValue("ajuste", "more_than_zero");
+		if (object.getTot_ac() == null || object.getTot_ac() <= 0)
+			errors.rejectValue("tot_ac", "more_than_zero");
 		if (object.getParentesco() != null && object.getParentesco() > 99)
 			errors.rejectValue("parentesco", "parentesco.invalid");
 		for (String s : object.getNulledFields())
 			errors.rejectValue(s, "not_null");
+		validateTroquel(object, errors);
+	}
+
+	private void validateTroquel(PrescriptionForm form, Errors errors) {
+		if (!form.troquel1isEmptyOrFull()) {
+			errors.rejectValue("cod_barra_1", "troquel_not_empty_or_full");
+		}
+		if (!form.troquel2isEmptyOrFull()) {
+			errors.rejectValue("cod_barra_2", "troquel_not_empty_or_full");
+		}
+		if (!form.troquel3isEmptyOrFull()) {
+			errors.rejectValue("cod_barra_3", "troquel_not_empty_or_full");
+		}
 	}
 
 	private boolean checkDifference(Integer farm, Integer real) {
@@ -182,6 +205,13 @@ public class PrescriptionFormValidator implements Validator {
 		if (date >= numericYear)
 			return false;
 		return true;
+	}
+	
+	private boolean isEmptyOrWhitespace(String field) {
+		if (field == null || field.equals("")) {
+			return true;
+		}
+		return false;
 	}
 
 }
