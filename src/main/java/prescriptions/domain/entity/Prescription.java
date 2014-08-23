@@ -201,6 +201,8 @@ public class Prescription extends PersistentEntity {
 	}
 
 	public Integer getCod_carat() {
+		if (cod_carat == null)
+			return 0;
 		return cod_carat;
 	}
 
@@ -273,6 +275,8 @@ public class Prescription extends PersistentEntity {
 	}
 
 	public Integer getOrden() {
+		if (cod_carat == null)
+			return 0;
 		return orden;
 	}
 
