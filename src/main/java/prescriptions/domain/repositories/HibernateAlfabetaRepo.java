@@ -25,7 +25,7 @@ public class HibernateAlfabetaRepo extends AbstractHibernateRepo implements Alfa
 	}
 
 	public List<Alfabeta> getByName(String name) {
-		return super.find("from Alfabeta where nombre like '%" + name + "%'");
+		return super.find("from Alfabeta where lower(nombre) like '%" + name.toLowerCase() + "%'");
 	}
 
 }
