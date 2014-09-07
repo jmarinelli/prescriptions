@@ -138,7 +138,9 @@ var formEvents = function() {
 			}
 			return false;
 		} else if (e.which == 88) {
-			$(this).val("19000101");
+			if ($(this).attr("id").indexOf("autocomplete") != 0) {
+				$(this).val("19000101");
+			}
 			return false;
 		}
 	});
