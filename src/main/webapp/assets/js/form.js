@@ -140,8 +140,8 @@ var formEvents = function() {
 		} else if (e.which == 88) {
 			if ($(this).attr("id").indexOf("autocomplete") != 0) {
 				$(this).val("19000101");
+				return false;
 			}
-			return false;
 		}
 	});
 	$("input").keypress(function(e) {
