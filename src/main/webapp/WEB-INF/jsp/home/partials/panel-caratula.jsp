@@ -22,6 +22,17 @@
 			<form:errors path="cod_carat" />
 		</div>
 	</div>
+	<div class="panel-field">
+		<span>Porcentaje O.S.</span>
+		<form:input path="porc" type="text" value="" id="porc"/>
+		<div class="fix-field">
+			<form:checkbox path="fix_porc" class="fix-checkbox"/>
+			<span>Fijar</span>
+		</div>
+		<div class="error">
+			<form:errors path="porc" />
+		</div>
+	</div>
 
 	<!-- de acá para abajo según lo que dice el excel habria que agregar readonly="true" a los input -->
 	<div class="panel-field tabbed">

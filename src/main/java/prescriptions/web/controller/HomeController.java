@@ -91,7 +91,8 @@ public class HomeController {
 			@RequestParam(required = false, value = "fec_prescr") String fec_prescr,
 			@RequestParam(required = false, value = "fec_disp") String fec_disp,
 			@RequestParam(required = false, value = "let_matricula") String let_matricula,
-			@RequestParam(required = false, value = "convenio") String convenio) {
+			@RequestParam(required = false, value = "convenio") String convenio,
+			@RequestParam(required = false, value = "porc") String porc) {
 		ModelAndView mav = new ModelAndView("home/add");
 		mav.addObject("status", "'" + (status != null ? status : "none") + "'");
 		PrescriptionForm form = new PrescriptionForm();
@@ -116,6 +117,10 @@ public class HomeController {
 			if (let_matricula != null) {
 				form.setFix_let_matricula(true);
 				form.setLet_matricula(let_matricula);
+			}
+			if (porc != null) {
+				form.setFix_porc(true);
+				form.setPorc(Integer.valueOf(porc));
 			}
 			if (convenio != null) {
 				form.setFix_convenio(true);
@@ -218,6 +223,8 @@ public class HomeController {
 							+ prescriptionForm.getLet_matricula();
 				if (prescriptionForm.isFix_convenio())
 					url += "&convenio=" + prescriptionForm.getConvenio();
+				if (prescriptionForm.isFix_porc())
+					url += "&porc=" + prescriptionForm.getPorc();
 				return url;
 			} else {
 				errors.rejectValue("duplicated", "duplicated");

@@ -67,18 +67,21 @@ public class Prescription extends PersistentEntity {
 	private Integer can_real_1 = 0; //
 	private Integer pciorp_1 = 0; //
 	private Integer pcio_real_1 = 0; // los 2 iguales
+	private Integer porc_1 = 0;
 	private Integer troquel_1 = 0; // 7 digitos
 	private Integer laboratorio_1 = 0;
 	private Integer alfabeta_1 = 0;
 
 	// Codigo de barras?
 	private String cod_barra_2 = ""; // codigo de barras -> alfabetaN,
-										// atributoAN, atributoBN, atributoCN??
+
+	// atributoAN, atributoBN, atributoCN??
 	private Integer can_presc_2 = 0; //
 	private Integer can_disp_2 = 0; // los 3 iguales
 	private Integer can_real_2 = 0; //
 	private Integer pciorp_2 = 0; //
 	private Integer pcio_real_2 = 0; // los 2 iguales
+	private Integer porc_2 = 0;
 	private Integer troquel_2 = 0; // 7 digitos
 	private Integer laboratorio_2 = 0;
 	private Integer alfabeta_2 = 0;
@@ -91,6 +94,7 @@ public class Prescription extends PersistentEntity {
 	private Integer can_real_3 = 0; //
 	private Integer pciorp_3 = 0; //
 	private Integer pcio_real_3 = 0; // los 2 iguales
+	private Integer porc_3 = 0;
 	private Integer troquel_3 = 0; // 7 digitos
 	private Integer laboratorio_3 = 0;
 	private Integer alfabeta_3 = 0;
@@ -108,13 +112,13 @@ public class Prescription extends PersistentEntity {
 			Integer ajuste_parcial, String rechazos, Integer posee_ticket,
 			Integer posee_marca_comercial, Integer num_afi, Integer parentesco,
 			String cod_barra_1, Integer can_presc_1, Integer can_disp_1,
-			Integer can_real_1, Integer pciorp_1, Integer pcio_real_1,
+			Integer can_real_1, Integer pciorp_1, Integer pcio_real_1, Integer porc_1,
 			Integer troquel_1, Integer laboratorio_1, Integer alfabeta_1,
 			String cod_barra_2, Integer can_presc_2, Integer can_disp_2,
-			Integer can_real_2, Integer pciorp_2, Integer pcio_real_2,
+			Integer can_real_2, Integer pciorp_2, Integer pcio_real_2, Integer porc_2,
 			Integer troquel_2, Integer laboratorio_2, Integer alfabeta_2,
 			String cod_barra_3, Integer can_presc_3, Integer can_disp_3,
-			Integer can_real_3, Integer pciorp_3, Integer pcio_real_3,
+			Integer can_real_3, Integer pciorp_3, Integer pcio_real_3, Integer porc_3,
 			Integer troquel_3, Integer laboratorio_3, Integer alfabeta_3,
 			String comentarios) {
 		super();
@@ -152,6 +156,7 @@ public class Prescription extends PersistentEntity {
 		this.can_real_1 = can_real_1;
 		this.pciorp_1 = pciorp_1;
 		this.pcio_real_1 = pcio_real_1;
+		this.porc_1 = porc_1;
 		this.troquel_1 = troquel_1;
 		this.laboratorio_1 = laboratorio_1;
 		this.alfabeta_1 = alfabeta_1;
@@ -161,6 +166,7 @@ public class Prescription extends PersistentEntity {
 		this.can_real_2 = can_real_2;
 		this.pciorp_2 = pciorp_2;
 		this.pcio_real_2 = pcio_real_2;
+		this.porc_2 = porc_2;
 		this.troquel_2 = troquel_2;
 		this.laboratorio_2 = laboratorio_2;
 		this.alfabeta_2 = alfabeta_2;
@@ -170,10 +176,35 @@ public class Prescription extends PersistentEntity {
 		this.can_real_3 = can_real_3;
 		this.pciorp_3 = pciorp_3;
 		this.pcio_real_3 = pcio_real_3;
+		this.porc_3 = porc_3;
 		this.troquel_3 = troquel_3;
 		this.laboratorio_3 = laboratorio_3;
 		this.alfabeta_3 = alfabeta_3;
 		this.comentarios = comentarios;
+	}
+
+	public Integer getPorc_3() {
+		return porc_3;
+	}
+
+	public void setPorc_3(Integer porc_3) {
+		this.porc_3 = porc_3;
+	}
+	
+	public Integer getPorc_1() {
+		return porc_1;
+	}
+
+	public void setPorc_1(Integer porc_1) {
+		this.porc_1 = porc_1;
+	}
+
+	public Integer getPorc_2() {
+		return porc_2;
+	}
+
+	public void setPorc_2(Integer porc_2) {
+		this.porc_2 = porc_2;
 	}
 
 	public Integer getPago() {
@@ -722,7 +753,7 @@ public class Prescription extends PersistentEntity {
 				.append(pciorp_1 == null ? 0 : pciorp_1)
 				.append(", ")
 				.append(pcio_real_1 == null ? 0 : pcio_real_1)
-				.append(", ")
+				.append(", ").append(porc_1 == null ? 0 : porc_1)
 				.append(", ,")
 				.append(cod_barra_1 == null ? 0 : cod_barra_1)
 				.append(", ")
@@ -742,7 +773,7 @@ public class Prescription extends PersistentEntity {
 				.append(pciorp_2 == null ? 0 : pciorp_2)
 				.append(", ")
 				.append(pcio_real_2 == null ? 0 : pcio_real_2)
-				.append(", ")
+				.append(", ").append(porc_2 == null ? 0 : porc_2)
 				.append(", ,")
 				.append(cod_barra_2 == null ? " " : cod_barra_2)
 				.append(", ")
@@ -762,7 +793,7 @@ public class Prescription extends PersistentEntity {
 				.append(pciorp_3 == null ? 0 : pciorp_3)
 				.append(", ")
 				.append(pcio_real_3 == null ? 0 : pcio_real_3)
-				.append(", ")
+				.append(", ").append(porc_3 == null ? 0 : porc_3)
 				.append(", ,")
 				.append(cod_barra_3 == null ? " " : cod_barra_3)
 				.append(", ")

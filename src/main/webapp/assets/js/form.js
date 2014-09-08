@@ -1,11 +1,11 @@
 var validationsMade = {
-		dispensationDate : false,
-		prescribedDispensation: false,
-		amountDifference: false,
-		invalidPrescription: false,
-		troquelOne : false,
-		troquelTwo : false,
-		troquelThree : false
+	dispensationDate : false,
+	prescribedDispensation: false,
+	amountDifference: false,
+	invalidPrescription: false,
+	troquelOne : false,
+	troquelTwo : false,
+	troquelThree : false
 };
 
 var formEvents = function() {
@@ -60,7 +60,15 @@ var formEvents = function() {
 		});
 	};
 	
-	setValidations();
+	setValidations();;
+	
+	if ($("#porc").val() != null && $("#porc").val() != "") {
+		updatePorc();
+	}
+	
+	$("#porc").blur(function() {
+		updatePorc();
+	});
 
 	$("#tot_rec").keypress(function(e){
 		if (e.charCode == 45){
@@ -187,8 +195,9 @@ var calculateAjuste = function() {
 	var ajuste = 0;
 	var codes = ["58", "63", "97"];
 	for (var i = 1 ; i < 4 ; i++) {
-		var diff = $("#pcio_real_" + i).val() - $("#pciorp_" + i).val();
-		ajuste += diff * $("#can_real_" + i).val();
+//		var diff = $("#pcio_real_" + i).val() - $("#pciorp_" + i).val();
+//		ajuste += diff * $("#can_real_" + i).val();
+		ajuste += $("#can_real_" + i).val() * $("#pcio_real_" + i).val() * ($("#porc_" + i).val() != null ? $("#porc_" + i).val() : 0);
 		code = codes[i - 1];
 		if ($("#rechazos").val().indexOf(code) < 0 && diff)
 			$("#rechazos").val($("#rechazos").val() + code);
@@ -197,7 +206,8 @@ var calculateAjuste = function() {
 	}
 	var totalOS = $("#tot_ac").val();
 	var totalReceta = $("#tot_rec").val();
-	var ajusteTotal = (totalOS / totalReceta) * ajuste;
+//	var ajusteTotal = (totalOS / totalReceta) * ajuste;
+	var ajusteTotal = ajuste - totalOS;
 	if (ajuste && $("#rechazos").val().indexOf("78") < 0) {
 		$("#rechazos").val($("#rechazos").val() + "78");
 	} else if (!ajuste && $("#rechazos").val().indexOf("78") >= 0) {
@@ -268,3 +278,9 @@ var setFocus = function() {
 		}
 	}
 };
+
+var updatePorc = function() {
+	$("#porc_1").val($("#porc").val());
+	$("#porc_2").val($("#porc").val());
+	$("#porc_3").val($("#porc").val());
+}

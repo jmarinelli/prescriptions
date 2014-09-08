@@ -70,4 +70,11 @@
 			<form:errors path="alfabeta_3" />
 		</div>
 	</div>
+	<div class="panel-field">
+		<span>Porc. O.S.</span>
+		<form:input path="porc_3" type="number" />
+		<div class="error">
+			<form:errors path="porc_3" />
+		</div>
+	</div>
 </div>

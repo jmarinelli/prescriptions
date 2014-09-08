@@ -12,6 +12,7 @@ public class PrescriptionForm {
 	
 	private Boolean with_errors = false;
 	private String errors_reason;
+	private Integer porc;
 
 	private boolean duplicated;
 	private boolean fix_ser_carat;
@@ -20,6 +21,7 @@ public class PrescriptionForm {
 	private boolean fix_fec_prescr;
 	private boolean fix_fec_disp;
 	private boolean fix_convenio;
+	private boolean fix_porc;
 
 	private String convenio;
 
@@ -76,6 +78,7 @@ public class PrescriptionForm {
 	private Integer can_real_1; //
 	private Integer pciorp_1; //
 	private Integer pcio_real_1; // los 2 iguales
+	private Integer porc_1;
 	private Integer troquel_1; // 7 digitos
 	private Integer laboratorio_1;
 	private Integer alfabeta_1;
@@ -88,6 +91,7 @@ public class PrescriptionForm {
 	private Integer can_real_2; //
 	private Integer pciorp_2; //
 	private Integer pcio_real_2; // los 2 iguales
+	private Integer porc_2;
 	private Integer troquel_2; // 7 digitos
 	private Integer laboratorio_2;
 	private Integer alfabeta_2;
@@ -100,6 +104,7 @@ public class PrescriptionForm {
 	private Integer can_real_3; //
 	private Integer pciorp_3; //
 	private Integer pcio_real_3; // los 2 iguales
+	private Integer porc_3;
 	private Integer troquel_3; // 7 digitos
 	private Integer laboratorio_3;
 	private Integer alfabeta_3;
@@ -144,6 +149,7 @@ public class PrescriptionForm {
 		this.can_real_1 = p.getCan_real_1();
 		this.pciorp_1 = p.getPciorp_1();
 		this.pcio_real_1 = p.getPcio_real_1();
+		this.porc_1 = p.getPorc_1();
 		this.troquel_1 = p.getTroquel_1();
 		this.laboratorio_1 = p.getLaboratorio_1();
 		this.alfabeta_1 = p.getAlfabeta_1();
@@ -153,6 +159,7 @@ public class PrescriptionForm {
 		this.can_real_2 = p.getCan_real_2();
 		this.pciorp_2 = p.getPciorp_2();
 		this.pcio_real_2 = p.getPcio_real_2();
+		this.porc_2 = p.getPorc_2();
 		this.troquel_2 = p.getTroquel_2();
 		this.laboratorio_2 = p.getLaboratorio_2();
 		this.alfabeta_2 = p.getAlfabeta_2();
@@ -162,6 +169,7 @@ public class PrescriptionForm {
 		this.can_real_3 = p.getCan_real_3();
 		this.pciorp_3 = p.getPciorp_3();
 		this.pcio_real_3 = p.getPcio_real_3();
+		this.porc_3 = p.getPorc_3();
 		this.troquel_3 = p.getTroquel_3();
 		this.laboratorio_3 = p.getLaboratorio_3();
 		this.alfabeta_3 = p.getAlfabeta_3();
@@ -785,6 +793,14 @@ public class PrescriptionForm {
 		this.fix_convenio = fix_convenio;
 	}
 
+	public boolean isFix_porc() {
+		return fix_porc;
+	}
+
+	public void setFix_porc(boolean fix_porc) {
+		this.fix_porc = fix_porc;
+	}
+
 	public String getComentarios() {
 		return comentarios;
 	}
@@ -807,6 +823,38 @@ public class PrescriptionForm {
 
 	public void setErrors_reason(String errors_reason) {
 		this.errors_reason = errors_reason;
+	}
+
+	public Integer getPorc_1() {
+		return porc_1;
+	}
+
+	public void setPorc_1(Integer porc_1) {
+		this.porc_1 = porc_1;
+	}
+
+	public Integer getPorc_2() {
+		return porc_2;
+	}
+
+	public void setPorc_2(Integer porc_2) {
+		this.porc_2 = porc_2;
+	}
+
+	public Integer getPorc_3() {
+		return porc_3;
+	}
+
+	public void setPorc_3(Integer porc_3) {
+		this.porc_3 = porc_3;
+	}
+
+	public Integer getPorc() {
+		return porc;
+	}
+
+	public void setPorc(Integer porc) {
+		this.porc = porc;
 	}
 
 	public boolean troquel1isEmptyOrFull() {
@@ -843,17 +891,18 @@ public class PrescriptionForm {
 	}
 
 	public Prescription build(PrescriptionRepo prescriptionRepo) {
-		return new Prescription(with_errors, errors_reason, pago, ser_carat, cod_carat, expediente,
-				cod_obsoc, cod_plan, periodo, cod_farma, caja, ser_receta,
-				num_receta, orden, fec_prescr, fec_disp, let_matricula,
-				num_matricula, tot_rec, tot_afil, tot_ac, ajuste,
-				ajuste_parcial, rechazos, posee_ticket, posee_marca_comercial,
-				num_afi, parentesco, cod_barra_1, can_presc_1, can_disp_1,
-				can_real_1, pciorp_1, pcio_real_1, troquel_1, laboratorio_1,
-				alfabeta_1, cod_barra_2, can_presc_2, can_disp_2, can_real_2,
-				pciorp_2, pcio_real_2, troquel_2, laboratorio_2, alfabeta_2,
-				cod_barra_3, can_presc_3, can_disp_3, can_real_3, pciorp_3,
-				pcio_real_3, troquel_3, laboratorio_3, alfabeta_3, comentarios);
+		return new Prescription(with_errors, errors_reason, pago, ser_carat,
+				cod_carat, expediente, cod_obsoc, cod_plan, periodo, cod_farma,
+				caja, ser_receta, num_receta, orden, fec_prescr, fec_disp,
+				let_matricula, num_matricula, tot_rec, tot_afil, tot_ac,
+				ajuste, ajuste_parcial, rechazos, posee_ticket,
+				posee_marca_comercial, num_afi, parentesco, cod_barra_1,
+				can_presc_1, can_disp_1, can_real_1, pciorp_1, pcio_real_1,
+				porc_1, troquel_1, laboratorio_1, alfabeta_1, cod_barra_2,
+				can_presc_2, can_disp_2, can_real_2, pciorp_2, pcio_real_2,
+				porc_2, troquel_2, laboratorio_2, alfabeta_2, cod_barra_3,
+				can_presc_3, can_disp_3, can_real_3, pciorp_3, pcio_real_3,
+				porc_3, troquel_3, laboratorio_3, alfabeta_3, comentarios);
 
 	}
 
@@ -881,6 +930,7 @@ public class PrescriptionForm {
 		prescription.setCan_real_1(can_real_1);
 		prescription.setCod_barra_1(cod_barra_1);
 		prescription.setPcio_real_1(pcio_real_1);
+		prescription.setPorc_1(porc_1);
 		prescription.setPciorp_1(pciorp_1);
 		prescription.setTroquel_1(troquel_1);
 		prescription.setLaboratorio_1(laboratorio_1);
@@ -893,6 +943,7 @@ public class PrescriptionForm {
 		prescription.setAlfabeta_2(alfabeta_2);
 		prescription.setCod_barra_2(cod_barra_2);
 		prescription.setPcio_real_2(pcio_real_2);
+		prescription.setPorc_2(porc_2);
 		prescription.setPciorp_2(pciorp_2);
 		prescription.setCan_presc_3(can_presc_3);
 		prescription.setCan_disp_3(can_disp_3);
@@ -902,6 +953,7 @@ public class PrescriptionForm {
 		prescription.setAlfabeta_3(alfabeta_3);
 		prescription.setCod_barra_3(cod_barra_3);
 		prescription.setPcio_real_3(pcio_real_3);
+		prescription.setPorc_3(porc_3);
 		prescription.setPciorp_3(pciorp_3);
 		prescription.setLet_matricula(let_matricula);
 		prescription.setNum_matricula(num_matricula);
