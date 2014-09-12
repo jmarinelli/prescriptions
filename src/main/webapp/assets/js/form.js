@@ -195,9 +195,9 @@ var calculateAjuste = function() {
 	var ajuste = 0;
 	var codes = ["58", "63", "97"];
 	for (var i = 1 ; i < 4 ; i++) {
-//		var diff = $("#pcio_real_" + i).val() - $("#pciorp_" + i).val();
+		var diff = $("#can_real_" + i).val() * $("#pcio_real_" + i).val() * ($("#porc_" + i).val() != null ? $("#porc_" + i).val() : 0);
 //		ajuste += diff * $("#can_real_" + i).val();
-		ajuste += $("#can_real_" + i).val() * $("#pcio_real_" + i).val() * ($("#porc_" + i).val() != null ? $("#porc_" + i).val() : 0);
+		ajuste += diff;
 		code = codes[i - 1];
 		if ($("#rechazos").val().indexOf(code) < 0 && diff)
 			$("#rechazos").val($("#rechazos").val() + code);
