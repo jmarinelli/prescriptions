@@ -9,7 +9,7 @@ var validationsMade = {
 };
 
 var formEvents = function() {
-	
+
 	var setValidations = function() {
 		$("#fec_disp").blur(function(e) {
 			var fecPrescr = $("#fec_prescr").val();
@@ -42,7 +42,7 @@ var formEvents = function() {
 			}
 		});
 		$("#fec_prescr").blur(function(e) {
-			var fecPrescr = $("#fec_prescr").val(); 
+			var fecPrescr = $("#fec_prescr").val();
 			var prescr = new Date(fecPrescr.substring(0,4), fecPrescr.substring(4,6), fecPrescr.substring(6,8));
 			var today = new Date();
 			var future = prescr.getTime() > today.getTime();
@@ -59,13 +59,13 @@ var formEvents = function() {
 			}
 		});
 	};
-	
+
 	setValidations();;
-	
+
 	if ($("#porc").val() != null && $("#porc").val() != "") {
 		updatePorc();
 	}
-	
+
 	$("#porc").blur(function() {
 		updatePorc();
 	});
@@ -102,7 +102,7 @@ var formEvents = function() {
 			if (ctrlPressed) {
 				ctrlPressed = false;
 				$("#register").submit();
-				
+
 			} else {
 				e.stopPropagation();
 				e.preventDefault();
@@ -172,7 +172,7 @@ var formEvents = function() {
 		cleanFields();
 	});
 	for (var i = 1 ; i < 4 ; i++) {
-		$("#pciorp_" + i).change(function(e){
+		$("#pciorp_" + i).blur(function(e){
 			calculateAjuste();
 		});
 	}
