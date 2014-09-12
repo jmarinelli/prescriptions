@@ -84,8 +84,8 @@ public class PrescriptionFormValidator implements Validator {
 		if (object.getAjuste() != null && object.getTot_ac() != null
 				&& object.getAjuste() > object.getTot_ac())
 			errors.rejectValue("ajuste", "ajuste.invalid");
-		if (object.getAjuste() == null || object.getAjuste() <= 0)
-			errors.rejectValue("ajuste", "more_than_zero");
+//		if (object.getAjuste() == null || object.getAjuste() <= 0)
+//			errors.rejectValue("ajuste", "more_than_zero");
 		if (object.getTot_ac() == null || object.getTot_ac() <= 0)
 			errors.rejectValue("tot_ac", "more_than_zero");
 		if (object.getParentesco() != null && object.getParentesco() > 99)
