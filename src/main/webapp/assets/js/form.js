@@ -197,7 +197,7 @@ var calculateAjuste = function() {
 	for (var i = 1 ; i < 4 ; i++) {
 		var diff = $("#can_real_" + i).val() * $("#pcio_real_" + i).val() * ($("#porc_" + i).val() != null ? $("#porc_" + i).val() : 0);
 //		ajuste += diff * $("#can_real_" + i).val();
-		ajuste += diff;
+		ajuste += diff / 100;
 		code = codes[i - 1];
 		if ($("#rechazos").val().indexOf(code) < 0 && diff)
 			$("#rechazos").val($("#rechazos").val() + code);
