@@ -143,7 +143,10 @@ public class Prescription extends PersistentEntity {
 		this.tot_rec = tot_rec;
 		this.tot_afil = tot_afil;
 		this.tot_ac = tot_ac;
-		this.ajuste = ajuste;
+		if (ajuste < 5)
+			this.ajuste = 0;
+		else
+			this.ajuste = ajuste;
 		this.ajuste_parcial = ajuste_parcial;
 		this.rechazos = rechazos;
 		this.posee_ticket = posee_ticket;
@@ -376,7 +379,10 @@ public class Prescription extends PersistentEntity {
 	}
 
 	public void setAjuste(Integer ajuste) {
-		this.ajuste = ajuste;
+		if (ajuste < 5)
+			this.ajuste = 0;
+		else
+			this.ajuste = ajuste;
 	}
 
 	public Integer getAjuste_parcial() {

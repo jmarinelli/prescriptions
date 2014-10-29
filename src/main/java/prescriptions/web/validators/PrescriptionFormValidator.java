@@ -76,8 +76,7 @@ public class PrescriptionFormValidator implements Validator {
 		}
 
 		if (!object.getLet_matricula().toUpperCase().equals("N")
-				&& !object.getLet_matricula().toUpperCase().equals("P")
-				&& !object.getLet_matricula().toUpperCase().equals("X"))
+				&& !object.getLet_matricula().toUpperCase().equals("P"))
 			errors.rejectValue("let_matricula", "inv_value.let_matricula");
 		if (!validateDiff(object.getFec_prescr(), object.getFec_disp()))
 			errors.rejectValue("fec_disp", "inv_form.date_diff");
@@ -127,9 +126,14 @@ public class PrescriptionFormValidator implements Validator {
 			return false;
 		}
 
-		if (fecDisp.minusMonths(2).isAfter(fecPrescr)
-				|| fecPrescr.minusMonths(2).isAfter(fecDisp))
+		if (fecDisp.minusDays(30).isAfter(fecPrescr)
+				|| fecPrescr.minusDays(30).isAfter(fecDisp))
 			return false;
+		
+		if (fecDisp.isBefore(DateTime.now().minusYears(2)) ||
+				fecPrescr.isBefore(DateTime.now().minusYears(2))) {
+			return false;
+		}
 
 		return true;
 	}
