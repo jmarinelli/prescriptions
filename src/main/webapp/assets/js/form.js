@@ -212,9 +212,9 @@ var calculateAjuste = function() {
 			$("#rechazos").val($("#rechazos").val() + "78");
 		}
 		for (var j = 0 ; j < 3 ; j++) {
-			if ($("#rechazos").val().indexOf(codes[j]) < 0 && hasAjuste[j])
+			if (hasAjuste[j])
 				$("#rechazos").val($("#rechazos").val() + codes[j]);
-			else
+			else if ($("#rechazos").val().indexOf(codes[j]) >= 0)
 				$("#rechazos").val($("#rechazos").val().replace(codes[j], ""));
 		}
 		$("#ajuste").val(Math.floor(ajusteTotal));
