@@ -209,7 +209,7 @@ var calculateAjuste = function() {
 	var totalReceta = $("#tot_rec").val();
 //	var ajusteTotal = (totalOS / totalReceta) * ajuste;
 	var ajusteTotal = ajuste - totalOS;
-	if (ajuste >= 10 || ajuste <= -10) {
+	if (ajuste >= 10 && ajuste <= -10) {
 		if ($("#rechazos").val().indexOf("78") < 0) {
 			$("#rechazos").val($("#rechazos").val() + "78");
 		}
