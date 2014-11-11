@@ -194,26 +194,41 @@ var cleanFields = function() {
 var calculateAjuste = function() {
 	var ajuste = 0;
 	var codes = ["58", "63", "97"];
+	var hasAjuste = [false, false, false];
 	for (var i = 1 ; i < 4 ; i++) {
 		var diff = $("#can_real_" + i).val() * $("#pcio_real_" + i).val() * ($("#porc_" + i).val() != null ? $("#porc_" + i).val() : 0);
 //		ajuste += diff * $("#can_real_" + i).val();
 		ajuste += diff / 100;
 		code = codes[i - 1];
-		if ($("#rechazos").val().indexOf(code) < 0 && diff)
-			$("#rechazos").val($("#rechazos").val() + code);
-		else if (!diff && $("#rechazos").val().indexOf(code) >= 0)
-			$("#rechazos").val($("#rechazos").val().replace(code, ""));
+		if (diff)
+			hasAjuste[i - 1] = true;
 	}
 	var totalOS = $("#tot_ac").val();
 	var totalReceta = $("#tot_rec").val();
 //	var ajusteTotal = (totalOS / totalReceta) * ajuste;
 	var ajusteTotal = ajuste - totalOS;
-	if (ajuste && $("#rechazos").val().indexOf("78") < 0) {
-		$("#rechazos").val($("#rechazos").val() + "78");
-	} else if (!ajuste && $("#rechazos").val().indexOf("78") >= 0) {
-		$("#rechazos").val($("#rechazos").val().replace("78", ""));
+	if (ajuste >= 10 || ajuste <= -10) {
+		if ($("#rechazos").val().indexOf("78") < 0) {
+			$("#rechazos").val($("#rechazos").val() + "78");
+		}
+		for (var j = 0 ; j < 3 ; j++) {
+			if ($("#rechazos").val().indexOf(codes[j]) < 0 && hasAjuste[j])
+				$("#rechazos").val($("#rechazos").val() + codes[j]);
+			else
+				$("#rechazos").val($("#rechazos").val().replace(codes[j], ""));
+		}
+		$("#ajuste").val(Math.floor(ajusteTotal));
 	}
-	$("#ajuste").val(Math.floor(ajusteTotal));
+	if (ajuste > -10 && ajuste < 10) {
+		if ($("#rechazos").val().indexOf("78") >= 0) {
+			$("#rechazos").val($("#rechazos").val().replace("78", ""));
+		}
+		for (var j = 0 ; j < 3 ; j++) {
+			$("#rechazos").val($("#rechazos").val().replace(codes[j], ""));
+		}
+		$("#ajuste").val(0);
+	}
+	
 };
 
 var convenioOnChange = function() {
