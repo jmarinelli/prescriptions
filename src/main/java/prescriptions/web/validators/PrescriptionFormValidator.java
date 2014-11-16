@@ -22,7 +22,8 @@ public class PrescriptionFormValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		PrescriptionForm object = (PrescriptionForm) target;
 		if (object.getWith_errors()) {
-			if (object.getErrors_reason() == null || object.getErrors_reason().equals("")){
+			if (object.getErrors_reason() == null
+					|| object.getErrors_reason().equals("")) {
 				errors.rejectValue("errors_reason", "no_reason");
 			}
 			return;
@@ -74,6 +75,12 @@ public class PrescriptionFormValidator implements Validator {
 			if (checkDifference(object.getPciorp_3(), object.getPcio_real_3()))
 				errors.rejectValue("pciorp_3", "price.difference");
 		}
+		if (object.getTot_ac() == null
+				|| object.getTot_afil() == null
+				|| object.getTot_ac() + object.getTot_afil() != object
+						.getTot_rec()) {
+			errors.rejectValue("tot_rec", "price.tot_rec");
+		}
 
 		if (!object.getLet_matricula().toUpperCase().equals("N")
 				&& !object.getLet_matricula().toUpperCase().equals("P"))
@@ -83,8 +90,8 @@ public class PrescriptionFormValidator implements Validator {
 		if (object.getAjuste() != null && object.getTot_ac() != null
 				&& object.getAjuste() > object.getTot_ac())
 			errors.rejectValue("ajuste", "ajuste.invalid");
-//		if (object.getAjuste() == null || object.getAjuste() <= 0)
-//			errors.rejectValue("ajuste", "more_than_zero");
+		// if (object.getAjuste() == null || object.getAjuste() <= 0)
+		// errors.rejectValue("ajuste", "more_than_zero");
 		if (object.getTot_ac() == null || object.getTot_ac() <= 0)
 			errors.rejectValue("tot_ac", "more_than_zero");
 		if (object.getParentesco() != null && object.getParentesco() > 99)
@@ -129,9 +136,9 @@ public class PrescriptionFormValidator implements Validator {
 		if (fecDisp.minusDays(30).isAfter(fecPrescr)
 				|| fecPrescr.minusDays(30).isAfter(fecDisp))
 			return false;
-		
-		if (fecDisp.isBefore(DateTime.now().minusYears(2)) ||
-				fecPrescr.isBefore(DateTime.now().minusYears(2))) {
+
+		if (fecDisp.isBefore(DateTime.now().minusYears(2))
+				|| fecPrescr.isBefore(DateTime.now().minusYears(2))) {
 			return false;
 		}
 
@@ -210,7 +217,7 @@ public class PrescriptionFormValidator implements Validator {
 			return false;
 		return true;
 	}
-	
+
 	private boolean isEmptyOrWhitespace(String field) {
 		if (field == null || field.equals("")) {
 			return true;
