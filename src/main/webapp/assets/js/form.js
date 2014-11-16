@@ -175,7 +175,13 @@ var formEvents = function() {
 		$("#pciorp_" + i).blur(function(e){
 			calculateAjuste();
 		});
+		$("#porc_" + i).blur(function(e){
+			calculateAjuste();
+		});
 	}
+	$("#tot_ac").blur(function(e){
+		calculateAjuste();
+	})
 };
 
 var ctrlPressed = false;
@@ -209,7 +215,7 @@ var calculateAjuste = function() {
 	var totalReceta = $("#tot_rec").val();
 //	var ajusteTotal = (totalOS / totalReceta) * ajuste;
 	var ajusteTotal = ajuste - totalOS;
-	if (ajuste >= 10 || ajuste <= -10) {
+	if (ajusteTotal >= 10 || ajusteTotal <= -10) {
 		if ($("#rechazos").val().indexOf("78") < 0) {
 			$("#rechazos").val($("#rechazos").val() + "78");
 		}
@@ -223,7 +229,7 @@ var calculateAjuste = function() {
 		}
 		$("#ajuste").val(Math.floor(ajusteTotal));
 	}
-	if (ajuste > -10 && ajuste < 10) {
+	if (ajusteTotal > -10 && ajusteTotal < 10) {
 		if ($("#rechazos").val().indexOf("78") >= 0) {
 			$("#rechazos").val($("#rechazos").val().replace("78", ""));
 		}
