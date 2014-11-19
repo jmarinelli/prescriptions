@@ -174,6 +174,17 @@ var formEvents = function() {
 	for (var i = 1 ; i < 4 ; i++) {
 		$("#pciorp_" + i).blur(function(e){
 			calculateAjuste();
+			var codes = ["58", "63", "97"];
+			for (var j = 0 ; j < 3 ; j++) {
+				if ($("#pciorp_" + i) && $("#pcio_real_" + i)) {
+					if ($("#pciorp_" + i) != $("#pcio_real_" + i)) {
+						if ($("#rechazos").val().indexOf(codes[j]) < 0)
+							$("#rechazos").val($("#rechazos").val() + codes[j]);				
+					} else if (($("#rechazos").val().indexOf(codes[j]) >= 0)) {
+						$("#rechazos").val($("#rechazos").val().replace(codes[j], ""));
+					}
+				}
+			}
 		});
 		$("#porc_" + i).blur(function(e){
 			calculateAjuste();
@@ -219,22 +230,11 @@ var calculateAjuste = function() {
 		if ($("#rechazos").val().indexOf("78") < 0) {
 			$("#rechazos").val($("#rechazos").val() + "78");
 		}
-		for (var j = 0 ; j < 3 ; j++) {
-			if (hasAjuste[j]) {
-				if ($("#rechazos").val().indexOf(codes[j]) < 0)
-					$("#rechazos").val($("#rechazos").val() + codes[j]);				
-			} else if (($("#rechazos").val().indexOf(codes[j]) >= 0)) {
-				$("#rechazos").val($("#rechazos").val().replace(codes[j], ""));
-			}
-		}
 		$("#ajuste").val(Math.floor(ajusteTotal));
 	}
 	if (ajusteTotal > -10 && ajusteTotal < 10) {
 		if ($("#rechazos").val().indexOf("78") >= 0) {
 			$("#rechazos").val($("#rechazos").val().replace("78", ""));
-		}
-		for (var k = 0 ; k < 3 ; k++) {
-			$("#rechazos").val($("#rechazos").val().replace(codes[k], ""));
 		}
 		$("#ajuste").val(0);
 	}
