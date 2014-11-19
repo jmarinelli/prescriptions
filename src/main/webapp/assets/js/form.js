@@ -175,13 +175,13 @@ var formEvents = function() {
 		$("#pciorp_" + i).blur(function(e){
 			calculateAjuste();
 			var codes = ["58", "63", "97"];
-			for (var j = 0 ; j < 3 ; j++) {
+			for (var j = 1 ; j < 4 ; j++) {
 				if ($("#pciorp_" + j).val() && $("#pcio_real_" + j).val()) {
 					if ($("#pciorp_" + j).val() != $("#pcio_real_" + j).val()) {
-						if ($("#rechazos").val().indexOf(codes[j]) < 0)
-							$("#rechazos").val($("#rechazos").val() + codes[j]);				
-					} else if (($("#rechazos").val().indexOf(codes[j]) >= 0)) {
-						$("#rechazos").val($("#rechazos").val().replace(codes[j], ""));
+						if ($("#rechazos").val().indexOf(codes[j - 1]) < 0)
+							$("#rechazos").val($("#rechazos").val() + codes[j - 1]);				
+					} else if (($("#rechazos").val().indexOf(codes[j - 1]) >= 0)) {
+						$("#rechazos").val($("#rechazos").val().replace(codes[j - 1], ""));
 					}
 				}
 			}
