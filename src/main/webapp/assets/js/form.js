@@ -176,8 +176,8 @@ var formEvents = function() {
 			calculateAjuste();
 			var codes = ["58", "63", "97"];
 			for (var j = 0 ; j < 3 ; j++) {
-				if ($("#pciorp_" + i) && $("#pcio_real_" + i)) {
-					if ($("#pciorp_" + i) != $("#pcio_real_" + i)) {
+				if ($("#pciorp_" + j).val() && $("#pcio_real_" + j).val()) {
+					if ($("#pciorp_" + j).val() != $("#pcio_real_" + j).val()) {
 						if ($("#rechazos").val().indexOf(codes[j]) < 0)
 							$("#rechazos").val($("#rechazos").val() + codes[j]);				
 					} else if (($("#rechazos").val().indexOf(codes[j]) >= 0)) {
